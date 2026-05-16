@@ -9,8 +9,6 @@ export default function OrderForm() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    alert('Form submit works');
-
     setIsSending(true);
     setStatus('Sending...');
 

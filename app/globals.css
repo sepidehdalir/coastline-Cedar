@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #FBF7F0;
+  color: #1A1612;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle paper grain */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(36,23,18,.05) 1px, transparent 1px);
+  background-size: 3px 3px;
+  mix-blend-mode: multiply;
+  opacity: .35;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition;
+}
+.btn-primary {
+  @apply btn bg-charcoal-900 text-cream hover:bg-cedar-700;
+}
+.btn-secondary {
+  @apply btn border border-charcoal-900/20 text-charcoal-900 hover:bg-charcoal-900 hover:text-cream;
+}
+.btn-ghost {
+  @apply btn text-charcoal-900 hover:bg-charcoal-900/5;
+}
+
+.eyebrow {
+  @apply text-[0.72rem] font-medium uppercase tracking-[0.18em] text-cedar-600;
+}
+
+.section { @apply py-20 md:py-28; }
+
+/* Smooth fade-in on load */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise { animation: rise .7s ease-out both; }
+.rise-1 { animation-delay: .05s; }
+.rise-2 { animation-delay: .15s; }
+.rise-3 { animation-delay: .25s; }
+.rise-4 { animation-delay: .35s; }

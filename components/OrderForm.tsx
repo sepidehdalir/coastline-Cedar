@@ -53,9 +53,6 @@ export default function OrderForm() {
       onSubmit={handleSubmit}
       className="rounded-2xl border border-charcoal-900/10 bg-white/70 p-6 shadow-soft"
     >
-      <p className="mb-4 rounded-xl bg-cream px-4 py-3 text-sm text-charcoal-900/70">
-        FORM VERSION 2 TEST
-      </p>
 
       <div className="grid gap-4">
         <label className="block">

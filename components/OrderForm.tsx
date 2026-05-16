@@ -4,20 +4,24 @@ import { useState } from 'react';
 
 export default function OrderForm() {
   const [status, setStatus] = useState('');
+  const [isSending, setIsSending] = useState(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    setIsSending(true);
     setStatus('Sending...');
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
     const payload = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      projectType: formData.get('projectType'),
-      dimensions: formData.get('dimensions'),
-      message: formData.get('message'),
+      name: String(formData.get('name') || ''),
+      email: String(formData.get('email') || ''),
+      phone: String(formData.get('phone') || ''),
+      projectType: String(formData.get('projectType') || ''),
+      dimensions: String(formData.get('dimensions') || ''),
+      message: String(formData.get('message') || ''),
     };
 
     try {
@@ -33,95 +37,108 @@ export default function OrderForm() {
 
       if (response.ok) {
         setStatus('Message sent successfully. We will get back to you shortly.');
-        event.currentTarget.reset();
+        form.reset();
       } else {
-        setStatus(result.error || 'Something went wrong. Please try again.');
+        setStatus(result.error || 'Message failed. Please try again.');
       }
     } catch {
-      setStatus('Form connection failed. Please try again later.');
+      setStatus('Form connection failed. Please try again.');
+    } finally {
+      setIsSending(false);
     }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl border border-charcoal-900/10 bg-white p-6 shadow-soft">
-      <div>
-        <label className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
-          Name
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-2xl border border-charcoal-900/10 bg-white/70 p-6 shadow-soft"
+    >
+      <div className="grid gap-4">
+        <label className="block">
+          <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+            Name
+          </span>
+          <input
+            name="name"
+            required
+            placeholder="Your name"
+            className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+          />
         </label>
-        <input
-          name="name"
-          required
-          className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm outline-none focus:border-cedar-600"
-          placeholder="Your name"
-        />
-      </div>
 
-      <div>
-        <label className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
-          Email
+        <label className="block">
+          <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+            Email
+          </span>
+          <input
+            name="email"
+            type="email"
+            required
+            placeholder="you@example.com"
+            className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+          />
         </label>
-        <input
-          name="email"
-          type="email"
-          required
-          className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm outline-none focus:border-cedar-600"
-          placeholder="you@example.com"
-        />
-      </div>
 
-      <div>
-        <label className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
-          Phone
+        <label className="block">
+          <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+            Phone
+          </span>
+          <input
+            name="phone"
+            placeholder="(778) 000-0000"
+            className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+          />
         </label>
-        <input
-          name="phone"
-          className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm outline-none focus:border-cedar-600"
-          placeholder="(778) 000-0000"
-        />
-      </div>
 
-      <div>
-        <label className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
-          Project Type
+        <label className="block">
+          <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+            Project Type
+          </span>
+          <input
+            name="projectType"
+            placeholder="Planter box, custom size, privacy planter..."
+            className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+          />
         </label>
-        <input
-          name="projectType"
-          className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm outline-none focus:border-cedar-600"
-          placeholder="Planter box, custom size, privacy planter..."
-        />
-      </div>
 
-      <div>
-        <label className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
-          Dimensions
+        <label className="block">
+          <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+            Dimensions
+          </span>
+          <input
+            name="dimensions"
+            placeholder='Example: 48" L × 20" W × 30" H'
+            className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+          />
         </label>
-        <input
-          name="dimensions"
-          className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm outline-none focus:border-cedar-600"
-          placeholder='Example: 48" L × 20" W × 30" H'
-        />
-      </div>
 
-      <div>
-        <label className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
-          Message
+        <label className="block">
+          <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+            Message
+          </span>
+          <textarea
+            name="message"
+            required
+            rows={5}
+            placeholder="Tell us what you need, preferred size, delivery area, and any details."
+            className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+          />
         </label>
-        <textarea
-          name="message"
-          required
-          rows={5}
-          className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm outline-none focus:border-cedar-600"
-          placeholder="Tell us what you need, preferred size, delivery area, and any details."
-        />
+
+        <button
+          type="submit"
+          disabled={isSending}
+          className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {isSending ? 'Sending...' : 'Send request'}
+        </button>
+
+        {status && (
+          <p className="rounded-xl bg-cream px-4 py-3 text-sm text-charcoal-900/80">
+            {status}
+          </p>
+        )}
       </div>
-
-      <button type="submit" className="btn-primary w-full">
-        Send request
-      </button>
-
-      {status && (
-        <p className="text-sm text-charcoal-900/70">{status}</p>
-      )}
     </form>
   );
 }

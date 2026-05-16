@@ -53,7 +53,7 @@ export default function CustomPlantersPage() {
           </div>
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-2xl bg-cedar-100 shadow-soft">
-              <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=1400&q=80" alt="Custom cedar planter being built on a workshop bench" className="h-full w-full object-cover" />
+              <img src="/images/products/custom-cedar-planter-patio-project.png" />
             </div>
           </div>
         </div>

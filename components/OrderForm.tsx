@@ -9,6 +9,8 @@ export default function OrderForm() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    alert('Form submit works');
+
     setIsSending(true);
     setStatus('Sending...');
 
@@ -25,7 +27,7 @@ export default function OrderForm() {
     };
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://www.coastlinecedar.com/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,6 +55,10 @@ export default function OrderForm() {
       onSubmit={handleSubmit}
       className="rounded-2xl border border-charcoal-900/10 bg-white/70 p-6 shadow-soft"
     >
+      <p className="mb-4 rounded-xl bg-cream px-4 py-3 text-sm text-charcoal-900/70">
+        FORM VERSION 2 TEST
+      </p>
+
       <div className="grid gap-4">
         <label className="block">
           <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">

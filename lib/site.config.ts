@@ -1,9 +1,11 @@
 export const site = {
-  // 🔧 EDIT THESE — they cascade across the whole site
+  // EDIT THESE — they cascade across the whole site
   name: 'Coastline Cedar',
-shortName: 'Coastline Cedar',
-url: 'https://coastlinecedar.com',
-email: 'hello@coastlinecedar.com',
+  shortName: 'Coastline Cedar',
+  url: 'https://coastlinecedar.com',
+  phone: '(778) 522-1810',
+  phoneHref: 'tel:+17785221810',
+  email: 'hello@coastlinecedar.com',
   address: {
     locality: 'North Vancouver',
     region: 'BC',

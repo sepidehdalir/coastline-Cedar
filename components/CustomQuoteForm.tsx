@@ -1,93 +1,234 @@
 'use client';
+
 import { useState } from 'react';
-import { serviceAreas } from '@/lib/service-areas';
 
 export default function CustomQuoteForm() {
-  const [submitted, setSubmitted] = useState(false);
-  const [pending, setPending] = useState(false);
+  const [status, setStatus] = useState('');
+  const [isSending, setIsSending] = useState(false);
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setPending(true);
-    await new Promise(r => setTimeout(r, 700));
-    setPending(false);
-    setSubmitted(true);
-  };
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
 
-  if (submitted) {
-    return (
-      <div className="rounded-2xl border border-forest-500/30 bg-forest-500/5 p-8">
-        <p className="eyebrow text-forest-600">Quote request received</p>
-        <h3 className="mt-2 font-display text-2xl font-semibold text-charcoal-900">Thanks — sketch and quote on the way.</h3>
-        <p className="mt-2 text-sm text-charcoal-900/70">We typically reply within 1–2 business days with a sketch, materials list, finish recommendations, and a firm price.</p>
-      </div>
-    );
+    setIsSending(true);
+    setStatus('Sending...');
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const name = String(formData.get('name') || '');
+    const email = String(formData.get('email') || '');
+    const phone = String(formData.get('phone') || '');
+    const serviceArea = String(formData.get('serviceArea') || '');
+    const length = String(formData.get('length') || '');
+    const width = String(formData.get('width') || '');
+    const height = String(formData.get('height') || '');
+    const finish = String(formData.get('finish') || '');
+    const useCase = String(formData.get('useCase') || '');
+    const details = String(formData.get('details') || '');
+
+    const dimensions = `${length}" L × ${width}" W × ${height}" H`;
+
+    const payload = {
+      name,
+      email,
+      phone,
+      projectType: `Custom planter quote - ${useCase}`,
+      dimensions,
+      message: `
+Custom planter quote request
+
+Service Area: ${serviceArea}
+Dimensions: ${dimensions}
+Finish Preference: ${finish}
+Use Case: ${useCase}
+
+Project Details:
+${details}
+      `,
+    };
+
+    try {
+      const response = await fetch('https://www.coastlinecedar.com/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setStatus('Message sent successfully. We will get back to you shortly.');
+        form.reset();
+      } else {
+        setStatus(result.error || 'Message failed. Please try again.');
+      }
+    } catch {
+      setStatus('Form connection failed. Please try again.');
+    } finally {
+      setIsSending(false);
+    }
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5 rounded-2xl border border-charcoal-900/10 bg-white p-6 md:p-8">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Full name" name="name" required />
-        <Field label="Email" name="email" type="email" required />
-      </div>
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Phone" name="phone" type="tel" />
-        <Select label="Service area" name="serviceArea" options={serviceAreas.map(a => a.city)} />
-      </div>
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-2xl border border-charcoal-900/10 bg-white/70 p-6 shadow-soft"
+    >
+      <div className="grid gap-4">
+        <div className="grid gap-4 md:grid-cols-2">
+          <label className="block">
+            <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+              Full name
+            </span>
+            <input
+              name="name"
+              required
+              placeholder="Your name"
+              className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+            />
+          </label>
 
-      <div>
-        <p className="text-sm font-medium text-charcoal-900">Dimensions (inches)</p>
-        <div className="mt-2 grid gap-3 sm:grid-cols-3">
-          <Field label="Length" name="length" type="number" min={0} required />
-          <Field label="Width" name="width" type="number" min={0} required />
-          <Field label="Height" name="height" type="number" min={0} required />
+          <label className="block">
+            <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+              Email
+            </span>
+            <input
+              name="email"
+              type="email"
+              required
+              placeholder="you@example.com"
+              className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+            />
+          </label>
         </div>
-        <p className="mt-2 text-xs text-charcoal-900/55">Not sure exactly? Give us a range and we’ll work it out together.</p>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          <label className="block">
+            <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+              Phone
+            </span>
+            <input
+              name="phone"
+              placeholder="(778) 000-0000"
+              className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+            />
+          </label>
+
+          <label className="block">
+            <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+              Service area
+            </span>
+            <select
+              name="serviceArea"
+              className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+            >
+              <option value="">Select...</option>
+              <option>North Vancouver</option>
+              <option>Vancouver</option>
+              <option>West Vancouver</option>
+              <option>Burnaby</option>
+              <option>Richmond</option>
+              <option>Coquitlam</option>
+              <option>Surrey</option>
+              <option>Langley</option>
+              <option>Other Greater Vancouver area</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+            Dimensions in inches
+          </span>
+          <div className="mt-2 grid gap-4 md:grid-cols-3">
+            <input
+              name="length"
+              placeholder="Length"
+              className="w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+            />
+            <input
+              name="width"
+              placeholder="Width"
+              className="w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+            />
+            <input
+              name="height"
+              placeholder="Height"
+              className="w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+            />
+          </div>
+          <p className="mt-2 text-xs text-charcoal-900/55">
+            Not sure exactly? Give us a range and we will work it out together.
+          </p>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          <label className="block">
+            <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+              Finish preference
+            </span>
+            <select
+              name="finish"
+              className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+            >
+              <option value="">Select...</option>
+              <option>Natural unfinished cedar</option>
+              <option>Clear outdoor sealer</option>
+              <option>Charcoal stain</option>
+              <option>Custom colour</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+
+          <label className="block">
+            <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+              Use case
+            </span>
+            <select
+              name="useCase"
+              className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+            >
+              <option value="">Select...</option>
+              <option>Patio or deck</option>
+              <option>Balcony</option>
+              <option>Front entrance</option>
+              <option>Vegetable garden</option>
+              <option>Privacy or trellis</option>
+              <option>Restaurant or café</option>
+              <option>Other</option>
+            </select>
+          </label>
+        </div>
+
+        <label className="block">
+          <span className="block text-xs uppercase tracking-[0.16em] text-charcoal-900/45">
+            Project details
+          </span>
+          <textarea
+            name="details"
+            required
+            rows={5}
+            placeholder="Tell us about the space, preferred design, quantity, delivery area, and any details."
+            className="mt-2 w-full rounded-xl border border-charcoal-900/10 bg-cream px-4 py-3 text-sm text-charcoal-900 outline-none focus:border-cedar-600"
+          />
+        </label>
+
+        <button
+          type="submit"
+          disabled={isSending}
+          className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {isSending ? 'Sending...' : 'Request Custom Quote'}
+        </button>
+
+        {status && (
+          <p className="rounded-xl bg-cream px-4 py-3 text-sm text-charcoal-900/80">
+            {status}
+          </p>
+        )}
       </div>
-
-      <Select label="Finish preference" name="finish" options={['Natural (unfinished)', 'Clear outdoor sealer', 'Charcoal stain', 'Custom colour', 'Not sure yet']} />
-      <Select label="Use case" name="useCase" options={['Patio / deck', 'Balcony', 'Front entrance', 'Vegetable garden', 'Privacy / trellis', 'Restaurant / café', 'Other']} />
-
-      <div>
-        <label className="text-sm font-medium text-charcoal-900">Project details</label>
-        <textarea
-          name="message"
-          rows={5}
-          placeholder="Tell us where it will live, what you’re planting, deadline, anything we should know."
-          className="mt-2 w-full rounded-xl border border-charcoal-900/15 bg-cream px-4 py-3 text-sm outline-none focus:border-cedar-700"
-        />
-      </div>
-
-      <div>
-        <label className="text-sm font-medium text-charcoal-900">Photo of the space (optional)</label>
-        <input type="file" name="photo" accept="image/*" className="mt-2 block w-full text-sm text-charcoal-900/70 file:mr-4 file:rounded-full file:border-0 file:bg-cedar-50 file:px-4 file:py-2 file:text-sm file:text-cedar-700 hover:file:bg-cedar-100" />
-      </div>
-
-      <button type="submit" disabled={pending} className="btn-primary w-full sm:w-auto disabled:opacity-60">
-        {pending ? 'Sending…' : 'Request Custom Quote →'}
-      </button>
-      <p className="text-xs text-charcoal-900/55">Free, no-obligation quote. Most quotes come back within 1–2 business days.</p>
     </form>
-  );
-}
-
-function Field(props: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) {
-  const { label, name, ...rest } = props;
-  return (
-    <label className="block text-sm">
-      <span className="font-medium text-charcoal-900">{label}</span>
-      <input name={name} {...rest} className="mt-2 w-full rounded-xl border border-charcoal-900/15 bg-cream px-4 py-3 text-sm outline-none focus:border-cedar-700" />
-    </label>
-  );
-}
-function Select({ label, name, options }: { label: string; name: string; options: string[] }) {
-  return (
-    <label className="block text-sm">
-      <span className="font-medium text-charcoal-900">{label}</span>
-      <select name={name} className="mt-2 w-full rounded-xl border border-charcoal-900/15 bg-cream px-4 py-3 text-sm outline-none focus:border-cedar-700">
-        <option value="">Select…</option>
-        {options.map(o => <option key={o}>{o}</option>)}
-      </select>
-    </label>
   );
 }

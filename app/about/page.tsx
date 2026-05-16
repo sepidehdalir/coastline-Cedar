@@ -37,7 +37,7 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-2xl bg-cedar-100 shadow-soft">
-              <img src="/images/about/workshop-cedar-planters.png"/>
+              <img src="/images/products/workshop-cedar-planters.png"/>
             </div>
           </div>
         </div>

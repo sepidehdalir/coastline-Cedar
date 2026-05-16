@@ -30,7 +30,7 @@ export default function Hero() {
         <div className="relative rise rise-3 lg:col-span-5">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-cedar-100 shadow-lift">
             <img
-              src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1400&q=80"
+              src="public/images/products/hero-planter"
               alt="Hand-built Western Red Cedar planter box with greenery on a patio"
               className="h-full w-full object-cover"
               loading="eager"

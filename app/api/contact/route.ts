@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 
     const { data, error } = await resend.emails.send({
       from: 'Coastline Cedar <onboarding@resend.dev>',
-      to: ['sunifygroup@gmail.com'],
+      to: ['celinadalir@gmail.com'],
       subject: `New Coastline Cedar inquiry from ${name}`,
       replyTo: email,
       text: `

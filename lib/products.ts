@@ -78,7 +78,7 @@ export const products: Product[] = [
   {
     slug: 'Standard-outdoor-cedar-planter',
     name: 'Standard Outdoor Cedar Planter Box',
-    category: 'Standard',
+    category: 'patio',
     categoryLabel: 'Standard',
     shortDescription: 'Bold statement planter for entryways, courtyards, and patios.',
     description:

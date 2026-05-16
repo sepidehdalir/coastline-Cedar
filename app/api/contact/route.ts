@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     const dimensions = body.dimensions || '';
     const message = body.message || '';
 
-    if (!name  !email  !message) {
+    if (!name || !email || !message) {
       return Response.json(
         { error: 'Name, email, and message are required.' },
         { status: 400 }
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const { data, error } = await resend.emails.send({
       from: 'Coastline Cedar <onboarding@resend.dev>',
       to: ['sunifygroup@gmail.com'],
-      subject: New Coastline Cedar inquiry from ${name},
+      subject: `New Coastline Cedar inquiry from ${name}`,
       replyTo: email,
       text: `
 New inquiry from Coastline Cedar website

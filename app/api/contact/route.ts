@@ -1,59 +1,48 @@
-import { Resend } from 'resend';
+// Force this route to be treated as dynamic and never statically analyzed/prerendered
+// during "Collecting page data". This keeps the production build from stalling and
+// ensures the email SDK is only loaded at request time.
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
-function getResend() {
-  const apiKey = process.env.RESEND_API_KEY;
+/*
+  ────────────────────────────────────────────────────────────────────────────
+  CONTACT FORM EMAIL — VERCEL SETUP
+  To make the contact form work in Vercel:
+    1. Go to Vercel Project Settings
+    2. Open Environment Variables
+    3. Add: RESEND_API_KEY  (your key from https://resend.com)
+    4. Make sure it is available for Production and Preview
+    5. Redeploy the project
 
-  if (!apiKey) {
-    throw new Error('RESEND_API_KEY is missing');
-  }
+  EMAIL SENDER / DOMAIN
+  This sends from "Coastline Cedar <hello@coastlinecedar.com>".
+  Before production email sending works, coastlinecedar.com must be verified in
+  Resend (Resend > Domains > Add Domain, then add the DNS records). Until the
+  domain is verified, Resend will reject sends from this address.
+  ────────────────────────────────────────────────────────────────────────────
+*/
 
-  return new Resend(apiKey);
-}
+const FROM = 'Coastline Cedar <hello@coastlinecedar.com>';
 
-export async function GET() {
+// Where inquiries are delivered. Update to the business inbox.
+const TO = ['hello@coastlinecedar.com'];
+
+export async function POST(request: Request) {
   try {
-    const resend = getResend();
-
-    const { data, error } = await resend.emails.send({
-      from: 'Coastline Cedar <onboarding@resend.dev>',
-      to: ['celinadalir@gmail.com'],
-      subject: 'Coastline Cedar API test',
-      replyTo: 'celinadalir@gmail.com',
-      text: 'This is a direct API test from Coastline Cedar.',
-    });
-
-    if (error) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      // Log for debugging; do NOT expose this wording to customers.
+      console.error('[contact] RESEND_API_KEY is not set. Add it in Vercel > Environment Variables.');
       return Response.json(
-        {
-          success: false,
-          step: 'GET test',
-          error,
-        },
+        { success: false, error: 'EMAIL_NOT_CONFIGURED' },
         { status: 500 }
       );
     }
 
-    return Response.json({
-      success: true,
-      step: 'GET test',
-      message: 'API test email sent.',
-      data,
-    });
-  } catch (error) {
-    return Response.json(
-      {
-        success: false,
-        step: 'GET test',
-        error: error instanceof Error ? error.message : 'Unknown error',
-      },
-      { status: 500 }
-    );
-  }
-}
+    // Lazy-import so the SDK is never evaluated during the build's data-collection phase.
+    const { Resend } = await import('resend');
+    const resend = new Resend(apiKey);
 
-export async function POST(request: Request) {
-  try {
-    const resend = getResend();
     const body = await request.json();
 
     const name = body.name || '';
@@ -65,17 +54,14 @@ export async function POST(request: Request) {
 
     if (!name || !email || !message) {
       return Response.json(
-        {
-          success: false,
-          error: 'Name, email, and message are required.',
-        },
+        { success: false, error: 'MISSING_FIELDS' },
         { status: 400 }
       );
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'Coastline Cedar <onboarding@resend.dev>',
-      to: ['celinadalir@gmail.com'],
+      from: FROM,
+      to: TO,
       subject: `New Coastline Cedar inquiry from ${name}`,
       replyTo: email,
       text: `
@@ -93,30 +79,13 @@ ${message}
     });
 
     if (error) {
-      return Response.json(
-        {
-          success: false,
-          step: 'POST form',
-          error,
-        },
-        { status: 500 }
-      );
+      console.error('[contact] Resend send error:', error);
+      return Response.json({ success: false, error: 'SEND_FAILED' }, { status: 500 });
     }
 
-    return Response.json({
-      success: true,
-      step: 'POST form',
-      message: 'Form email sent.',
-      data,
-    });
-  } catch (error) {
-    return Response.json(
-      {
-        success: false,
-        step: 'POST form',
-        error: error instanceof Error ? error.message : 'Unknown error',
-      },
-      { status: 500 }
-    );
+    return Response.json({ success: true, data });
+  } catch (err) {
+    console.error('[contact] Unexpected error:', err);
+    return Response.json({ success: false, error: 'SERVER_ERROR' }, { status: 500 });
   }
 }

@@ -1,23 +1,16 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Fraunces, DM_Sans } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import PromoBanner from '@/components/PromoBanner';
 import JsonLd from '@/components/JsonLd';
 import { site } from '@/lib/site.config';
 
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-fraunces',
-  weight: ['400', '500', '600', '700']
-});
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-dm-sans',
-  weight: ['400', '500', '600']
-});
+// Fonts are defined as CSS variables in globals.css using robust system stacks.
+// This avoids any external Google Fonts fetch at build time, so production
+// (Vercel) builds never fail because fonts can't be downloaded.
+// To use Fraunces / DM Sans as web fonts later, add @font-face with self-hosted
+// files in /public/fonts and point --font-fraunces / --font-dm-sans at them.
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -31,7 +24,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_CA',
     url: site.url,
-    siteName: site.name
+    siteName: site.name,
+    images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'Coastline Cedar — Custom Cedar Builds in North Vancouver' }]
   },
   twitter: { card: 'summary_large_image' },
   alternates: { canonical: site.url },
@@ -65,9 +59,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en" className={`${fraunces.variable} ${dmSans.variable}`}>
+    <html lang="en">
       <body className="font-sans">
         <JsonLd data={localBusiness} />
+        <PromoBanner />
         <Header />
         <main>{children}</main>
         <Footer />

@@ -26,7 +26,7 @@ const useCases = [
 ];
 
 const customFAQ = [
-  { q: 'How long does a custom planter take?', a: 'Most custom orders ship within 2–3 weeks of confirmed dimensions and finish. Larger or multi-unit orders may take 4–6 weeks.' },
+  { q: 'How long does a custom planter take?', a: 'Most standard cedar builds are ready in about 2–3 days after details are confirmed. For larger or multi-unit projects, the timeline depends on project size, measurements, site access, and installation scope.' },
   { q: 'Is the quote free?', a: 'Yes — quotes and sketches are free with no obligation. We typically send them within 1–2 business days.' },
   { q: 'How precise can the dimensions be?', a: 'We build to 1/4″ tolerance on length, width, and height. If you have very specific architectural constraints, send them and we’ll confirm.' },
   { q: 'Can you match an existing wood tone?', a: 'Yes. We can sample stain and seal options against a photo or sample of your existing wood and confirm the finish before we build.' }
@@ -107,7 +107,7 @@ export default function CustomPlantersPage() {
               We’ll reply with a sketch, materials list, finish recommendations, and a firm price — typically within 1–2 business days.
             </p>
             <ul className="mt-6 space-y-3 text-sm text-charcoal-900/75">
-              {['Free, no-obligation quote', 'Built in 2–3 weeks (typical)', 'Free delivery in Greater Vancouver over $200', 'Volume pricing on 5+ units'].map(t => (
+              {['Free, no-obligation quote', 'Most standard builds ready in about 2–3 days', 'Local delivery usually $25 · free for 2+ items', 'Volume pricing on 5+ units'].map(t => (
                 <li key={t} className="flex items-start gap-2"><span aria-hidden className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-forest-500" />{t}</li>
               ))}
             </ul>

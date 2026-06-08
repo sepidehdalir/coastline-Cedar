@@ -7,7 +7,7 @@ import type { ServiceArea } from '@/lib/service-areas';
 export function CTASection({
   eyebrow = 'Ready to order?',
   title = 'Hand-built cedar planters, delivered locally.',
-  body = 'Choose a standard size or send us your dimensions for a custom build. Free delivery on orders over $200 across Greater Vancouver.',
+  body = 'Choose a standard size or send us your dimensions for a custom build. Pickup by appointment, or local delivery usually $25 — free for orders of 2 or more items.',
   primaryHref = '/shop',
   primaryLabel = 'Shop Planters',
   secondaryHref = '/custom-planters',

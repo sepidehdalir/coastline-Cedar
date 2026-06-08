@@ -3,9 +3,9 @@ import OrderForm from '@/components/OrderForm';
 import { site } from '@/lib/site.config';
 
 export const metadata: Metadata = {
-  title: 'Order or Contact — Cedar Planter Boxes Vancouver',
+  title: 'Order or Request a Quote | Coastline Cedar Vancouver',
   description:
-    'Order a cedar planter or request a custom quote. We reply within one business day. Free delivery across Greater Vancouver over $200.',
+    'Order a cedar planter, privacy panel, outdoor sauna, gate, fence, or custom cedar build from Coastline Cedar in North Vancouver.',
   alternates: { canonical: `${site.url}/contact` }
 };
 
@@ -15,9 +15,10 @@ export default function ContactPage() {
       <section className="border-b border-charcoal-900/8 bg-cream">
         <div className="mx-auto max-w-8xl px-5 py-16 lg:px-10 md:py-20">
           <p className="eyebrow">Order / contact</p>
-          <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold text-charcoal-900 md:text-6xl">Order a planter or send us a message.</h1>
+          <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold text-charcoal-900 md:text-6xl">Order a cedar build or request a quote.</h1>
           <p className="mt-5 max-w-2xl text-charcoal-900/75">
-            Tell us what you’re looking for. We’ll confirm sizing, delivery window, and final pricing within one business day.
+            Tell us what you’re looking for — cedar planters, privacy panels, outdoor saunas,
+            gates and fences, or a custom cedar build. We’ll confirm sizing, delivery, and pricing within one business day.
           </p>
         </div>
       </section>
@@ -36,7 +37,7 @@ export default function ContactPage() {
             <div className="mt-8 rounded-2xl border border-charcoal-900/10 bg-bone p-5 text-sm text-charcoal-900/75">
               <p className="font-medium text-charcoal-900">Service area</p>
               <p className="mt-2">North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Coquitlam, Port Moody, New Westminster, Surrey, Delta, Langley.</p>
-              <p className="mt-2 text-charcoal-900/55">Free delivery on orders over ${site.freeDeliveryThreshold}.</p>
+              <p className="mt-2 text-charcoal-900/55">{site.deliveryPolicy}</p>
             </div>
           </aside>
 

@@ -1,8 +1,10 @@
 'use client';
 import { useState } from 'react';
-import type { Metadata } from 'next';
+import Link from 'next/link';
 import { products, categories } from '@/lib/products';
+import { services } from '@/lib/services';
 import ProductGrid from '@/components/ProductGrid';
+import ServiceCard from '@/components/ServiceCard';
 import { CTASection } from '@/components/sections';
 
 export default function ShopPage() {
@@ -17,7 +19,7 @@ export default function ShopPage() {
           <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold text-charcoal-900 md:text-6xl">Cedar planter boxes for every space.</h1>
           <p className="mt-5 max-w-2xl text-charcoal-900/75">
             Seven standard sizes covering patio, balcony, raised garden, privacy, and commercial use — plus made-to-measure custom builds.
-            All hand-built in North Vancouver. Free delivery across Greater Vancouver on orders over $200.
+            All hand-built in North Vancouver. Pickup by appointment or local delivery (usually $25, free for orders of 2 or more items).
           </p>
 
           <div className="mt-10 flex flex-wrap gap-2">
@@ -43,6 +45,20 @@ export default function ShopPage() {
       <section className="section">
         <div className="mx-auto max-w-8xl px-5 lg:px-10">
           <ProductGrid items={filtered} />
+        </div>
+      </section>
+
+      <section className="bg-bone">
+        <div className="mx-auto max-w-8xl px-5 py-20 lg:px-10 md:py-24">
+          <p className="eyebrow">Beyond planters</p>
+          <h2 className="mt-3 font-display text-3xl font-semibold text-charcoal-900 md:text-5xl">More custom cedar builds</h2>
+          <p className="mt-4 max-w-2xl text-charcoal-900/75">
+            Privacy panels, outdoor saunas, and handmade gates and fences — all hand-built
+            in cedar across Greater Vancouver.
+          </p>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {services.map((s) => <ServiceCard key={s.slug} service={s} />)}
+          </div>
         </div>
       </section>
 

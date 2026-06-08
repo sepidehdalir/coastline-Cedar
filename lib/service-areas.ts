@@ -32,7 +32,7 @@ export const serviceAreas: ServiceArea[] = [
     neighborhoods:
       'Lonsdale, Lower Lonsdale, Central Lonsdale, Edgemont, Capilano, Lynn Valley, Deep Cove, Seymour, Blueridge, and Upper Lonsdale.',
     deliveryNote:
-      'Free delivery on orders over $200 in North Vancouver. Workshop pickup is available by appointment.',
+      'Pickup is available by appointment on the North Shore. Local delivery is usually $25, and free for orders of 2 or more items.',
     faq: [
       {
         q: 'Do you deliver to apartments on the North Shore?',
@@ -63,7 +63,7 @@ export const serviceAreas: ServiceArea[] = [
     neighborhoods:
       'Downtown, Yaletown, Coal Harbour, West End, Kitsilano, Point Grey, Kerrisdale, Dunbar, Mount Pleasant, Main Street, Commercial Drive, East Van, Strathcona.',
     deliveryNote:
-      'Free delivery on orders over $200 across Vancouver. High-rise elevator delivery available — just send us the building.'
+      'Local delivery in Vancouver is usually $25, and free for orders of 2 or more items. High-rise elevator delivery available — just send us the building.'
 ,
     faq: [
       {
@@ -95,7 +95,7 @@ export const serviceAreas: ServiceArea[] = [
     neighborhoods:
       'Ambleside, Dundarave, British Properties, Sentinel Hill, Caulfeild, Eagle Harbour, Horseshoe Bay, Park Royal area.',
     deliveryNote:
-      'Free delivery on orders over $200 in West Vancouver. Bridge access fees never apply — we live on this side.',
+      'Pickup by appointment, or local delivery usually $25 — free for orders of 2 or more items. Bridge access fees never apply — we live on this side.',
     faq: [
       {
         q: 'Can you match an existing wood tone on my home?',
@@ -126,7 +126,7 @@ export const serviceAreas: ServiceArea[] = [
     neighborhoods:
       'Metrotown, Brentwood, Burnaby Heights, North Burnaby, South Slope, Edmonds, Highgate, Lougheed, SFU area.',
     deliveryNote:
-      'Free delivery on orders over $200 in Burnaby. Standard delivery window is 7–10 business days from order.',
+      'Local delivery in Burnaby is usually $25, and free for orders of 2 or more items. Most standard cedar builds are ready in about 2–3 days after details are confirmed.',
     faq: [
       {
         q: 'Do you build for townhouse complexes?',
@@ -157,7 +157,7 @@ export const serviceAreas: ServiceArea[] = [
     neighborhoods:
       'Steveston, Terra Nova, Brighouse, City Centre, Hamilton, Bridgeport, Seafair, Broadmoor.',
     deliveryNote:
-      'Free delivery on orders over $200 in Richmond. Lead times stay the same as the North Shore — same workshop, just a tunnel away.',
+      'Local delivery in Richmond is usually $25, and free for orders of 2 or more items. Lead times stay the same as the North Shore — same workshop, just a tunnel away.',
     faq: [
       {
         q: 'Will cedar handle the salt air near the dyke?',
@@ -188,7 +188,7 @@ export const serviceAreas: ServiceArea[] = [
     neighborhoods:
       'Burke Mountain, Westwood Plateau, Town Centre, Maillardville, Inlet Centre, Suter Brook, Heritage Mountain, downtown PoCo.',
     deliveryNote:
-      'Free delivery on orders over $200 across Coquitlam, Port Coquitlam, and Port Moody. Tri-Cities deliveries are typically scheduled together once per week.',
+      'Local delivery across Coquitlam, Port Coquitlam, and Port Moody is usually $25, and free for orders of 2 or more items. Tri-Cities deliveries are typically scheduled together once per week.',
     faq: [
       {
         q: 'Do you serve Port Moody and Port Coquitlam too?',
@@ -219,7 +219,7 @@ export const serviceAreas: ServiceArea[] = [
     neighborhoods:
       'South Surrey, White Rock area, Cloverdale, Fleetwood, Newton, Whalley, City Centre, Guildford, Panorama Ridge, Sunnyside.',
     deliveryNote:
-      'Free delivery on orders over $200 across Surrey. Larger deliveries are typically scheduled within 7–10 business days.',
+      'Local delivery across Surrey is usually $25, and free for orders of 2 or more items. Most standard cedar builds are ready in about 2–3 days after details are confirmed; larger projects depend on scope.',
     faq: [
       {
         q: 'Can you build for new construction homes in South Surrey?',
@@ -250,7 +250,7 @@ export const serviceAreas: ServiceArea[] = [
     neighborhoods:
       'Walnut Grove, Willoughby, Yorkson, Fort Langley, Murrayville, Brookswood, Aldergrove, Langley City Centre.',
     deliveryNote:
-      'Free delivery on orders over $200 across Langley. Langley deliveries are scheduled weekly.',
+      'Local delivery across Langley is usually $25, and free for orders of 2 or more items. Langley deliveries are scheduled weekly.',
     faq: [
       {
         q: 'Do you deliver to Aldergrove and rural Langley?',

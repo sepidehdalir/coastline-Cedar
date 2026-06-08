@@ -1,35 +1,113 @@
-type Item = { src: string; alt: string; category: string };
+type Item = {
+  src: string;
+  title: string;
+  category: string;
+  alt: string;
+  /** Intrinsic size, used to reserve space and avoid layout shift. */
+  width: number;
+  height: number;
+};
 
+// Real photos from the Coastline Cedar workshop and finished projects in North Vancouver.
+// Ordered strongest-first. Images render at their natural aspect ratio (no forced crop),
+// so the main subject is always fully visible.
 const items: Item[] = [
-  { src: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80', alt: 'Cedar patio planter with leafy plants', category: 'Patio' },
-  { src: 'https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1200&q=80', alt: 'Long cedar balcony planter with flowers', category: 'Balcony' },
-  { src: 'https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=1200&q=80', alt: 'Large cedar planter in courtyard', category: 'Large' },
-  { src: 'https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?auto=format&fit=crop&w=1200&q=80', alt: 'Raised cedar garden planter with vegetables', category: 'Raised Garden' },
-  { src: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80', alt: 'Cedar privacy planter with trellis', category: 'Privacy' },
-  { src: 'https://images.unsplash.com/photo-1525286116112-b59af11adad1?auto=format&fit=crop&w=1200&q=80', alt: 'Cedar planters lining a restaurant patio', category: 'Commercial' },
-  { src: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=1200&q=80', alt: 'Workshop bench with cedar planter in progress', category: 'Workshop' },
-  { src: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1200&q=80', alt: 'Front entrance cedar planter at a Vancouver home', category: 'Front Entrance' }
+  {
+    src: '/images/gallery/finished-cedar-planter-delivery-vancouver.jpg',
+    title: 'Finished Cedar Planter',
+    category: 'Finished Planters',
+    alt: 'Finished stained cedar planter box with liner, hand-built by Coastline Cedar',
+    width: 1200, height: 900,
+  },
+  {
+    src: '/images/gallery/cedar-planter-build-process-workshop.jpg',
+    title: 'Cedar Planter Build Process',
+    category: 'Build Process',
+    alt: 'Cedar planter boxes being built in the Coastline Cedar workshop in North Vancouver',
+    width: 1200, height: 900,
+  },
+  {
+    src: '/images/gallery/cedar-privacy-screen-deck-vancouver.jpg',
+    title: 'Cedar Privacy Screen on a Deck',
+    category: 'Delivery / Installed',
+    alt: 'Hand-built cedar slat privacy screen installed on a backyard deck in Vancouver',
+    width: 900, height: 1200,
+  },
+  {
+    src: '/images/gallery/custom-cedar-planters-patio-vancouver.jpg',
+    title: 'Cedar Planters on a Patio',
+    category: 'Finished Planters',
+    alt: 'Two finished cedar planter boxes with shrubs on a stone patio',
+    width: 960, height: 1200,
+  },
+  {
+    src: '/images/gallery/cedar-privacy-planter-build-process.jpg',
+    title: 'Privacy Planter Under Construction',
+    category: 'Build Process',
+    alt: 'Cedar privacy planter with slat screen being assembled in the workshop',
+    width: 1083, height: 1200,
+  },
+  {
+    src: '/images/gallery/cedar-privacy-planter-planted.jpg',
+    title: 'Privacy Planter with Plants',
+    category: 'Finished Planters',
+    alt: 'Cedar privacy planter with attached slat screen and planted greenery',
+    width: 900, height: 1200,
+  },
+  {
+    src: '/images/gallery/cedar-boards-tools-workshop.jpg',
+    title: 'Inside the Workshop',
+    category: 'Workshop',
+    alt: 'Cedar boards and tools used for custom planter construction in the workshop',
+    width: 1200, height: 1006,
+  },
+  {
+    src: '/images/gallery/cedar-privacy-planter-vancouver.jpg',
+    title: 'Cedar Privacy Planter',
+    category: 'Finished Planters',
+    alt: 'Cedar privacy planter with a tall slat screen on a patio',
+    width: 900, height: 1200,
+  },
+  {
+    src: '/images/gallery/raised-cedar-herb-planter-coldframe.jpg',
+    title: 'Raised Cedar Herb Planter',
+    category: 'Finished Planters',
+    alt: 'Raised cedar herb planter with a hinged glass cold-frame lid and potted herbs',
+    width: 1200, height: 1175,
+  },
+  {
+    src: '/images/gallery/hand-built-cedar-planter-detail.jpg',
+    title: 'Hand-Built Planter Detail',
+    category: 'Cedar Details',
+    alt: 'Close detail of a hand-built cedar planter in the Coastline Cedar workshop',
+    width: 1200, height: 591,
+  },
 ];
 
 export default function GalleryGrid() {
   return (
-    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    // CSS masonry: each image keeps its natural aspect ratio, so the subject is never cropped.
+    <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 [column-fill:_balance]">
       {items.map((it, i) => (
         <figure
           key={i}
-          className={`group relative overflow-hidden rounded-2xl bg-cedar-100 ${i % 5 === 0 ? 'sm:col-span-2 sm:row-span-2' : ''}`}
+          className="group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl bg-cedar-100 shadow-soft"
         >
-          <div className={`relative ${i % 5 === 0 ? 'aspect-square' : 'aspect-[4/3]'}`}>
-            <img
-              src={it.src}
-              alt={it.alt}
-              loading="lazy"
-              className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
-            />
-          </div>
-          <figcaption className="absolute bottom-3 left-3 rounded-full bg-cream/95 px-3 py-1 text-[0.65rem] uppercase tracking-[0.16em] text-cedar-700">
+          <img
+            src={it.src}
+            alt={it.alt}
+            width={it.width}
+            height={it.height}
+            loading={i < 3 ? 'eager' : 'lazy'}
+            className="block h-auto w-full object-contain transition duration-700 group-hover:scale-[1.03]"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal-900/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
+          <figcaption className="absolute left-3 top-3 rounded-full bg-cream/95 px-3 py-1 text-[0.62rem] uppercase tracking-[0.14em] text-cedar-700">
             {it.category}
           </figcaption>
+          <p className="pointer-events-none absolute bottom-3 left-3 right-3 translate-y-1 text-sm font-medium text-cream opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100">
+            {it.title}
+          </p>
         </figure>
       ))}
     </div>

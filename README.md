@@ -1,8 +1,8 @@
-# Coastline Cedar Co. — Website
+# Coastline Cedar — Website
 
 A production-ready Next.js 14 website for a Greater Vancouver cedar planter business. Built to outperform local competitors on SEO, trust, product clarity, and conversion.
 
-> **Brand name placeholder.** Everything in this codebase uses "Coastline Cedar Co." as a stand-in. Swap it out in one file: `lib/site.config.ts`.
+> **Brand name placeholder.** Everything in this codebase uses "Coastline Cedar" as a stand-in. Swap it out in one file: `lib/site.config.ts`.
 
 ---
 
@@ -35,7 +35,7 @@ Single source of truth. Change the name, short name, tagline, phone, email, addr
 
 ```ts
 export const site = {
-  name: 'Coastline Cedar Co.',          // <-- your business name
+  name: 'Coastline Cedar',          // <-- your business name
   shortName: 'Coastline Cedar',
   phone: '(604) 555-0123',              // <-- your phone
   email: 'hello@coastlinecedar.com',     // <-- your email
@@ -166,3 +166,17 @@ lib/
 ## License
 
 Your business, your code. Do anything you like with it.
+
+## Contact form email (Resend)
+
+The contact form posts to `/api/contact`, which sends email via [Resend](https://resend.com).
+
+To make it work on Vercel:
+1. Go to **Vercel Project Settings → Environment Variables**
+2. Add `RESEND_API_KEY` (from your Resend dashboard)
+3. Make sure it's enabled for **Production** and **Preview**
+4. Redeploy
+
+The sender is `Coastline Cedar <hello@coastlinecedar.com>`. Before production sending works, **coastlinecedar.com must be verified in Resend** (Resend → Domains → Add Domain, then add the DNS records). Until then, Resend rejects sends from that address.
+
+If `RESEND_API_KEY` is missing or a send fails, the form shows a clean fallback message asking the customer to call/text, and the technical error is logged server-side only.

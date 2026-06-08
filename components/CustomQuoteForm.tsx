@@ -48,7 +48,7 @@ ${details}
     };
 
     try {
-      const response = await fetch('https://www.coastlinecedar.com/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,16 +56,15 @@ ${details}
         body: JSON.stringify(payload),
       });
 
-      const result = await response.json();
-
       if (response.ok) {
-        setStatus('Message sent successfully. We will get back to you shortly.');
+        setStatus('Thanks — we received your request. We’ll contact you shortly to confirm the details.');
         form.reset();
       } else {
-        setStatus(result.error || 'Message failed. Please try again.');
+        // Never surface server/internal error text to customers.
+        setStatus('Sorry, we couldn’t send your request right now. Please text or call us at (778) 522-1810.');
       }
     } catch {
-      setStatus('Form connection failed. Please try again.');
+      setStatus('Sorry, we couldn’t send your request right now. Please text or call us at (778) 522-1810.');
     } finally {
       setIsSending(false);
     }

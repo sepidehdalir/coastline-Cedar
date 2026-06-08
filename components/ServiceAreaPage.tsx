@@ -13,7 +13,7 @@ export function buildMetadata(slug: string): Metadata {
   if (!a) return {};
   return {
     title: `Cedar Planter Boxes ${a.city} | ${site.name}`,
-    description: `Hand-built cedar planter boxes delivered across ${a.city}. Standard sizes and custom builds. Free delivery on orders over $${site.freeDeliveryThreshold}.`,
+    description: `Hand-built cedar planters and custom cedar builds across ${a.city}. Pickup by appointment or local delivery, free for orders of 2 or more items.`,
     alternates: { canonical: `${site.url}/service-areas/${a.slug}` }
   };
 }

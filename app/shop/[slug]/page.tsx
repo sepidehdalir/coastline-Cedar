@@ -6,6 +6,8 @@ import { site } from '@/lib/site.config';
 import ProductGrid from '@/components/ProductGrid';
 import { CTASection, FAQAccordion } from '@/components/sections';
 import JsonLd from '@/components/JsonLd';
+import PriceBlock from '@/components/PriceBlock';
+import { isPromoLive, discountedPrice } from '@/lib/promo';
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -24,9 +26,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 const productFAQ = [
-  { q: 'Is this size in stock?', a: 'We build to order — standard sizes typically ship within 7–10 business days.' },
+  { q: 'Is this size in stock?', a: 'We build to order. Most standard cedar builds are ready in about 2–3 days after details are confirmed.' },
   { q: 'Can I get this in a different size?', a: 'Yes. Send us the dimensions you need and we’ll quote a custom version.' },
-  { q: 'How does delivery work?', a: `Free delivery across Greater Vancouver on orders over $${site.freeDeliveryThreshold}. Workshop pickup also available.` },
+  { q: 'How does delivery work?', a: `${site.deliveryPolicy} Workshop pickup is by appointment in North Vancouver.` },
   { q: 'Do you assemble on delivery?', a: 'Yes — planters arrive fully assembled and ready to fill with soil.' }
 ];
 
@@ -45,7 +47,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     offers: {
       '@type': 'Offer',
       priceCurrency: 'CAD',
-      price: product.startingPrice ?? undefined,
+      price:
+        product.startingPrice != null
+          ? (isPromoLive() ? discountedPrice(product.startingPrice) : product.startingPrice)
+          : undefined,
       availability: 'https://schema.org/InStock',
       url: `${site.url}/shop/${product.slug}`,
       areaServed: 'Greater Vancouver'
@@ -98,8 +103,16 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             <p className="eyebrow">{product.categoryLabel}</p>
             <h1 className="mt-3 font-display text-3xl font-semibold leading-tight text-charcoal-900 md:text-5xl">{product.name}</h1>
             <p className="mt-3 text-charcoal-900/75">{product.shortDescription}</p>
-            <p className="mt-6 font-display text-3xl font-semibold text-charcoal-900">{product.priceLabel}</p>
-            <p className="text-sm text-charcoal-900/55">Free delivery in Greater Vancouver on orders over ${site.freeDeliveryThreshold}.</p>
+            <div className="mt-6">
+              <PriceBlock
+                original={product.startingPrice}
+                startingFrom={product.startingPrice != null}
+                quoteLabel="Quote on request"
+                size="lg"
+                subNote={product.startingPrice != null ? 'Custom sizes quoted individually.' : undefined}
+              />
+            </div>
+            <p className="mt-2 text-sm text-charcoal-900/55">{site.deliveryPolicy}</p>
 
             <div className="mt-7 space-y-3">
               <Link href="/contact" className="btn-primary w-full sm:w-auto">Order this planter →</Link>
@@ -113,7 +126,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               <Row k="Drainage" v={product.drainage} />
               <Row k="Finish options" v={product.finishOptions.join(' · ')} />
               <Row k="Suitable for" v="Outdoor (recommended) · Covered indoor patios" />
-              <Row k="Build time" v="7–10 business days (standard) · 2–3 weeks (custom)" />
+              <Row k="Build time" v="Most standard builds ready in about 2–3 days after details are confirmed" />
             </dl>
           </div>
         </div>

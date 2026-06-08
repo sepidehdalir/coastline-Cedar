@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import PriceBlock from './PriceBlock';
 
 export default function Hero() {
   return (
@@ -37,9 +38,8 @@ export default function Hero() {
             />
           </div>
           <div className="absolute -bottom-5 -left-5 hidden rounded-xl border border-charcoal-900/10 bg-cream px-5 py-4 shadow-soft md:block">
-            <p className="text-[0.7rem] uppercase tracking-[0.18em] text-cedar-600">Starting from</p>
-            <p className="mt-1 font-display text-2xl font-semibold text-charcoal-900">$149</p>
-            <p className="text-xs text-charcoal-900/60">Patio sizes · Free local delivery over $200</p>
+            <PriceBlock original={129} startingFrom showNote={false} />
+            <p className="mt-1 text-xs text-charcoal-900/60">Patio sizes · Local delivery usually $25, free for 2+ items</p>
           </div>
         </div>
       </div>

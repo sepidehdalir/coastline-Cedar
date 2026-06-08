@@ -23,7 +23,7 @@ export const faqs: FAQ[] = [
   },
   {
     q: 'Do you deliver in Greater Vancouver?',
-    a: 'Yes. We deliver across North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Coquitlam, Port Moody, New Westminster, Surrey, Delta, and Langley. Free delivery on orders over $200.'
+    a: 'Yes. We deliver across North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Coquitlam, Port Moody, New Westminster, Surrey, Delta, and Langley. Pickup is available by appointment. Local delivery is usually $25, and free for orders of 2 or more items.'
   },
   {
     q: 'Can I pick up?',
@@ -31,7 +31,7 @@ export const faqs: FAQ[] = [
   },
   {
     q: 'How long does an order take?',
-    a: 'Standard sizes typically ship within 7–10 business days. Custom builds usually take 2–3 weeks depending on complexity and finish.'
+    a: 'Most standard cedar builds are ready in about 2–3 days after details are confirmed. For larger projects, the timeline depends on project size, measurements, site access, and installation scope.'
   },
   {
     q: 'Do you offer bulk pricing?',

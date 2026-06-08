@@ -4,6 +4,10 @@
 
 :root {
   color-scheme: light;
+  /* Self-hostable later; system stacks keep builds fetch-free.
+     Display = serif (Fraunces-like); Body = clean system sans (DM Sans-like). */
+  --font-fraunces: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, 'Times New Roman', serif;
+  --font-dm-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -45,6 +49,23 @@ body {
 }
 
 .section { @apply py-20 md:py-28; }
+
+/* Promotional pricing display */
+.price-block { @apply flex flex-wrap items-baseline gap-x-2.5 gap-y-1; }
+.old-price {
+  text-decoration: line-through;
+  opacity: 0.6;
+  @apply text-base font-normal text-charcoal-900;
+}
+.sale-price { @apply font-display font-bold text-[1.35rem] leading-none text-charcoal-900; }
+.discount-badge {
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-weight: 600;
+  background-color: rgba(62, 90, 64, 0.12);
+  @apply text-[0.65rem] uppercase tracking-[0.1em] text-forest-600;
+}
+.promo-note { @apply mt-1.5 text-xs leading-snug text-charcoal-900/55; }
 
 /* Smooth fade-in on load */
 @keyframes rise {

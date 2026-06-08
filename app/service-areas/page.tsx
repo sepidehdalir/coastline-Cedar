@@ -18,7 +18,7 @@ export default function ServiceAreasPage() {
           <p className="eyebrow">Service areas</p>
           <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold text-charcoal-900 md:text-6xl">Cedar planters delivered across Greater Vancouver.</h1>
           <p className="mt-5 max-w-2xl text-charcoal-900/75">
-            We build everything in our North Vancouver workshop and deliver directly to your door across the Lower Mainland. Free delivery on orders over ${site.freeDeliveryThreshold}.
+            We build everything in our North Vancouver workshop and deliver directly to your door across the Lower Mainland. {site.deliveryPolicy}
           </p>
         </div>
       </section>

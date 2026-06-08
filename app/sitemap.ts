@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { site } from '@/lib/site.config';
 import { products } from '@/lib/products';
+import { services } from '@/lib/services';
 import { serviceAreas } from '@/lib/service-areas';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -30,7 +31,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...serviceAreaRoutes].map((r) => ({
+  const serviceRoutes = services.map((s) => ({
+    url: `${base}/${s.slug}`,
+    priority: 0.9,
+    changeFrequency: 'monthly' as const,
+  }));
+
+  return [...staticRoutes, ...productRoutes, ...serviceAreaRoutes, ...serviceRoutes].map((r) => ({
     ...r,
     lastModified: now,
   }));

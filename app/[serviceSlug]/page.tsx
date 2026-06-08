@@ -14,8 +14,13 @@ export function generateStaticParams() {
   return services.map((s) => ({ serviceSlug: s.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { serviceSlug: string } }): Promise<Metadata> {
-  const s = getService(params.serviceSlug);
+type ServicePageProps = {
+  params: Promise<{ serviceSlug: string }>;
+};
+
+export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+  const { serviceSlug } = await params;
+  const s = getService(serviceSlug);
   if (!s) return {};
   return {
     title: s.metaTitle,
@@ -47,8 +52,9 @@ function TierPrice({ tier }: { tier: ServiceTier }) {
   );
 }
 
-export default function ServicePage({ params }: { params: { serviceSlug: string } }) {
-  const service = getService(params.serviceSlug);
+export default async function ServicePage({ params }: ServicePageProps) {
+  const { serviceSlug } = await params;
+  const service = getService(serviceSlug);
   if (!service) return notFound();
 
   const related = services.filter((s) => s.slug !== service.slug);

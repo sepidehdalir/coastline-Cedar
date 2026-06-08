@@ -48,6 +48,13 @@ const items: Item[] = [
     width: 1083, height: 1200,
   },
   {
+    src: '/images/gallery/cedar-planters-installed-deck-vancouver.jpg',
+    title: 'Planters Installed on a Deck',
+    category: 'Delivery / Installed',
+    alt: 'Finished cedar planters installed on a deck railing in West Vancouver',
+    width: 1200, height: 663,
+  },
+  {
     src: '/images/gallery/cedar-privacy-planter-planted.jpg',
     title: 'Privacy Planter with Plants',
     category: 'Finished Planters',

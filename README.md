@@ -180,3 +180,4 @@ To make it work on Vercel:
 The sender is `Coastline Cedar <hello@coastlinecedar.com>`. Before production sending works, **coastlinecedar.com must be verified in Resend** (Resend → Domains → Add Domain, then add the DNS records). Until then, Resend rejects sends from that address.
 
 If `RESEND_API_KEY` is missing or a send fails, the form shows a clean fallback message asking the customer to call/text, and the technical error is logged server-side only.
+Updated deployment connection.

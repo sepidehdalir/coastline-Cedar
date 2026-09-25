@@ -1,0 +1,214 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="site-footer__grid">
+
+      <!-- Brand column -->
+      <div class="site-footer__brand">
+        <p class="site-footer__name">Coastline Cedar Inc.</p>
+        <p class="site-footer__tagline">
+          {{ section.settings.tagline | default: 'Hand-built cedar planters, privacy panels, saunas, gates, and fences for homes and businesses across Greater Vancouver. Made locally on the North Shore.' }}
+        </p>
+        {%- if settings.site_phone != blank -%}
+          <a href="{{ settings.site_phone_href }}" class="site-footer__contact-link">{{ settings.site_phone }}</a>
+        {%- endif -%}
+        {%- if settings.site_email != blank -%}
+          <a href="mailto:{{ settings.site_email }}" class="site-footer__contact-link">{{ settings.site_email }}</a>
+        {%- endif -%}
+        {%- if settings.site_hours != blank -%}
+          <span class="site-footer__hours">{{ settings.site_hours }}</span>
+        {%- endif -%}
+      </div>
+
+      <!-- Products column -->
+      <div class="site-footer__col">
+        <p class="eyebrow">{{ section.settings.col1_heading | default: 'Products' }}</p>
+        {%- if section.settings.menu1 != blank -%}
+          <ul class="site-footer__links" role="list">
+            {%- for link in section.settings.menu1.links -%}
+              <li><a href="{{ link.url }}" class="site-footer__link">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      <!-- Services column -->
+      <div class="site-footer__col">
+        <p class="eyebrow">{{ section.settings.col2_heading | default: 'Services' }}</p>
+        {%- if section.settings.menu2 != blank -%}
+          <ul class="site-footer__links" role="list">
+            {%- for link in section.settings.menu2.links -%}
+              <li><a href="{{ link.url }}" class="site-footer__link">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      <!-- Company column -->
+      <div class="site-footer__col">
+        <p class="eyebrow">{{ section.settings.col3_heading | default: 'Company' }}</p>
+        {%- if section.settings.menu3 != blank -%}
+          <ul class="site-footer__links" role="list">
+            {%- for link in section.settings.menu3.links -%}
+              <li><a href="{{ link.url }}" class="site-footer__link">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div class="container">
+      <p class="site-footer__seo-text">
+        {{ section.settings.seo_text | default: 'Locally built cedar planters, privacy panels, saunas, gates, and fences in North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Moody, Port Coquitlam, New Westminster, Surrey, Delta, and Langley.' }}
+      </p>
+      <p class="site-footer__copy">
+        &copy; {{ 'now' | date: '%Y' }} Coastline Cedar Inc. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+.site-footer {
+  margin-top: 6rem;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bone);
+}
+
+.site-footer__grid {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: 4rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) { .site-footer__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .site-footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2.5rem; } }
+
+/* Brand */
+.site-footer__name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.site-footer__tagline {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: 22rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.site-footer__contact-link {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.site-footer__contact-link:hover { color: var(--color-cedar-700); }
+
+.site-footer__hours {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+}
+
+/* Link columns */
+.site-footer__col .eyebrow { margin-bottom: 1rem; }
+
+.site-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.site-footer__link {
+  font-size: var(--text-sm);
+  color: rgba(26, 22, 18, 0.80);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.site-footer__link:hover { color: var(--color-cedar-700); }
+
+/* Bottom bar */
+.site-footer__bottom {
+  border-top: 1px solid var(--color-border);
+  padding-block: 1.5rem;
+}
+
+.site-footer__seo-text {
+  font-size: 0.75rem;
+  color: rgba(26, 22, 18, 0.60);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.site-footer__copy {
+  font-size: 0.75rem;
+  color: rgba(26, 22, 18, 0.60);
+}
+</style>
+
+{% schema %}
+{
+  "name": "Footer",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Brand tagline",
+      "default": "Hand-built cedar planters, privacy panels, saunas, gates, and fences for homes and businesses across Greater Vancouver. Made locally on the North Shore."
+    },
+    {
+      "type": "text",
+      "id": "col1_heading",
+      "label": "Column 1 heading",
+      "default": "Products"
+    },
+    {
+      "type": "link_list",
+      "id": "menu1",
+      "label": "Column 1 menu"
+    },
+    {
+      "type": "text",
+      "id": "col2_heading",
+      "label": "Column 2 heading",
+      "default": "Services"
+    },
+    {
+      "type": "link_list",
+      "id": "menu2",
+      "label": "Column 2 menu"
+    },
+    {
+      "type": "text",
+      "id": "col3_heading",
+      "label": "Column 3 heading",
+      "default": "Company"
+    },
+    {
+      "type": "link_list",
+      "id": "menu3",
+      "label": "Column 3 menu"
+    },
+    {
+      "type": "textarea",
+      "id": "seo_text",
+      "label": "SEO footer text",
+      "default": "Locally built cedar planters, privacy panels, saunas, gates, and fences in North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Moody, Port Coquitlam, New Westminster, Surrey, Delta, and Langley."
+    }
+  ]
+}
+{% endschema %}
+

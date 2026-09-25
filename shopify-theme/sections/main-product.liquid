@@ -353,12 +353,20 @@
             <div class="product-page__accelerated-checkout" style="margin-top:0.75rem;">
               {{ form | payment_button }}
             </div>
+            <div class="cc-secure-checkout" aria-label="Checkout information">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+                <path d="M8 10V7a4 4 0 018 0v3"></path>
+              </svg>
+              <span>Secure checkout powered by Shopify · Available payment options are shown at checkout</span>
+            </div>
 
           {%- endform -%}
           {%- unless template.suffix == 'conversion' -%}
             <div class="cc-buy-assurances" aria-label="Order assurances">
               <p><strong>Made to order.</strong> Most standard builds are ready in 3–5 business days.</p>
               <p><strong>Delivery:</strong> FREE locally on orders $200+ in eligible Greater Vancouver areas; CAD $25 under $200. Pickup in North Vancouver is free.</p>
+              <p><strong>Fully assembled.</strong> Your planter arrives ready to use — no flat-pack assembly required.</p>
               <p><strong>Warranty:</strong> Eligible products include our 3-Year Limited Structural Workmanship Warranty. <a href="/pages/warranty">View coverage →</a></p>
             </div>
           {%- endunless -%}
@@ -570,6 +578,11 @@
 .sticky-atc.is-visible { transform: translateY(0); }
 @media (max-width: 767px) {
   .sticky-atc { display: block; }
+  .sticky-atc__inner { gap: 0.65rem; }
+  .sticky-atc__info { min-width: 0; }
+  .sticky-atc__title { max-width: 48vw; font-size: 0.78rem; }
+  .sticky-atc__price { font-size: 0.8rem; }
+  .sticky-atc .btn { min-width: 8.5rem; min-height: 2.9rem; padding-inline: 1rem; }
   /* Prevent sticky ATC from permanently covering footer content on mobile */
   .site-footer__bottom { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
 }
@@ -846,6 +859,21 @@
   text-decoration: none;
 }
 .cc-custom-size-link a:hover { text-decoration: underline; }
+.cc-secure-checkout {
+  margin-top: 0.65rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--color-text-faint);
+  text-align: center;
+}
+.cc-secure-checkout svg {
+  flex: 0 0 auto;
+  margin-top: 0.05rem;
+}
 .cc-buy-assurances {
   margin-top: 1rem;
   padding: 1rem;

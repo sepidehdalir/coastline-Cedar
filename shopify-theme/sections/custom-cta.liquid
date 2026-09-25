@@ -1,0 +1,142 @@
+<section class="section custom-cta">
+  <div class="container">
+    <div class="custom-cta__card">
+      <div class="custom-cta__blur-1" aria-hidden="true"></div>
+      <div class="custom-cta__blur-2" aria-hidden="true"></div>
+      <div class="custom-cta__content">
+        <p class="eyebrow" style="color: var(--color-cedar-200);">{{ section.settings.eyebrow | default: 'Ready to order?' }}</p>
+        <h2 class="custom-cta__heading">{{ section.settings.heading | default: 'Hand-built cedar planters, delivered locally.' }}</h2>
+        <p class="custom-cta__body">{{ section.settings.body | default: 'Choose a standard size or send us your dimensions for a custom build. Pickup by appointment in North Vancouver, or delivery across Metro Vancouver.' }}</p>
+        <div class="custom-cta__buttons">
+          <a href="{{ section.settings.primary_url | default: routes.collections_url }}" class="btn btn--cream btn--lg">
+            {{ section.settings.primary_label | default: 'Shop Planters' }} →
+          </a>
+          <a href="{{ section.settings.secondary_url | default: '/pages/custom-planters' }}" class="btn custom-cta__btn-outline btn--lg">
+            {{ section.settings.secondary_label | default: 'Request a Custom Size' }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.custom-cta__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-charcoal-900);
+  color: var(--color-cream);
+  padding: 3.5rem 2rem;
+}
+
+@media (min-width: 768px) { .custom-cta__card { padding: 5rem 3.5rem; } }
+
+.custom-cta__blur-1,
+.custom-cta__blur-2 {
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  border-radius: var(--radius-full);
+  filter: blur(4rem);
+  opacity: 0.20;
+}
+
+.custom-cta__blur-1 {
+  top: -5rem;
+  right: -5rem;
+  background-color: var(--color-cedar-400);
+}
+
+.custom-cta__blur-2 {
+  bottom: -5rem;
+  left: -5rem;
+  background-color: var(--color-forest-500);
+}
+
+.custom-cta__content { position: relative; z-index: 1; }
+
+.custom-cta__heading {
+  margin-top: 0.75rem;
+  max-width: 32rem;
+  color: var(--color-cream);
+}
+
+.custom-cta__body {
+  margin-top: 1rem;
+  max-width: 30rem;
+  color: rgba(251, 247, 240, 0.75);
+}
+
+.custom-cta__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.custom-cta__btn-outline {
+  background-color: transparent;
+  color: var(--color-cream);
+  border-color: rgba(251, 247, 240, 0.30);
+}
+
+.custom-cta__btn-outline:hover {
+  background-color: rgba(251, 247, 240, 0.10);
+  border-color: rgba(251, 247, 240, 0.50);
+  color: var(--color-cream);
+}
+</style>
+
+{% schema %}
+{
+  "name": "CTA section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Ready to order?"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Hand-built cedar planters, delivered locally."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text",
+      "default": "Choose a standard size or send us your dimensions for a custom build. Pickup by appointment in North Vancouver, or delivery across Metro Vancouver."
+    },
+    {
+      "type": "url",
+      "id": "primary_url",
+      "label": "Primary button URL"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Shop Planters"
+    },
+    {
+      "type": "url",
+      "id": "secondary_url",
+      "label": "Secondary button URL"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Request a Custom Size"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA section"
+    }
+  ]
+}
+{% endschema %}

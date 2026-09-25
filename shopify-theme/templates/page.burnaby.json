@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service-area",
+      "settings": {
+        "city": "Burnaby",
+        "city_full": "Burnaby, BC",
+        "short_locale": "Burnaby",
+        "h1": "Cedar Planter Boxes — Burnaby",
+        "intro": "From Brentwood condo towers to the South Slope's family gardens, Burnaby has a wide range of outdoor spaces. We deliver from North Vancouver and build cedar planters that work for balconies, townhouse patios, and full backyard setups.",
+        "local_blurb": "Burnaby clients range from condo balcony planters in the Brentwood and Metrotown towers to large raised garden beds on South Slope properties. We size to the space — and if the standard sizes don't fit, we quote custom dimensions at no extra consultation cost.",
+        "neighborhoods": "Brentwood, Metrotown, Edmonds, South Slope, Willingdon Heights, Sullivan Heights, Capitol Hill, Burnaby Heights, Central Park, and Lochdale.",
+        "delivery_note": "Pickup by appointment in North Vancouver. Local delivery across eligible Greater Vancouver areas is CAD $25. Shipping outside Greater Vancouver may be available by quote."
+      },
+      "blocks": {
+        "uc1": {
+          "type": "use_case",
+          "settings": {
+            "text": "Brentwood and Metrotown condo balcony planters"
+          }
+        },
+        "uc2": {
+          "type": "use_case",
+          "settings": {
+            "text": "South Slope raised vegetable gardens"
+          }
+        },
+        "uc3": {
+          "type": "use_case",
+          "settings": {
+            "text": "Edmonds townhouse deck planters"
+          }
+        },
+        "uc4": {
+          "type": "use_case",
+          "settings": {
+            "text": "Capitol Hill patio herb gardens"
+          }
+        },
+        "fq1": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you deliver to Burnaby high-rise condos?",
+            "answer": "<p>Yes. Our slim balcony planters are sized to fit standard condo elevators. For Brentwood and Metrotown towers, let us know your building address and loading bay access in advance and we'll plan the delivery around building requirements.</p>"
+          }
+        },
+        "fq2": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the most popular planter size for a Burnaby townhouse deck?",
+            "answer": "<p>The Classic Cedar Patio Planter (starting from 179 CAD) works well on most townhouse decks and patios. For more growing depth, the Classic Cedar Patio Planter in 48″ × 16″ is popular with clients who want to grow vegetables or larger perennials. We can also build custom sizes if your deck has a specific configuration.</p>"
+          }
+        },
+        "fq3": {
+          "type": "faq",
+          "settings": {
+            "question": "How do cedar planters hold up in Burnaby's wet winters?",
+            "answer": "<p>Western Cedar is naturally rot-resistant and is native to BC, where wet winters are the norm. Our planters include pre-drilled drainage holes in the base to prevent waterlogging. Left natural, cedar weathers to a soft grey. With the clear sealer finish, it keeps the warm honey tone for several seasons.</p>"
+          }
+        },
+        "oa1": {
+          "type": "other_area",
+          "settings": {
+            "city": "Vancouver",
+            "url": "/pages/vancouver"
+          }
+        },
+        "oa2": {
+          "type": "other_area",
+          "settings": {
+            "city": "Coquitlam",
+            "url": "/pages/coquitlam"
+          }
+        },
+        "oa3": {
+          "type": "other_area",
+          "settings": {
+            "city": "Richmond",
+            "url": "/pages/richmond"
+          }
+        },
+        "oa4": {
+          "type": "other_area",
+          "settings": {
+            "city": "North Vancouver",
+            "url": "/pages/north-vancouver"
+          }
+        }
+      },
+      "block_order": [
+        "uc1",
+        "uc2",
+        "uc3",
+        "uc4",
+        "fq1",
+        "fq2",
+        "fq3",
+        "oa1",
+        "oa2",
+        "oa3",
+        "oa4"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

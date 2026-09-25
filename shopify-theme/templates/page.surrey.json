@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service-area",
+      "settings": {
+        "city": "Surrey",
+        "city_full": "Surrey, BC",
+        "short_locale": "Surrey",
+        "h1": "Cedar Planter Boxes — Surrey",
+        "intro": "Surrey's newer townhouse developments, family homes, and expanding commercial areas benefit from well-made cedar planters. We deliver across the city and build to any size you need — standard or custom.",
+        "local_blurb": "Surrey clients often want planters that look finished and intentional — not builder-standard. Cedar provides that. Whether it's a raised garden bed for a White Rock property, a set of patio planters for a South Surrey deck, or commercial planters for a Guildford café, we build to order and deliver fully assembled.",
+        "neighborhoods": "South Surrey, White Rock, Newton, Fleetwood, Whalley, Clayton, Guildford, Panorama Ridge, Cloverdale, and Morgan Creek.",
+        "delivery_note": "Pickup by appointment in North Vancouver. Local delivery across eligible Greater Vancouver areas is CAD $25. Shipping outside Greater Vancouver may be available by quote."
+      },
+      "blocks": {
+        "uc1": {
+          "type": "use_case",
+          "settings": {
+            "text": "South Surrey and White Rock coastal property planters"
+          }
+        },
+        "uc2": {
+          "type": "use_case",
+          "settings": {
+            "text": "Fleetwood and Clayton townhouse deck planters"
+          }
+        },
+        "uc3": {
+          "type": "use_case",
+          "settings": {
+            "text": "Newton and Panorama Ridge raised vegetable gardens"
+          }
+        },
+        "uc4": {
+          "type": "use_case",
+          "settings": {
+            "text": "Guildford and Whalley commercial patio planters"
+          }
+        },
+        "fq1": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you deliver to White Rock and South Surrey?",
+            "answer": "<p>Yes. White Rock and South Surrey are on our regular delivery route. We schedule delivery across Metro Vancouver and South of the Fraser — just let us know your address when you order and we'll confirm the delivery window.</p>"
+          }
+        },
+        "fq2": {
+          "type": "faq",
+          "settings": {
+            "question": "What planter works best for a Surrey townhouse patio?",
+            "answer": "<p>The Classic Cedar Patio Planter is our most versatile option for townhouse patios — available in multiple sizes and finishes. For more growing space, the Elevated Cedar Garden Bed is popular with Surrey clients who want to grow vegetables. If your patio has a specific footprint, we can also build a custom size at no extra consultation cost.</p>"
+          }
+        },
+        "fq3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can you build cedar planters for a Surrey restaurant or café?",
+            "answer": "<p>Yes. We build commercial-grade cedar planters for restaurants, cafés, and commercial properties across Greater Vancouver and South of the Fraser. Contact us with the quantity, dimensions, and finish you want — we'll come back with a quote and timeline.</p>"
+          }
+        },
+        "oa1": {
+          "type": "other_area",
+          "settings": {
+            "city": "Richmond",
+            "url": "/pages/richmond"
+          }
+        },
+        "oa2": {
+          "type": "other_area",
+          "settings": {
+            "city": "Langley",
+            "url": "/pages/langley"
+          }
+        },
+        "oa3": {
+          "type": "other_area",
+          "settings": {
+            "city": "Burnaby",
+            "url": "/pages/burnaby"
+          }
+        },
+        "oa4": {
+          "type": "other_area",
+          "settings": {
+            "city": "Vancouver",
+            "url": "/pages/vancouver"
+          }
+        }
+      },
+      "block_order": [
+        "uc1",
+        "uc2",
+        "uc3",
+        "uc4",
+        "fq1",
+        "fq2",
+        "fq3",
+        "oa1",
+        "oa2",
+        "oa3",
+        "oa4"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

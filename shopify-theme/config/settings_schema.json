@@ -1,0 +1,259 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Coastline Cedar",
+    "theme_version": "1.0.0",
+    "theme_author": "Coastline Cedar",
+    "theme_documentation_url": "https://coastlinecedar.com",
+    "theme_support_url": "https://coastlinecedar.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand colors"
+      },
+      {
+        "type": "color",
+        "id": "color_cream",
+        "label": "Cream (page background)",
+        "default": "#FBF7F0"
+      },
+      {
+        "type": "color",
+        "id": "color_bone",
+        "label": "Bone (secondary background)",
+        "default": "#F4EEE3"
+      },
+      {
+        "type": "color",
+        "id": "color_cedar_600",
+        "label": "Cedar (primary accent)",
+        "default": "#6E4525"
+      },
+      {
+        "type": "color",
+        "id": "color_cedar_700",
+        "label": "Cedar dark (links, hover)",
+        "default": "#523320"
+      },
+      {
+        "type": "color",
+        "id": "color_forest_600",
+        "label": "Forest (promo, trust)",
+        "default": "#2D4530"
+      },
+      {
+        "type": "color",
+        "id": "color_charcoal_900",
+        "label": "Charcoal (text, buttons)",
+        "default": "#1A1612"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading font",
+        "default": "work_sans_n6"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "font_body_size",
+        "label": "Base font size (px)",
+        "min": 14,
+        "max": 18,
+        "step": 1,
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "layout_max_width",
+        "label": "Max content width (rem)",
+        "min": 60,
+        "max": 100,
+        "step": 2,
+        "default": 88
+      },
+      {
+        "type": "range",
+        "id": "layout_section_spacing",
+        "label": "Section vertical spacing (px)",
+        "min": 48,
+        "max": 120,
+        "step": 8,
+        "default": 80
+      }
+    ]
+  },
+  {
+    "name": "Site info",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Business details"
+      },
+      {
+        "type": "text",
+        "id": "site_phone",
+        "label": "Phone number",
+        "default": "(778) 522-1810"
+      },
+      {
+        "type": "text",
+        "id": "site_phone_href",
+        "label": "Phone href",
+        "default": "tel:+17785221810"
+      },
+      {
+        "type": "text",
+        "id": "site_email",
+        "label": "Email address",
+        "default": "hello@coastlinecedar.com"
+      },
+      {
+        "type": "text",
+        "id": "site_address_locality",
+        "label": "City",
+        "default": "North Vancouver"
+      },
+      {
+        "type": "text",
+        "id": "site_address_region",
+        "label": "Province",
+        "default": "BC"
+      },
+      {
+        "type": "text",
+        "id": "site_address_postal",
+        "label": "Postal code",
+        "default": "V7M 0A1"
+      },
+      {
+        "type": "text",
+        "id": "site_hours",
+        "label": "Business hours",
+        "default": "Mon–Sat · 9am–5pm"
+      },
+      {
+        "type": "text",
+        "id": "site_delivery_policy",
+        "label": "Delivery policy (full)",
+        "default": "Free pickup by appointment in North Vancouver. Local Metro Vancouver delivery: CAD $25. Additional Canadian and U.S. shipping may be available — rates are calculated during checkout where applicable."
+      },
+      {
+        "type": "text",
+        "id": "site_google_reviews_url",
+        "label": "Google Reviews URL",
+        "default": "https://maps.app.goo.gl/yhUoFWP781fFc1jg9"
+      },
+      {
+        "type": "text",
+        "id": "site_instagram_url",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "site_facebook_url",
+        "label": "Facebook URL"
+      }
+    ]
+  },
+  {
+    "name": "Promotion",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "promo_active",
+        "label": "Promotion active",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "promo_label",
+        "label": "Discount label",
+        "default": "40% OFF"
+      },
+      {
+        "type": "text",
+        "id": "promo_end_label",
+        "label": "End date label",
+        "default": "July 31, 2026"
+      },
+      {
+        "type": "text",
+        "id": "promo_cta_label",
+        "label": "Banner CTA label",
+        "default": "Request Your Discounted Quote"
+      },
+      {
+        "type": "url",
+        "id": "promo_cta_url",
+        "label": "Banner CTA URL"
+      },
+      {
+        "type": "textarea",
+        "id": "promo_note",
+        "label": "Promo fine print",
+        "default": "Promotional pricing applies to standard starting prices. Final custom quotes depend on size, finish, delivery, installation, and site conditions."
+      },
+      {
+        "type": "text",
+        "id": "site_announcement",
+        "label": "Evergreen announcement (shown when promotion is off)",
+        "default": "Local pickup by appointment in North Vancouver · Delivery across Metro Vancouver"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Open Graph / sharing"
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Default share image (OG)"
+      }
+    ]
+  },
+  {
+    "name": "Welcome Popup",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "welcome_popup_enabled",
+        "label": "Enable welcome popup",
+        "default": false,
+        "info": "Keep OFF until local-delivery-free shipping is tested at checkout. Enable to preview; disable before publishing live."
+      }
+    ]
+  }
+]

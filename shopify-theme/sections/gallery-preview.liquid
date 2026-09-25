@@ -1,0 +1,120 @@
+<section class="section gallery-preview">
+  <div class="container">
+    <div class="gallery-preview__header reveal">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="gallery-preview__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtext != blank -%}
+          <p class="gallery-preview__subtext">{{ section.settings.subtext }}</p>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.cta_label != blank and section.settings.cta_url != blank -%}
+        <a href="{{ section.settings.cta_url }}" class="btn btn--secondary">{{ section.settings.cta_label }} →</a>
+      {%- endif -%}
+    </div>
+
+    <div class="gallery-preview__grid">
+      {%- for block in section.blocks -%}
+        <div class="gallery-preview__item img-zoom-wrap reveal reveal--delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 600 }}"
+              srcset="{{ block.settings.image | image_url: width: 300 }} 300w,
+                      {{ block.settings.image | image_url: width: 600 }} 600w"
+              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 90vw"
+              alt="{{ block.settings.image.alt | default: block.settings.alt_text | escape }}"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+              loading="lazy"
+              class="img-cover"
+            >
+          {%- elsif block.settings.fallback_asset != blank -%}
+            <img
+              src="{{ block.settings.fallback_asset | asset_url }}"
+              alt="{{ block.settings.alt_text | default: 'Coastline Cedar workshop and finished projects' | escape }}"
+              width="600"
+              height="600"
+              loading="lazy"
+              class="img-cover"
+            >
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+.gallery-preview__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.gallery-preview__heading { margin-top: 0.75rem; }
+
+.gallery-preview__subtext {
+  margin-top: 0.75rem;
+  max-width: 36rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.gallery-preview__grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) { .gallery-preview__grid { grid-template-columns: repeat(4, 1fr); } }
+
+.gallery-preview__item {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-cedar-100);
+}
+</style>
+
+{% schema %}
+{
+  "name": "Gallery preview",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Gallery" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "From Workshop to Outdoor Space" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "See the cedar, tools, and hands-on process behind our custom planters and outdoor builds." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "View Gallery" },
+    { "type": "url", "id": "cta_url", "label": "CTA URL" }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Gallery image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "fallback_asset", "label": "Fallback image (theme/assets filename)" },
+        { "type": "text", "id": "alt_text", "label": "Alt text", "default": "Coastline Cedar workshop and finished cedar projects in North Vancouver" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gallery preview",
+      "blocks": [
+        { "type": "image", "settings": { "fallback_asset": "gallery-build-process-workshop.jpg", "alt_text": "Cedar planter boxes being built in the Coastline Cedar workshop" } },
+        { "type": "image", "settings": { "fallback_asset": "gallery-finished-planter-delivery.jpg", "alt_text": "Finished stained cedar planter box ready for delivery" } },
+        { "type": "image", "settings": { "fallback_asset": "gallery-raised-herb-planter.jpg", "alt_text": "Raised cedar herb planter with cold-frame lid" } },
+        { "type": "image", "settings": { "fallback_asset": "gallery-cedar-boards-tools.jpg", "alt_text": "Cedar boards and tools used for custom planter construction" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

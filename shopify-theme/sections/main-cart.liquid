@@ -3,6 +3,17 @@
     <h1>{{ 'cart.title' | t }}</h1>
 
     {%- if cart.item_count > 0 -%}
+      {%- assign cc_free_delivery_threshold = 20000 -%}
+      {%- assign cc_amount_to_free_delivery = cc_free_delivery_threshold | minus: cart.total_price -%}
+      <div class="cc-cart-delivery" aria-live="polite">
+        {%- if cart.total_price >= cc_free_delivery_threshold -%}
+          <p class="cc-cart-delivery__title">✓ You qualify for FREE local delivery</p>
+          <p class="cc-cart-delivery__sub">On eligible Greater Vancouver orders. Free pickup in North Vancouver is also available.</p>
+        {%- else -%}
+          <p class="cc-cart-delivery__title">Add {{ cc_amount_to_free_delivery | money }} more for FREE local delivery</p>
+          <p class="cc-cart-delivery__sub">On eligible Greater Vancouver orders. Orders under $200: CAD $25 local delivery.</p>
+        {%- endif -%}
+      </div>
       {%- form 'cart', cart, id: 'CartForm' -%}
         <div class="cart-items" style="margin-top: 2rem;">
           {%- for item in cart.items -%}
@@ -36,6 +47,13 @@
               </a>
             </div>
           {%- endfor -%}
+        </div>
+
+        <div class="cc-cart-trust" role="list" aria-label="Order assurances">
+          <span role="listitem">Fully assembled</span>
+          <span role="listitem">Made to order</span>
+          <span role="listitem">3–5 business days</span>
+          <span role="listitem">3-year workmanship warranty</span>
         </div>
 
         <div class="cart-footer">
@@ -91,6 +109,71 @@
 
 .cart-footer__total { font-size: var(--text-lg); }
 .cart-footer__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.cc-cart-delivery {
+  margin-top: 1rem;
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bone);
+}
+.cc-cart-delivery__title {
+  margin: 0;
+  font-weight: var(--font-semibold);
+  color: var(--color-forest-600);
+}
+.cc-cart-delivery__sub {
+  margin-top: 0.25rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+.cc-cart-trust {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.cc-cart-trust span {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-bone);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+@media (max-width: 639px) {
+  .cart-item {
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.875rem;
+  }
+  .cart-item__image img {
+    width: 64px !important;
+    height: 64px !important;
+    object-fit: contain !important;
+    background: var(--color-bone);
+  }
+  .cart-item__qty input {
+    width: 3.5rem !important;
+  }
+  .cart-footer {
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 1rem;
+  }
+  .cart-footer__total {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .cart-footer__actions {
+    width: 100%;
+    flex-direction: column-reverse;
+  }
+  .cart-footer__actions .btn {
+    width: 100%;
+    min-height: 3.25rem;
+  }
+}
 </style>
 
 {% schema %}

@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service-area",
+      "settings": {
+        "city": "Langley",
+        "city_full": "Langley, BC",
+        "short_locale": "Langley",
+        "h1": "Cedar Planter Boxes — Langley",
+        "intro": "Langley has the kind of yards that cedar planters were made for — wide, sunny, and garden-friendly. We build to any size and deliver directly from our North Vancouver workshop. If you have an acreage, estate garden, or hobby farm, we can build at a scale most suppliers won't attempt.",
+        "local_blurb": "Langley clients often want larger planters — raised garden beds for serious vegetable growing, statement patio planters for new builds, or multiple planters across a large property. We build to order and deliver fully assembled. Custom dimensions are available at no extra consultation cost.",
+        "neighborhoods": "Langley City, Walnut Grove, Willowbrook, Brookswood, Murrayville, Fort Langley, Aldergrove, Willoughby, and Glen Valley.",
+        "delivery_note": "Pickup by appointment in North Vancouver. Local delivery across eligible Greater Vancouver areas is CAD $25. Shipping outside Greater Vancouver may be available by quote."
+      },
+      "blocks": {
+        "uc1": {
+          "type": "use_case",
+          "settings": {
+            "text": "Langley acreage and estate raised garden beds"
+          }
+        },
+        "uc2": {
+          "type": "use_case",
+          "settings": {
+            "text": "Fort Langley heritage property patio planters"
+          }
+        },
+        "uc3": {
+          "type": "use_case",
+          "settings": {
+            "text": "Willowbrook and Willoughby new-build deck planters"
+          }
+        },
+        "uc4": {
+          "type": "use_case",
+          "settings": {
+            "text": "Walnut Grove townhouse and vegetable gardens"
+          }
+        },
+        "fq1": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you deliver to Langley and Fort Langley?",
+            "answer": "<p>Yes. We deliver across Langley — including Fort Langley, Walnut Grove, Aldergrove, Willowbrook, and rural properties in the area. Local delivery is CAD $25 in eligible Greater Vancouver areas. For locations outside the standard delivery zone, contact us and we'll confirm pricing and scheduling.</p>"
+          }
+        },
+        "fq2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can you build large cedar raised garden beds for a Langley property?",
+            "answer": "<p>Yes. Our standard Elevated Cedar Garden Bed is our largest in-stock option, but we regularly build larger custom raised beds for Langley acreages and hobby farms. Send us your preferred dimensions and we'll quote a custom version — typically within one to two business days.</p>"
+          }
+        },
+        "fq3": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does delivery take to Langley?",
+            "answer": "<p>Most standard planters are ready in 3–5 business days after order details are confirmed. Langley is on our regular delivery route. We'll confirm the delivery window once your planter is ready.</p>"
+          }
+        },
+        "oa1": {
+          "type": "other_area",
+          "settings": {
+            "city": "Surrey",
+            "url": "/pages/surrey"
+          }
+        },
+        "oa2": {
+          "type": "other_area",
+          "settings": {
+            "city": "Richmond",
+            "url": "/pages/richmond"
+          }
+        },
+        "oa3": {
+          "type": "other_area",
+          "settings": {
+            "city": "Burnaby",
+            "url": "/pages/burnaby"
+          }
+        },
+        "oa4": {
+          "type": "other_area",
+          "settings": {
+            "city": "Coquitlam",
+            "url": "/pages/coquitlam"
+          }
+        }
+      },
+      "block_order": [
+        "uc1",
+        "uc2",
+        "uc3",
+        "uc4",
+        "fq1",
+        "fq2",
+        "fq3",
+        "oa1",
+        "oa2",
+        "oa3",
+        "oa4"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

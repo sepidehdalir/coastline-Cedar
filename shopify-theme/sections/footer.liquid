@@ -56,6 +56,33 @@
       </div>
 
     </div>
+
+    <div class="site-footer__internal-links" aria-label="Popular products and service areas">
+      <div>
+        <p class="eyebrow">Popular planters</p>
+        <div class="site-footer__inline-links">
+          <a href="/products/raised-cedar-garden-planter">Elevated Cedar Garden Bed</a>
+          <a href="/products/long-cedar-balcony-planter">Slim Balcony Planter</a>
+          <a href="/products/privacy-cedar-planter">Privacy Planter with Trellis</a>
+          <a href="/collections/cedar-planters">Shop All Cedar Planters</a>
+          <a href="/pages/custom-planters">Custom Cedar Planters</a>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow">Local delivery areas</p>
+        <div class="site-footer__inline-links">
+          <a href="/pages/north-vancouver">North Vancouver</a>
+          <a href="/pages/vancouver">Vancouver</a>
+          <a href="/pages/west-vancouver">West Vancouver</a>
+          <a href="/pages/burnaby">Burnaby</a>
+          <a href="/pages/richmond">Richmond</a>
+          <a href="/pages/coquitlam">Coquitlam & Tri-Cities</a>
+          <a href="/pages/surrey">Surrey</a>
+          <a href="/pages/langley">Langley</a>
+          <a href="/pages/service-areas">All Service Areas</a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="site-footer__bottom">
@@ -138,6 +165,32 @@
 }
 
 .site-footer__link:hover { color: var(--color-cedar-700); }
+
+.site-footer__internal-links {
+  display: grid;
+  gap: 1.5rem;
+  padding-bottom: 2.5rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 2rem;
+}
+@media (min-width: 768px) {
+  .site-footer__internal-links { grid-template-columns: 1fr 1fr; }
+}
+.site-footer__internal-links .eyebrow { margin-bottom: 0.75rem; }
+.site-footer__inline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.9rem;
+}
+.site-footer__inline-links a {
+  font-size: 0.8rem;
+  color: rgba(26,22,18,0.78);
+  text-decoration: none;
+}
+.site-footer__inline-links a:hover {
+  color: var(--color-cedar-700);
+  text-decoration: underline;
+}
 
 /* Bottom bar */
 .site-footer__bottom {

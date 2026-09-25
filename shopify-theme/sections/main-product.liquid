@@ -69,7 +69,7 @@
   <ol class="breadcrumb__list" role="list">
     <li><a href="{{ routes.root_url }}">Home</a></li>
     <li aria-hidden="true">/</li>
-    <li><a href="{{ routes.collections_url }}">Shop</a></li>
+    <li><a href="/collections/cedar-planters">Cedar Planters</a></li>
     <li aria-hidden="true">/</li>
     <li aria-current="page">{{ product.title }}</li>
   </ol>
@@ -678,13 +678,15 @@
   "name": {{ product.title | json }},
   "description": {{ product.description | strip_html | json }},
   "image": [{{ product.featured_image | image_url: width: 1200 | json }}],
-  "sku": {{ product.selected_or_first_available_variant.sku | default: product.handle | json }},
+{%- if product.selected_or_first_available_variant.sku != blank -%}
+  "sku": {{ product.selected_or_first_available_variant.sku | json }},
+  {%- endif -%}
   "brand": { "@type": "Brand", "name": "Coastline Cedar Inc.", "url": {{ shop.url | json }} },
   "manufacturer": { "@id": "{{ shop.url }}/#business" },
   "offers": {
     "@type": "Offer",
     "priceCurrency": "CAD",
-    "price": {{ product.selected_or_first_available_variant.price | divided_by: 100.0 }},
+    "price": {{ display_price | divided_by: 100.0 }},
     "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
     "itemCondition": "https://schema.org/NewCondition",
     "url": {{ product.url | prepend: shop.url | json }},
@@ -702,7 +704,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | json }} },
-    { "@type": "ListItem", "position": 2, "name": "Cedar Planters", "item": {{ shop.url | append: routes.collections_url | append: '/cedar-planters' | json }} },
+    { "@type": "ListItem", "position": 2, "name": "Cedar Planters", "item": {{ shop.url | append: '/collections/cedar-planters' | json }} },
     { "@type": "ListItem", "position": 3, "name": {{ product.title | json }}, "item": {{ product.url | prepend: shop.url | json }} }
   ]
 }

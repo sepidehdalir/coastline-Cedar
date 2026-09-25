@@ -52,6 +52,11 @@
     assign discount_pct = display_compare | minus: display_price | times: 100 | divided_by: display_compare
   endif
 
+  assign is_best_seller = false
+  if product.handle == 'raised-cedar-garden-planter'
+    assign is_best_seller = true
+  endif
+
   assign columns   = columns | default: 4
   assign img_sizes = '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 90vw'
   if columns == 3
@@ -75,7 +80,7 @@
         loading="lazy"
         width="{{ product.featured_image.width }}"
         height="{{ product.featured_image.height }}"
-        class="img-cover"
+        class="product-card__img"
       >
     {%- else -%}
       <div class="product-card__no-image" aria-hidden="true">
@@ -85,7 +90,9 @@
       </div>
     {%- endif -%}
 
-    {%- if product.type != blank -%}
+    {%- if is_best_seller -%}
+      <span class="product-card__badge product-card__badge--best">★ Best Seller</span>
+    {%- elsif product.type != blank -%}
       <span class="product-card__badge">{{ product.type }}</span>
     {%- endif -%}
 
@@ -124,23 +131,24 @@
         {%- endif -%}
       </div>
 
-      <span class="product-card__view" aria-hidden="true">
+      <span class="product-card__view product-card__cta" aria-hidden="true">
         {%- if is_quote_only -%}
-          Request a quote →
+          Request a quote
         {%- elsif sold_out -%}
           Sold out
         {%- elsif product.variants.size == 1 -%}
-          Add to cart →
+          Add to cart
         {%- else -%}
-          Choose options →
+          View options
         {%- endif -%}
+        <span aria-hidden="true">→</span>
       </span>
     </div>
 
     {%- unless is_quote_only or sold_out -%}
       <p class="product-card__delivery-note">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Pickup or local delivery
+        FREE local delivery $200+ · Fully assembled
       </p>
     {%- else -%}
       <p class="product-card__delivery-note">
@@ -153,6 +161,51 @@
 </a>
 
 <style>
+.product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.5rem;
+  background: var(--color-bone);
+}
+.product-card__badge--best {
+  background: var(--color-forest-600);
+  color: var(--color-cream);
+  letter-spacing: 0.08em;
+}
+.product-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-full);
+  background: var(--color-charcoal-900);
+  color: var(--color-cream);
+  font-weight: var(--font-medium);
+  line-height: 1;
+}
+.product-card:hover .product-card__cta {
+  background: var(--color-cedar-700);
+  color: var(--color-cream);
+}
+@media (max-width: 639px) {
+  .product-card__image { aspect-ratio: 1 / 1; }
+  .product-card__img { padding: 0.35rem; }
+  .product-card__description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .product-card__footer {
+    align-items: center;
+  }
+  .product-card__cta {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.8rem;
+  }
+}
+
 .product-card__no-image {
   width: 100%;
   height: 100%;

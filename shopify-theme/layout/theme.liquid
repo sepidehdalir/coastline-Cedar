@@ -17,8 +17,10 @@
   <title>
     {%- if page_title == shop.name -%}
       Coastline Cedar | Handmade Cedar Planters in Vancouver
+    {%- elsif page_title contains 'Coastline Cedar' -%}
+      {{ page_title }}
     {%- else -%}
-      {{ page_title }} | {{ shop.name }}
+      {{ page_title }} | Coastline Cedar
     {%- endif -%}
   </title>
 

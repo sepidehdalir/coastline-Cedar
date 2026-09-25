@@ -1,0 +1,436 @@
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="site-header__inner">
+
+      <!-- Logo -->
+      <a href="{{ routes.root_url }}" class="site-header__logo" aria-label="Coastline Cedar Inc.">
+        {%- if section.settings.logo != blank -%}
+          <img
+            src="{{ section.settings.logo | image_url: width: 420 }}"
+            srcset="{{ section.settings.logo | image_url: width: 210 }} 210w,
+                    {{ section.settings.logo | image_url: width: 420 }} 420w"
+            sizes="(min-width: 768px) 210px, 170px"
+            alt="Coastline Cedar Inc."
+            width="210"
+            height="{{ 210 | divided_by: section.settings.logo.aspect_ratio | round }}"
+            loading="eager"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'coastline-cedar-logo.png' | asset_url }}"
+            srcset="{{ 'coastline-cedar-logo.png' | asset_url }} 1x"
+            sizes="(min-width: 768px) 210px, 170px"
+            alt="Coastline Cedar Inc."
+            width="210"
+            height="auto"
+            loading="eager"
+            class="site-header__logo-img"
+          >
+        {%- endif -%}
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav class="site-nav" aria-label="Primary navigation">
+        {%- for link in section.settings.menu.links -%}
+
+          {%- comment -%}
+            URL normalisation — runs on EVERY link before any <a href> is output.
+            Handles both relative (/shop) and absolute (https://…/shop) formats.
+            Rule 1: title == "Shop"         → /collections/cedar-planters
+            Rule 2: url == "/shop"          → /collections/cedar-planters
+            Rule 3: url contains "/shop/"   → replace /shop/ with /products/
+            Rule 4: url contains "/shop"    → /collections/cedar-planters (catches absolute urls)
+            The computed cc_url is the ONLY value used inside <a href>.
+          {%- endcomment -%}
+
+          {%- assign cc_url = link.url -%}
+          {%- if link.title == 'Shop' -%}
+            {%- assign cc_url = '/collections/cedar-planters' -%}
+          {%- elsif link.url == '/shop' or link.url == '/shop/' -%}
+            {%- assign cc_url = '/collections/cedar-planters' -%}
+          {%- elsif link.url contains '/shop/' -%}
+            {%- assign cc_url = link.url | replace: '/shop/', '/products/' -%}
+          {%- elsif link.url contains '/shop' -%}
+            {%- assign cc_url = '/collections/cedar-planters' -%}
+          {%- endif -%}
+
+          <!-- CC header link: {{ link.title }} => {{ cc_url }} -->
+
+          {%- if link.links.size > 0 -%}
+            <div class="site-nav__item" data-dropdown>
+              <button
+                type="button"
+                class="site-nav__link site-nav__link--dropdown"
+                data-dropdown-trigger
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                {{ link.title }}
+                <svg class="site-nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="site-nav__dropdown" data-dropdown-panel aria-hidden="true">
+                {%- for child in link.links -%}
+                  {%- assign cc_child_url = child.url -%}
+                  {%- if child.title == 'Shop' -%}
+                    {%- assign cc_child_url = '/collections/cedar-planters' -%}
+                  {%- elsif child.url == '/shop' or child.url == '/shop/' -%}
+                    {%- assign cc_child_url = '/collections/cedar-planters' -%}
+                  {%- elsif child.url contains '/shop/' -%}
+                    {%- assign cc_child_url = child.url | replace: '/shop/', '/products/' -%}
+                  {%- elsif child.url contains '/shop' -%}
+                    {%- assign cc_child_url = '/collections/cedar-planters' -%}
+                  {%- endif -%}
+                  <!-- CC dropdown child: {{ child.title }} => {{ cc_child_url }} -->
+                  <a href="{{ cc_child_url }}" class="site-nav__dropdown-link">{{ child.title }}</a>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- else -%}
+            <a href="{{ cc_url }}" class="site-nav__link"{% if link.active %} aria-current="page"{% endif %}>
+              {{ link.title }}
+            </a>
+          {%- endif -%}
+
+        {%- endfor -%}
+      </nav>
+
+      <!-- Desktop utility -->
+      <div class="site-header__utils">
+        {%- if settings.site_phone != blank -%}
+          <a href="{{ settings.site_phone_href }}" class="site-header__phone">{{ settings.site_phone }}</a>
+        {%- endif -%}
+        <a href="{{ routes.root_url }}pages/contact" class="btn btn--primary btn--sm">
+          {{ section.settings.cta_label | default: 'Order Now' }}
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button
+        type="button"
+        class="site-header__hamburger"
+        data-nav-toggle
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="{{ 'navigation.open_menu' | t }}"
+      >
+        <svg class="icon-menu" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 7h18M3 12h18M3 17h18"/>
+        </svg>
+        <svg class="icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="nav-overlay" data-nav-overlay aria-hidden="true"></div>
+
+<!-- Mobile nav drawer -->
+<nav
+  id="mobile-nav"
+  class="mobile-nav"
+  data-nav-drawer
+  aria-hidden="true"
+  aria-label="{{ 'navigation.menu' | t }}"
+>
+  <button type="button" class="mobile-nav__close" data-nav-close aria-label="{{ 'navigation.close_menu' | t }}">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18"/>
+    </svg>
+  </button>
+
+  <div class="mobile-nav__links">
+    {%- for link in section.settings.menu.links -%}
+
+      {%- assign cc_mob_url = link.url -%}
+      {%- if link.title == 'Shop' -%}
+        {%- assign cc_mob_url = '/collections/cedar-planters' -%}
+      {%- elsif link.url == '/shop' or link.url == '/shop/' -%}
+        {%- assign cc_mob_url = '/collections/cedar-planters' -%}
+      {%- elsif link.url contains '/shop/' -%}
+        {%- assign cc_mob_url = link.url | replace: '/shop/', '/products/' -%}
+      {%- elsif link.url contains '/shop' -%}
+        {%- assign cc_mob_url = '/collections/cedar-planters' -%}
+      {%- endif -%}
+
+      <!-- CC mobile link: {{ link.title }} => {{ cc_mob_url }} -->
+
+      {%- if link.links.size > 0 -%}
+        <div class="mobile-nav__group">
+          <p class="mobile-nav__group-label">{{ link.title }}</p>
+          {%- for child in link.links -%}
+            {%- assign cc_mob_child_url = child.url -%}
+            {%- if child.title == 'Shop' -%}
+              {%- assign cc_mob_child_url = '/collections/cedar-planters' -%}
+            {%- elsif child.url == '/shop' or child.url == '/shop/' -%}
+              {%- assign cc_mob_child_url = '/collections/cedar-planters' -%}
+            {%- elsif child.url contains '/shop/' -%}
+              {%- assign cc_mob_child_url = child.url | replace: '/shop/', '/products/' -%}
+            {%- elsif child.url contains '/shop' -%}
+              {%- assign cc_mob_child_url = '/collections/cedar-planters' -%}
+            {%- endif -%}
+            <!-- CC mobile child: {{ child.title }} => {{ cc_mob_child_url }} -->
+            <a href="{{ cc_mob_child_url }}" class="mobile-nav__link">{{ child.title }}</a>
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <a href="{{ cc_mob_url }}" class="mobile-nav__link mobile-nav__link--top"{% if link.active %} aria-current="page"{% endif %}>
+          {{ link.title }}
+        </a>
+      {%- endif -%}
+
+    {%- endfor -%}
+
+    <a href="{{ routes.root_url }}pages/contact" class="btn btn--primary btn--full" style="margin-top: 0.5rem;">
+      {{ section.settings.cta_label | default: 'Order Now' }}
+    </a>
+  </div>
+</nav>
+
+<style>
+/* ── Site header ─────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background-color: var(--color-cream);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.75rem;
+}
+
+/* Logo */
+.site-header__logo { display: flex; align-items: center; flex-shrink: 0; }
+.site-header__logo img { width: 170px; height: auto; }
+.site-header__logo-text {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+}
+
+@media (min-width: 768px) { .site-header__logo img { width: 210px; } }
+
+/* Desktop nav */
+.site-nav {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) { .site-nav { display: flex; } }
+
+.site-nav__item { position: relative; }
+
+.site-nav__link {
+  font-size: var(--text-sm);
+  color: rgba(26, 22, 18, 0.85);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.site-nav__link:hover,
+.site-nav__link[aria-current="page"] { color: var(--color-cedar-700); }
+
+.site-nav__chevron { flex-shrink: 0; }
+
+.site-nav__dropdown {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  z-index: var(--z-dropdown);
+  width: 15rem;
+  transform: translateX(-50%);
+  padding-top: 0.75rem;
+}
+
+.site-nav__dropdown.is-visible { display: block; }
+
+.site-nav__dropdown-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: var(--text-sm);
+  color: rgba(26, 22, 18, 0.85);
+  background-color: var(--color-cream);
+  border-bottom: 1px solid var(--color-border-light);
+  text-decoration: none;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.site-nav__dropdown-link:first-child { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.site-nav__dropdown-link:last-child  { border-radius: 0 0 var(--radius-lg) var(--radius-lg); border-bottom: none; }
+.site-nav__dropdown-link:hover { background-color: rgba(26, 22, 18, 0.05); color: var(--color-cedar-700); }
+
+/* Dropdown outer wrapper — border/shadow applied to the panel */
+.site-nav__item [data-dropdown-panel] {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+  overflow: hidden;
+}
+
+/* Desktop utils */
+.site-header__utils {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 1024px) { .site-header__utils { display: flex; } }
+
+.site-header__phone {
+  font-size: var(--text-sm);
+  color: rgba(26, 22, 18, 0.70);
+  text-decoration: none;
+}
+
+.site-header__phone:hover { color: var(--color-text); }
+
+/* Hamburger */
+.site-header__hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: none;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: background-color var(--transition-fast);
+}
+
+.site-header__hamburger:hover { background-color: rgba(26, 22, 18, 0.05); }
+
+@media (min-width: 1024px) { .site-header__hamburger { display: none; } }
+
+.site-header__hamburger .icon-close { display: none; }
+.site-header__hamburger[aria-expanded="true"] .icon-menu  { display: none; }
+.site-header__hamburger[aria-expanded="true"] .icon-close { display: block; }
+
+/* ── Overlay ─────────────────────────────────────────────── */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background-color: rgba(26, 22, 18, 0.4);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.nav-overlay.is-visible {
+  display: block;
+  opacity: 1;
+}
+
+/* ── Mobile nav drawer ───────────────────────────────────── */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-drawer);
+  width: min(20rem, 85vw);
+  background-color: var(--color-cream);
+  border-left: 1px solid var(--color-border);
+  transform: translateX(100%);
+  transition: transform var(--transition-base);
+  overflow-y: auto;
+  padding: 1.25rem;
+}
+
+.mobile-nav.is-open { transform: translateX(0); }
+
+@media (min-width: 1024px) { .mobile-nav { display: none; } }
+
+.mobile-nav__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-bottom: 1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: none;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.mobile-nav__links { display: flex; flex-direction: column; gap: 0.25rem; }
+
+.mobile-nav__link {
+  display: block;
+  padding: 0.75rem 0.75rem;
+  font-size: var(--text-base);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.mobile-nav__link:hover,
+.mobile-nav__link[aria-current="page"] { background-color: rgba(26, 22, 18, 0.05); }
+
+.mobile-nav__group { padding: 0.5rem 0.75rem; }
+
+.mobile-nav__group-label {
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: 0.25rem;
+}
+
+.mobile-nav__link--top {
+  font-size: var(--text-base);
+}
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA button label",
+      "default": "Order Now"
+    }
+  ]
+}
+{% endschema %}

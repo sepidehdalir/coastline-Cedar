@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FBF7F0">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ settings.favicon | image_url: width: 32 }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | image_url: width: 180 }}">
+  {%- else -%}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32x32.png' | asset_url }}">
+    <link rel="icon" type="image/png" sizes="64x64" href="{{ 'favicon-64x64.png' | asset_url }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ 'favicon-180x180.png' | asset_url }}">
+  {%- endif -%}
+
+  <title>
+    {%- if page_title == shop.name -%}
+      Coastline Cedar | Handmade Cedar Planters in Vancouver
+    {%- else -%}
+      {{ page_title }} | {{ shop.name }}
+    {%- endif -%}
+  </title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {%- if canonical_url != blank -%}
+    <link rel="canonical" href="{{ canonical_url }}">
+  {%- endif -%}
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="{{ shop.name }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:type" content="{% if template.name == 'product' %}product{% else %}website{% endif %}">
+  <meta property="og:locale" content="en_CA">
+  {%- if page_description -%}
+    <meta property="og:description" content="{{ page_description | escape }}">
+  {%- endif -%}
+  {%- if settings.share_image != blank -%}
+    <meta property="og:image" content="{{ settings.share_image | image_url: width: 1200 }}">
+    <meta property="og:image:width" content="1200">
+  {%- elsif page.image -%}
+    <meta property="og:image" content="{{ page.image | image_url: width: 1200 }}">
+  {%- endif -%}
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page_title | escape }}">
+  {%- if page_description -%}
+    <meta name="twitter:description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  <!-- Fonts loaded via Shopify font_face — no external preconnect needed -->
+
+  {{ content_for_header }}
+
+  {%- liquid
+    assign body_font = settings.font_body
+    assign heading_font = settings.font_heading
+  -%}
+
+  <style>
+    {{ body_font | font_face: font_display: 'swap' }}
+    {{ heading_font | font_face: font_display: 'swap' }}
+    :root {
+      --font-display: {{ heading_font.family | json }}, 'Iowan Old Style', Palatino, Georgia, serif;
+      --font-body:    {{ body_font.family | json }}, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --font-body-size: {{ settings.font_body_size }}px;
+      --max-width: {{ settings.layout_max_width }}rem;
+      --section-py: {{ settings.layout_section_spacing | times: 0.8 }}px;
+      --section-py-lg: {{ settings.layout_section_spacing }}px;
+      --color-cream:        {{ settings.color_cream }};
+      --color-bone:         {{ settings.color_bone }};
+      --color-cedar-600:    {{ settings.color_cedar_600 }};
+      --color-cedar-700:    {{ settings.color_cedar_700 }};
+      --color-forest-600:   {{ settings.color_forest_600 }};
+      --color-charcoal-900: {{ settings.color_charcoal_900 }};
+      --color-bg:           {{ settings.color_cream }};
+      --color-text:         {{ settings.color_charcoal_900 }};
+    }
+  </style>
+
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  {{ 'motion.css' | asset_url | stylesheet_tag }}
+
+  <script>document.documentElement.classList.remove('no-js');</script>
+
+  <!-- Structured data: LocalBusiness + WebSite + MerchantReturnPolicy -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "{{ shop.url }}/#business",
+    "name": "Coastline Cedar Inc.",
+    "url": {{ shop.url | json }},
+    "telephone": {{ settings.site_phone | json }},
+    "email": {{ settings.site_email | json }},
+    "priceRange": "$$",
+    "currenciesAccepted": "CAD",
+    "paymentAccepted": "Credit Card, Debit Card, E-Transfer",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": {{ settings.site_address_locality | json }},
+      "addressRegion": {{ settings.site_address_region | json }},
+      "postalCode": {{ settings.site_address_postal | json }},
+      "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 49.3200,
+      "longitude": -123.0700
+    },
+    "areaServed": [
+      {"@type":"City","name":"North Vancouver"},
+      {"@type":"City","name":"West Vancouver"},
+      {"@type":"City","name":"Vancouver"},
+      {"@type":"City","name":"Burnaby"},
+      {"@type":"City","name":"Richmond"},
+      {"@type":"City","name":"Coquitlam"},
+      {"@type":"City","name":"Port Coquitlam"},
+      {"@type":"City","name":"Port Moody"},
+      {"@type":"City","name":"New Westminster"},
+      {"@type":"City","name":"Surrey"},
+      {"@type":"City","name":"Delta"},
+      {"@type":"City","name":"Langley"}
+    ],
+    "openingHours": "Mo,Tu,We,Th,Fr,Sa 09:00-17:00",
+    "hasMap": "https://maps.google.com/?q=North+Vancouver+BC"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "{{ shop.url }}/#website",
+    "url": {{ shop.url | json }},
+    "name": {{ shop.name | json }},
+    "description": "Hand-built Western Cedar planter boxes, raised garden beds, and outdoor privacy planters in Greater Vancouver. Built locally in North Vancouver.",
+    "publisher": { "@id": "{{ shop.url }}/#business" },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": { "@type": "EntryPoint", "urlTemplate": "{{ shop.url }}/search?q={search_term_string}" },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+
+<body id="{{ page_title | handle }}" class="template-{{ template.name }}">
+
+  <a href="#MainContent" class="skip-to-content">
+    {{ 'accessibility.skip_to_content' | t }}
+  </a>
+
+  {%- sections 'header-group' -%}
+
+  <main id="MainContent" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {%- sections 'footer-group' -%}
+
+  <script src="{{ 'global.js' | asset_url }}" defer></script>
+
+  {%- render 'welcome-popup' -%}
+
+</body>
+</html>

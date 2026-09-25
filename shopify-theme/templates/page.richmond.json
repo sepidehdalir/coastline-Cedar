@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service-area",
+      "settings": {
+        "city": "Richmond",
+        "city_full": "Richmond, BC",
+        "short_locale": "Richmond",
+        "h1": "Cedar Planter Boxes — Richmond",
+        "intro": "Richmond's exposed patios, rooftop terraces, and waterfront properties need planters that handle wind and open weather. We build our cedar planters with a reinforced base that keeps them stable on exposed sites — from Steveston docks to Brighouse rooftops.",
+        "local_blurb": "Richmond clients often have large flat outdoor spaces — wide patios, rooftop decks, open waterfront — where the right planter does a lot of visual work. We build in cedar because it reads as warm and natural against Richmond's clean architectural style, and it holds up well in coastal conditions.",
+        "neighborhoods": "Steveston, Brighouse, Granville, Ironwood, Broadmoor, Sea Island, Terra Nova, Garden City, Hamilton, and Shellmont.",
+        "delivery_note": "Pickup by appointment in North Vancouver. Local delivery across eligible Greater Vancouver areas is CAD $25. Shipping outside Greater Vancouver may be available by quote."
+      },
+      "blocks": {
+        "uc1": {
+          "type": "use_case",
+          "settings": {
+            "text": "Steveston waterfront and marina planters"
+          }
+        },
+        "uc2": {
+          "type": "use_case",
+          "settings": {
+            "text": "Brighouse and Granville patio raised beds"
+          }
+        },
+        "uc3": {
+          "type": "use_case",
+          "settings": {
+            "text": "Ironwood and Broadmoor vegetable gardens"
+          }
+        },
+        "uc4": {
+          "type": "use_case",
+          "settings": {
+            "text": "Richmond rooftop and exposed deck planters"
+          }
+        },
+        "fq1": {
+          "type": "faq",
+          "settings": {
+            "question": "Are your cedar planters stable enough for exposed Richmond waterfront decks?",
+            "answer": "<p>Yes. Our planters are fully assembled with structural corner posts and stainless fasteners. On exposed or elevated sites, we recommend adding the clear sealer finish for additional weather protection. If you have a specific site with high wind exposure, contact us and we can discuss base options.</p>"
+          }
+        },
+        "fq2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I order a large cedar planter for a Steveston restaurant patio?",
+            "answer": "<p>Yes. We build commercial-grade planters for restaurants, cafés, and commercial patios across Greater Vancouver. Larger orders may have slightly longer lead times depending on quantity and size. Contact us with your requirements and we'll come back with a quote and timeline.</p>"
+          }
+        },
+        "fq3": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does delivery take to Richmond?",
+            "answer": "<p>Most standard planters are ready in 3–5 business days after order details are confirmed. We then schedule delivery across Metro Vancouver — typically within a day or two of the planter being ready. Richmond is on our regular delivery route.</p>"
+          }
+        },
+        "oa1": {
+          "type": "other_area",
+          "settings": {
+            "city": "Vancouver",
+            "url": "/pages/vancouver"
+          }
+        },
+        "oa2": {
+          "type": "other_area",
+          "settings": {
+            "city": "Surrey",
+            "url": "/pages/surrey"
+          }
+        },
+        "oa3": {
+          "type": "other_area",
+          "settings": {
+            "city": "Burnaby",
+            "url": "/pages/burnaby"
+          }
+        },
+        "oa4": {
+          "type": "other_area",
+          "settings": {
+            "city": "North Vancouver",
+            "url": "/pages/north-vancouver"
+          }
+        }
+      },
+      "block_order": [
+        "uc1",
+        "uc2",
+        "uc3",
+        "uc4",
+        "fq1",
+        "fq2",
+        "fq3",
+        "oa1",
+        "oa2",
+        "oa3",
+        "oa4"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

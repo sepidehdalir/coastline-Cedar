@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service-area",
+      "settings": {
+        "city": "Vancouver",
+        "city_full": "Vancouver, BC",
+        "short_locale": "Vancouver",
+        "h1": "Cedar Planter Boxes — Vancouver",
+        "intro": "Vancouver's mix of condo towers, heritage homes, and east-side gardens means every outdoor space is different. Whether it's a slim balcony planter for a Yaletown high-rise or a raised garden bed in East Van, we build cedar planters that fit how Vancouver actually lives outside.",
+        "local_blurb": "We've built planters for Vancouver clients across the city — Kitsilano backyards, West End balconies, Mount Pleasant patios, and Strathcona community gardens. Each neighbourhood has its own outdoor rhythm, and our cedar planters are sized to match it. We deliver from our North Vancouver workshop and set up by appointment.",
+        "neighborhoods": "Kitsilano, Fairview, Mount Pleasant, East Vancouver, Strathcona, West End, Yaletown, Riley Park, Hastings-Sunrise, Commercial Drive, Dunbar, Point Grey, and Shaughnessy.",
+        "delivery_note": "Pickup by appointment in North Vancouver. Local delivery across eligible Greater Vancouver areas is CAD $25. Shipping outside Greater Vancouver may be available by quote."
+      },
+      "blocks": {
+        "uc1": {
+          "type": "use_case",
+          "settings": {
+            "text": "Kitsilano backyard raised garden beds"
+          }
+        },
+        "uc2": {
+          "type": "use_case",
+          "settings": {
+            "text": "Yaletown condo balcony planters"
+          }
+        },
+        "uc3": {
+          "type": "use_case",
+          "settings": {
+            "text": "East Van patio and herb gardens"
+          }
+        },
+        "uc4": {
+          "type": "use_case",
+          "settings": {
+            "text": "West End high-rise slim planters"
+          }
+        },
+        "fq1": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you deliver to high-rise buildings in downtown Vancouver?",
+            "answer": "<p>Yes. Our slim balcony planters are built to fit standard condo elevators. Let us know your building address and floor and we'll plan the delivery around your building's loading bay and service elevator schedule.</p>"
+          }
+        },
+        "fq2": {
+          "type": "faq",
+          "settings": {
+            "question": "What size cedar planter works best for a Kitsilano or Kerrisdale backyard?",
+            "answer": "<p>For most Vancouver backyards, the Elevated Cedar Garden Bed or the Classic Cedar Patio Planter (48″ × 16″) are the most popular. They give enough growing depth for vegetables and herbs without taking over a deck or patio. If you have a specific space in mind, send us the dimensions and we'll recommend the right fit or quote a custom size. For sizing and soil planning, see <a href='/blogs/news/raised-garden-beds-vancouver'>Raised garden beds in Vancouver: sizes &amp; costs</a>.</p>"
+          }
+        },
+        "fq3": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does delivery take to Vancouver?",
+            "answer": "<p>Most standard planters are ready in 3–5 business days after order details are confirmed. We then schedule delivery across Metro Vancouver — usually within one to two days of the planter being ready.</p>"
+          }
+        },
+        "oa1": {
+          "type": "other_area",
+          "settings": {
+            "city": "North Vancouver",
+            "url": "/pages/north-vancouver"
+          }
+        },
+        "oa2": {
+          "type": "other_area",
+          "settings": {
+            "city": "West Vancouver",
+            "url": "/pages/west-vancouver"
+          }
+        },
+        "oa3": {
+          "type": "other_area",
+          "settings": {
+            "city": "Burnaby",
+            "url": "/pages/burnaby"
+          }
+        },
+        "oa4": {
+          "type": "other_area",
+          "settings": {
+            "city": "Richmond",
+            "url": "/pages/richmond"
+          }
+        }
+      },
+      "block_order": [
+        "uc1",
+        "uc2",
+        "uc3",
+        "uc4",
+        "fq1",
+        "fq2",
+        "fq3",
+        "oa1",
+        "oa2",
+        "oa3",
+        "oa4"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

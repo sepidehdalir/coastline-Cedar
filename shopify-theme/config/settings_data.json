@@ -1,0 +1,20 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "site_delivery_policy": "Free pickup by appointment in North Vancouver. FREE local delivery on orders $200+ in eligible Greater Vancouver areas; CAD $25 under $200.",
+    "promo_active": false,
+    "promo_end_label": "July 31, 2026",
+    "site_announcement": "Fully Assembled · Free Local Delivery $200+ · Ready in 3–5 Business Days",
+    "welcome_popup_enabled": true,
+    "colors": {}
+  },
+  "presets": {}
+}

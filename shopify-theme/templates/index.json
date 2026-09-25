@@ -1,0 +1,470 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Handcrafted in North Vancouver, British Columbia",
+        "heading": "Handcrafted Cedar Planters, Built One at a Time in North Vancouver.",
+        "heading_accent": "Built One at a Time",
+        "subtext": "Hand-built premium Western Cedar planters in standard and custom sizes. Made to order, fully assembled, and available for pickup or local delivery across Greater Vancouver.",
+        "primary_label": "Shop Handcrafted Planters",
+        "secondary_label": "Request a Custom Size",
+        "pill_1": "Handcrafted Locally",
+        "pill_2": "Fully Assembled",
+        "pill_3": "Free Delivery $200+",
+        "pill_4": "Ready in 3–5 Days",
+        "show_price_badge": false,
+        "badge_price": "$119",
+        "badge_sale_price": "",
+        "badge_note": "Cedar planters · Pickup or delivery across Metro Vancouver"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Shop our proven favourites",
+        "heading": "Best-Selling Cedar Planters",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "collection": "cedar-planters"
+      }
+    },
+    "services": {
+      "type": "services-grid",
+      "block_order": [
+        "privacy",
+        "sauna",
+        "gates"
+      ],
+      "blocks": {
+        "privacy": {
+          "type": "service",
+          "settings": {
+            "fallback_asset": "service-privacy-panel-deck.jpg",
+            "title": "Cedar Privacy Panels",
+            "blurb": "Standalone cedar screens for patios, balconies, hot tubs, and side yards. Custom heights and widths.",
+            "price_label": "$399",
+            "original_price": "$399",
+            "sale_price": "$239",
+            "starting_from": true,
+            "show_promo_badge": true,
+            "cta_label": "Get a Quote",
+            "url": "/pages/cedar-privacy-panels-vancouver"
+          }
+        },
+        "sauna": {
+          "type": "service",
+          "settings": {
+            "fallback_asset": "service-outdoor-sauna.jpg",
+            "title": "Custom Outdoor Saunas",
+            "blurb": "Built-to-order backyard cedar saunas with a modern West Coast look. Quoted after a site review.",
+            "price_label": "$8,500",
+            "original_price": "$8,500",
+            "sale_price": "$5,100",
+            "starting_from": true,
+            "show_promo_badge": true,
+            "cta_label": "Request a Quote",
+            "url": "/pages/custom-outdoor-saunas-vancouver"
+          }
+        },
+        "gates": {
+          "type": "service",
+          "settings": {
+            "fallback_asset": "service-cedar-gate-fence.jpg",
+            "title": "Cedar Gates & Fences",
+            "blurb": "Handmade cedar garden gates, side-yard gates, and custom fence panels. Built and finished locally.",
+            "price_label": "$950",
+            "original_price": "$950",
+            "sale_price": "$570",
+            "starting_from": true,
+            "show_promo_badge": true,
+            "cta_label": "Get a Quote",
+            "url": "/pages/handmade-cedar-gates-fences-vancouver"
+          }
+        }
+      },
+      "settings": {
+        "background": "bone",
+        "eyebrow": "Beyond planters",
+        "heading": "More custom cedar builds"
+      }
+    },
+    "differentiation": {
+      "type": "differentiation",
+      "settings": {
+        "background": "bone",
+        "eyebrow": "What sets us apart",
+        "heading": "Built Differently—Because It Is",
+        "intro": "Every Coastline Cedar planter is handcrafted individually in North Vancouver and delivered fully assembled. Here's how that compares to typical mass-market alternatives.",
+        "col_us_label": "Coastline Cedar",
+        "us_1": "Handcrafted locally in North Vancouver",
+        "us_2": "Made individually, to order",
+        "us_3": "Delivered fully assembled — ready to plant",
+        "us_4": "Premium natural cedar",
+        "us_5": "Custom sizing available",
+        "us_6": "Direct support from the builder",
+        "us_7": "Natural character in every piece",
+        "us_8": "",
+        "col_them_label": "Mass-Market Alternatives",
+        "them_1": "Standardized factory production",
+        "them_2": "Frequently flat-packed or requiring assembly",
+        "them_3": "Sourced from warehouse inventory",
+        "them_4": "Fixed generic sizes",
+        "them_5": "Marketplace-based support",
+        "them_6": "Limited customization",
+        "them_7": "",
+        "them_8": "",
+        "footnote": "Comparisons describe common mass-market product characteristics. Some local and independent producers have different approaches — this comparison does not apply to all local businesses."
+      }
+    },
+    "brand_values": {
+      "type": "brand-values",
+      "block_order": [
+        "value1",
+        "value2",
+        "value3",
+        "value4"
+      ],
+      "blocks": {
+        "value1": {
+          "type": "value",
+          "settings": {
+            "title": "Handcrafted locally",
+            "body": "Each planter is built individually in our North Vancouver workshop — not batched, not outsourced."
+          }
+        },
+        "value2": {
+          "type": "value",
+          "settings": {
+            "title": "Delivered fully assembled",
+            "body": "Arrives ready to plant. No tools required, no flat-pack frustration."
+          }
+        },
+        "value3": {
+          "type": "value",
+          "settings": {
+            "title": "Premium Western Cedar",
+            "body": "Naturally rot-resistant, grown in British Columbia, and built to outlast the alternatives."
+          }
+        },
+        "value4": {
+          "type": "value",
+          "settings": {
+            "title": "Custom sizing available",
+            "body": "Send us your dimensions — we build to spec for balconies, patios, rooftops, and commercial spaces."
+          }
+        }
+      },
+      "settings": {
+        "eyebrow": "Why Coastline Cedar",
+        "heading": "Premium cedar. Handcrafted locally. Fully assembled.",
+        "body": "Every Coastline Cedar planter is built one at a time in North Vancouver from premium Western Cedar. You receive a finished piece of outdoor craftsmanship — not a flat-pack kit."
+      }
+    },
+    "order_process": {
+      "type": "order-process",
+      "block_order": [
+        "step1",
+        "step2",
+        "step3"
+      ],
+      "blocks": {
+        "step1": {
+          "type": "step",
+          "settings": {
+            "title": "Choose your size",
+            "description": "Choose from our standard sizes — or request custom dimensions."
+          }
+        },
+        "step2": {
+          "type": "step",
+          "settings": {
+            "title": "Place your order",
+            "description": "Order online or send a quote request. We confirm details within one business day."
+          }
+        },
+        "step3": {
+          "type": "step",
+          "settings": {
+            "title": "Pickup or delivery",
+            "description": "Free pickup by appointment in North Vancouver. Free local delivery on orders $200+ in eligible Greater Vancouver areas; CAD $25 under $200."
+          }
+        }
+      },
+      "settings": {
+        "eyebrow": "How ordering works",
+        "heading": "Three simple steps to a finished planter."
+      }
+    },
+    "materials": {
+      "type": "materials-section",
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "Naturally rot-resistant",
+            "body": "Contains natural oils that resist decay without chemical treatment — built for Pacific Northwest winters."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Locally sourced in BC",
+            "body": "Western Cedar is grown right here in British Columbia. It doesn't travel far to reach our workshop."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Ages beautifully",
+            "body": "Left natural, cedar weathers to a soft silver-grey. Sealed, it holds its warm tone for years."
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "title": "Stainless hardware",
+            "body": "Every planter is fastened with stainless steel so the hardware outlasts the wood."
+          }
+        }
+      },
+      "settings": {
+        "background": "bone",
+        "eyebrow": "Why Western Cedar?",
+        "heading": "A material made for the West Coast.",
+        "body": "<p>Western Cedar is one of the most rot-resistant softwoods in North America. It contains natural oils that repel insects and slow decay — no pressure treatment or chemical preservatives required. It's why traditional West Coast architecture has used cedar siding, shingles, and decking for over a century.</p>",
+        "cta_label": "Shop planters"
+      }
+    },
+    "brand_story": {
+      "type": "image-with-text",
+      "settings": {
+        "background": "cream",
+        "image_position": "left",
+        "eyebrow": "Our story",
+        "heading": "Built by a Local Family in North Vancouver",
+        "body": "<p>Coastline Cedar began as a family project with a simple goal: to create beautiful, useful cedar pieces that make outdoor spaces feel warmer, cleaner, and more private. Built with care by our family, for local homes across Greater Vancouver.</p>",
+        "button_label": "Read Our Story",
+        "button_url": "/pages/about"
+      }
+    },
+    "gallery": {
+      "type": "gallery-preview",
+      "block_order": [
+        "img1",
+        "img2",
+        "img3",
+        "img4"
+      ],
+      "blocks": {
+        "img1": {
+          "type": "image",
+          "settings": {
+            "fallback_asset": "gallery-build-process-workshop.jpg",
+            "alt_text": "Cedar planter boxes being built in the Coastline Cedar workshop in North Vancouver"
+          }
+        },
+        "img2": {
+          "type": "image",
+          "settings": {
+            "fallback_asset": "gallery-finished-planter-delivery.jpg",
+            "alt_text": "Finished stained cedar planter box ready for delivery"
+          }
+        },
+        "img3": {
+          "type": "image",
+          "settings": {
+            "fallback_asset": "gallery-raised-herb-planter.jpg",
+            "alt_text": "Raised cedar herb planter with cold-frame lid"
+          }
+        },
+        "img4": {
+          "type": "image",
+          "settings": {
+            "fallback_asset": "gallery-cedar-boards-tools.jpg",
+            "alt_text": "Cedar boards and tools in the workshop"
+          }
+        }
+      },
+      "settings": {
+        "eyebrow": "Gallery",
+        "heading": "From Workshop to Outdoor Space",
+        "subtext": "See the cedar, tools, and hands-on process behind our custom planters and outdoor builds.",
+        "cta_label": "View Gallery",
+        "cta_url": "/pages/gallery"
+      }
+    },
+    "reviews": {
+      "type": "reviews-grid",
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Very happy with our custom cedar planter. It was made quickly, delivered on time, and looks perfect on our deck.",
+            "reviewer_name": "Tina T.",
+            "date_label": "a week ago"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Had some planters made and delivered and I'm very pleased with the outcome. Good communication too. Thanks!",
+            "reviewer_name": "Kent MacWilliam",
+            "date_label": "a week ago"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Coastline made well crafted cedar planter boxes to our exact specs. High quality and the communication was fantastic!",
+            "reviewer_name": "Christopher Markowsky",
+            "date_label": "a week ago"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Beautiful planters, well-made, fast service and free delivery. I highly recommend.",
+            "reviewer_name": "Kate and Allison",
+            "date_label": "a week ago"
+          }
+        }
+      },
+      "settings": {
+        "eyebrow": "Trusted by local customers",
+        "heading": "Trusted by Local Customers",
+        "reviews_cta": "View Google Reviews",
+        "disclaimer": "Reviews shown are real customer feedback from our Google Business Profile."
+      }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "blocks": {
+        "q1": {
+          "type": "faq",
+          "settings": {
+            "question": "What sizes do you offer?",
+            "answer": "<p>We offer several standard cedar planter styles, including Elevated Garden Beds, Slim Balcony Planters, Classic Patio Planters, Trellis Planters, Standard Outdoor Planters, and commercial/privacy options. We also build fully custom planters to your exact dimensions for balconies, patios, gardens, restaurants, and commercial spaces.</p>"
+          }
+        },
+        "q2": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you build custom sizes?",
+            "answer": "<p>Yes — custom is one of the things we do best. Send us the length, width, and height you need — plus a photo of the space — and we'll come back with a sketch, quote, and timeline within 1–2 business days.</p>"
+          }
+        },
+        "q3": {
+          "type": "faq",
+          "settings": {
+            "question": "What wood do you use?",
+            "answer": "<p>Kiln-dried Western Cedar, locally sourced. Western Cedar is naturally rot-resistant, contains natural oils that repel insects, and ages beautifully in our wet climate.</p>"
+          }
+        },
+        "q4": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you deliver in Greater Vancouver?",
+            "answer": "<p>Yes. We deliver across North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Coquitlam, Port Moody, New Westminster, Surrey, Delta, and Langley. Free local delivery is available on orders $200+ in eligible Greater Vancouver areas; orders under $200 are CAD $25. Pickup by appointment in North Vancouver is free.</p>"
+          }
+        },
+        "q5": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does an order take?",
+            "answer": "<p>Most standard builds are ready in 3–5 business days after order details are confirmed. For larger projects, the timeline depends on project size, measurements, site access, and installation scope.</p>"
+          }
+        }
+      },
+      "settings": {
+        "background": "bone",
+        "align": "center",
+        "eyebrow": "Frequently asked",
+        "heading": "Common questions.",
+        "cta_label": "See full FAQ",
+        "cta_url": "/pages/faq"
+      }
+    },
+    "cta": {
+      "type": "custom-cta",
+      "settings": {
+        "eyebrow": "Ready to order?",
+        "heading": "Handcrafted cedar planters, delivered fully assembled.",
+        "body": "Shop standard sizes or request a custom build to your exact dimensions. Most standard builds are ready in 3–5 business days, with free local delivery on orders $200+ in eligible Greater Vancouver areas.",
+        "primary_label": "Shop Handcrafted Planters",
+        "secondary_label": "Request a Custom Size"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "show_section": true,
+        "eyebrow": "Join the list",
+        "heading": "New builds, cedar tips, and first-access offers.",
+        "subtext": "We send occasional notes about new planter sizes, project inspiration, and welcome offers for first-time customers. From our North Vancouver workshop.",
+        "placeholder": "Enter your email address",
+        "button_label": "Subscribe",
+        "disclaimer": "No spam. Unsubscribe any time. Local delivery and order minimums may apply to offers."
+      }
+    },
+    "seo_content": {
+      "type": "rich-text",
+      "settings": {
+        "background": "bone",
+        "text_align": "left",
+        "max_width": 56,
+        "heading": "Cedar planter boxes built for Greater Vancouver homes and businesses",
+        "body": "<p>Coastline Cedar builds hand-crafted cedar planter boxes from our workshop in North Vancouver, serving the entire Lower Mainland. Our planters are made from kiln-dried Western Cedar — a locally grown wood that's naturally rot-resistant, holds up beautifully to West Coast weather, and ages into a soft silver-grey if left unsealed.</p><p>We build patio planters for small decks, slim balcony planters for Vancouver condos, large statement planters for courtyards, waist-height raised garden beds for vegetable growing, and privacy planters with integrated cedar trellises. We also build commercial-grade planters for restaurants, cafés, hotels, and strata properties across the region.</p><p>If you don't see the right size, our most-requested service is custom: send us length, width, and height — plus a photo of the space — and we'll come back with a sketch and quote within 1–2 business days. We serve North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Coquitlam, Port Moody, New Westminster, Surrey, Delta, and Langley.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured_collection",
+    "reviews",
+    "differentiation",
+    "brand_values",
+    "order_process",
+    "services",
+    "materials",
+    "gallery",
+    "brand_story",
+    "faq",
+    "cta",
+    "newsletter",
+    "seo_content"
+  ]
+}

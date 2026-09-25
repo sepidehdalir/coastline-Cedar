@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service",
+      "settings": {
+        "eyebrow": "Gates & Fences",
+        "h1": "Handmade Cedar Gates & Fences in Vancouver",
+        "fallback_asset": "service-cedar-gate-fence.jpg",
+        "intro": "Handmade cedar gates and fences built locally with premium Western Cedar, clean lines, and custom sizing — from a single garden gate to a full fence run.",
+        "body_heading": "About our cedar gates and fences",
+        "cta_label": "Request a Gate or Fence Quote"
+      },
+      "blocks": {
+        "tier1": {
+          "type": "tier",
+          "settings": {
+            "name": "Handmade cedar garden gate",
+            "original_price": "$950",
+            "sale_price": "$570"
+          }
+        },
+        "tier2": {
+          "type": "tier",
+          "settings": {
+            "name": "Cedar fence panel",
+            "original_price": "$280",
+            "sale_price": "$168",
+            "unit_suffix": "per linear section"
+          }
+        },
+        "tier3": {
+          "type": "tier",
+          "settings": {
+            "name": "Full custom fence or gate project",
+            "note": "Quoted after measurements and a site review."
+          }
+        },
+        "faq1": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you build single gates or full fences?",
+            "answer": "<p>Both. We build standalone garden and side-yard gates, individual fence panels by the linear section, and full custom fence-and-gate projects. Tell us the scope and we will quote accordingly.</p>"
+          }
+        },
+        "faq2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can you match my existing cedar planters or fence?",
+            "answer": "<p>Yes — matching the look of your existing cedar planters, privacy panels, or fence is something we do often, so the whole property reads as one coordinated design.</p>"
+          }
+        },
+        "faq3": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you repair or replace existing gates and fences?",
+            "answer": "<p>Yes. We handle repairs and replacement of damaged or rotted sections as well as new builds. Send a photo and we will advise on repair versus replacement.</p>"
+          }
+        },
+        "faq4": {
+          "type": "faq",
+          "settings": {
+            "question": "How is a fence project priced?",
+            "answer": "<p>Fence panels are priced per linear section, and gates per unit, but full projects depend on length, height, terrain, and site access. Custom measurements are required for an accurate quote.</p>"
+          }
+        }
+      },
+      "block_order": ["tier1", "tier2", "tier3", "faq1", "faq2", "faq3", "faq4"]
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service-areas",
+      "settings": {
+        "eyebrow": "Service areas",
+        "heading": "Cedar planters delivered across Greater Vancouver.",
+        "intro": "We build everything in our North Vancouver workshop and deliver directly to your door across the Lower Mainland. Pickup by appointment in North Vancouver. Delivery available across Metro Vancouver.",
+        "cta_heading": "Ready to order?",
+        "cta_body": "Choose a standard size or request a custom build. Pickup by appointment or local delivery.",
+        "cta_primary_label": "Shop Planters",
+        "cta_secondary_label": "Request a Custom Quote"
+      },
+      "blocks": {
+        "a1": {
+          "type": "area",
+          "settings": {
+            "city": "North Vancouver",
+            "short_locale": "North Van",
+            "intro": "We're North Vancouver locals. Our workshop is on the North Shore, which means short delivery routes and the chance to stop by in person.",
+            "url": "/pages/north-vancouver"
+          }
+        },
+        "a2": {
+          "type": "area",
+          "settings": {
+            "city": "Vancouver",
+            "short_locale": "Vancouver",
+            "intro": "Tight patios, narrow balconies, downtown roof decks, and Kitsilano backyards — we build cedar planters that suit how Vancouver actually lives outside.",
+            "url": "/pages/vancouver"
+          }
+        },
+        "a3": {
+          "type": "area",
+          "settings": {
+            "city": "West Vancouver",
+            "short_locale": "West Van",
+            "intro": "West Vancouver homes lean into the West Coast aesthetic. Hand-built cedar, clean lines, and finishes that complement your property.",
+            "url": "/pages/west-vancouver"
+          }
+        },
+        "a4": {
+          "type": "area",
+          "settings": {
+            "city": "Burnaby",
+            "short_locale": "Burnaby",
+            "intro": "From Brentwood condo balconies to South Slope raised garden beds — we build the right planter for every Burnaby space.",
+            "url": "/pages/burnaby"
+          }
+        },
+        "a5": {
+          "type": "area",
+          "settings": {
+            "city": "Richmond",
+            "short_locale": "Richmond",
+            "intro": "Richmond gardens deal with wind. Our planters are built with extra base stability for exposed patios and rooftop spaces.",
+            "url": "/pages/richmond"
+          }
+        },
+        "a6": {
+          "type": "area",
+          "settings": {
+            "city": "Coquitlam",
+            "short_locale": "Coquitlam",
+            "intro": "The Tri-Cities have great outdoor space. We deliver across Coquitlam, Port Coquitlam, and Port Moody from our North Shore workshop.",
+            "url": "/pages/coquitlam"
+          }
+        },
+        "a7": {
+          "type": "area",
+          "settings": {
+            "city": "Surrey",
+            "short_locale": "Surrey",
+            "intro": "Townhouse decks, family backyards, and new-build patios — we build cedar planters that look finished, not generic.",
+            "url": "/pages/surrey"
+          }
+        },
+        "a8": {
+          "type": "area",
+          "settings": {
+            "city": "Langley",
+            "short_locale": "Langley",
+            "intro": "Langley has the kind of yards that planters were made for. We deliver across Langley and build to any size you need.",
+            "url": "/pages/langley"
+          }
+        }
+      },
+      "block_order": ["a1","a2","a3","a4","a5","a6","a7","a8"]
+    }
+  },
+  "order": ["main"]
+}

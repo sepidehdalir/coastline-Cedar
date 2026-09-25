@@ -1,0 +1,126 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-gallery",
+      "settings": {
+        "eyebrow": "Gallery",
+        "heading": "Cedar Planter Gallery",
+        "intro": "A look inside our Coastline Cedar workshop, build process, and finished cedar planter projects. These photos show the hands-on work behind our custom cedar builds in North Vancouver.",
+        "cta_heading": "Want something similar for your outdoor space?",
+        "cta_body": "Send us your dimensions, preferred style, and a few inspiration photos. We’ll help you plan a cedar build that fits your space."
+      },
+      "blocks": {
+        "p1": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "gallery-finished-planter-delivery.jpg",
+            "alt_text": "Finished stained cedar planter box with liner, hand-built by Coastline Cedar",
+            "category": "Finished Planters",
+            "caption": "Finished Cedar Planter"
+          }
+        },
+        "p2": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "gallery-build-process-workshop.jpg",
+            "alt_text": "Cedar planter boxes being built in the Coastline Cedar workshop in North Vancouver",
+            "category": "Build Process",
+            "caption": "Cedar Planter Build Process"
+          }
+        },
+        "p3": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "gallery-privacy-screen-deck.jpg",
+            "alt_text": "Hand-built cedar slat privacy screen installed on a backyard deck in Vancouver",
+            "category": "Delivery / Installed",
+            "caption": "Cedar Privacy Screen on a Deck"
+          }
+        },
+        "p4": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "gallery-custom-planters-patio.jpg",
+            "alt_text": "Two finished cedar planter boxes with shrubs on a stone patio",
+            "category": "Finished Planters",
+            "caption": "Cedar Planters on a Patio"
+          }
+        },
+        "p5": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "gallery-privacy-planter-build.jpg",
+            "alt_text": "Cedar privacy planter with slat screen being assembled in the workshop",
+            "category": "Build Process",
+            "caption": "Privacy Planter Under Construction"
+          }
+        },
+        "p6": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "gallery-planters-installed-deck.jpg",
+            "alt_text": "Finished cedar planters installed on a deck railing in West Vancouver",
+            "category": "Delivery / Installed",
+            "caption": "Planters Installed on a Deck"
+          }
+        },
+        "p7": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "gallery-privacy-planter-planted.jpg",
+            "alt_text": "Cedar privacy planter with attached slat screen and planted greenery",
+            "category": "Finished Planters",
+            "caption": "Privacy Planter with Plants"
+          }
+        },
+        "p8": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "gallery-cedar-boards-tools.jpg",
+            "alt_text": "Cedar boards and tools used for custom planter construction in the workshop",
+            "category": "Workshop",
+            "caption": "Inside the Workshop"
+          }
+        },
+        "p9": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "gallery-privacy-planter-vancouver.jpg",
+            "alt_text": "Cedar privacy planter with a tall slat screen on a patio",
+            "category": "Finished Planters",
+            "caption": "Cedar Privacy Planter"
+          }
+        },
+        "p10": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "gallery-raised-herb-planter.jpg",
+            "alt_text": "Raised cedar herb planter with a hinged glass cold-frame lid and potted herbs",
+            "category": "Finished Planters",
+            "caption": "Raised Cedar Herb Planter"
+          }
+        },
+        "p11": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "gallery-hand-built-detail.jpg",
+            "alt_text": "Close detail of a hand-built cedar planter in the Coastline Cedar workshop",
+            "category": "Cedar Details",
+            "caption": "Hand-Built Planter Detail"
+          }
+        }
+      },
+      "block_order": ["p1","p2","p3","p4","p5","p6","p7","p8","p9","p10","p11"]
+    }
+  },
+  "order": ["main"]
+}

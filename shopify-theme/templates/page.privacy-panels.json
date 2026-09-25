@@ -1,0 +1,79 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service",
+      "settings": {
+        "eyebrow": "Privacy Panels",
+        "h1": "Custom Cedar Privacy Panels in Vancouver",
+        "fallback_asset": "service-privacy-panel-deck.jpg",
+        "intro": "Hand-built standalone cedar privacy panels designed to screen sightlines and define outdoor space across Greater Vancouver. Custom heights and widths to suit your patio, balcony, or yard.",
+        "body_heading": "About our cedar privacy panels",
+        "cta_label": "Request a Privacy Panel Quote"
+      },
+      "blocks": {
+        "tier1": {
+          "type": "tier",
+          "settings": {
+            "name": "4 ft W × 6 ft H cedar privacy panel",
+            "original_price": "$399",
+            "sale_price": "$239"
+          }
+        },
+        "tier2": {
+          "type": "tier",
+          "settings": {
+            "name": "6 ft W × 6 ft H cedar privacy panel",
+            "original_price": "$549",
+            "sale_price": "$329"
+          }
+        },
+        "tier3": {
+          "type": "tier",
+          "settings": {
+            "name": "Custom privacy panel",
+            "note": "Built to your exact height and width."
+          }
+        },
+        "faq1": {
+          "type": "faq",
+          "settings": {
+            "question": "Are these privacy panels freestanding or do they need a fence?",
+            "answer": "<p>They are standalone cedar panels. Depending on height and site conditions we can build them with weighted bases, post anchors, or mounting brackets so they stand on their own — no existing fence required.</p>"
+          }
+        },
+        "faq2": {
+          "type": "faq",
+          "settings": {
+            "question": "What heights and widths can I get?",
+            "answer": "<p>Panels are made to measure. Common sizes are 4 ft and 6 ft wide at 6 ft tall, but we build taller, wider, and multi-panel runs to suit balconies, hot tub surrounds, and full property lines.</p>"
+          }
+        },
+        "faq3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can you screen a hot tub or balcony?",
+            "answer": "<p>Yes — these are two of the most common requests. We size panels to block specific sightlines while keeping the space open and airy, and we can build for wind exposure on upper-floor balconies.</p>"
+          }
+        },
+        "faq4": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you install, or is it pickup and delivery only?",
+            "answer": "<p>We offer workshop pickup and delivery across Greater Vancouver. Installation is available depending on location and the scope of the project — let us know your site and we will confirm.</p>"
+          }
+        }
+      },
+      "block_order": ["tier1", "tier2", "tier3", "faq1", "faq2", "faq3", "faq4"]
+    }
+  },
+  "order": ["main"]
+}

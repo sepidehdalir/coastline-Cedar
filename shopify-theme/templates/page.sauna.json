@@ -1,0 +1,65 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service",
+      "settings": {
+        "eyebrow": "Saunas",
+        "h1": "Custom Outdoor Cedar Saunas in Vancouver",
+        "fallback_asset": "service-outdoor-sauna.jpg",
+        "intro": "Built-to-order outdoor cedar saunas for backyards, cabins, and wellness spaces across Greater Vancouver — designed with a clean, modern West Coast look and built locally.",
+        "body_heading": "About our custom outdoor saunas",
+        "cta_label": "Request a Sauna Build Quote"
+      },
+      "blocks": {
+        "tier1": {
+          "type": "tier",
+          "settings": {
+            "name": "Outdoor cedar sauna — starting package",
+            "original_price": "$8,500",
+            "sale_price": "$5,100",
+            "note": "Starting package only. Final quote depends on size, heater, site access, electrical, and finishing details."
+          }
+        },
+        "faq1": {
+          "type": "faq",
+          "settings": {
+            "question": "How much does a custom outdoor sauna cost?",
+            "answer": "<p>Starting packages begin around the figure shown above, but the final price depends on size, heater type, insulation, electrical requirements, permits, and site access. We provide a firm quote after reviewing your details and site.</p>"
+          }
+        },
+        "faq2": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you handle the electrical and permits?",
+            "answer": "<p>Electrical work, permits, and heater installation may require licensed trades depending on the scope of your project. We coordinate the cedar build and outline exactly what specialized trades or approvals your project needs.</p>"
+          }
+        },
+        "faq3": {
+          "type": "faq",
+          "settings": {
+            "question": "What sizes do you build?",
+            "answer": "<p>From compact small outdoor saunas suited to tighter lots up to larger custom sauna rooms. Layout is built to order around your space and how many people you want it to seat.</p>"
+          }
+        },
+        "faq4": {
+          "type": "faq",
+          "settings": {
+            "question": "How does the quote process work?",
+            "answer": "<p>Send us your space details and a few photos. We review size, heater options, site access, and finishing, then come back with a starting package and a path to a firm quote. A site review may be needed for accurate pricing.</p>"
+          }
+        }
+      },
+      "block_order": ["tier1", "faq1", "faq2", "faq3", "faq4"]
+    }
+  },
+  "order": ["main"]
+}

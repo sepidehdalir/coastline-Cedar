@@ -1,0 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-custom-planters",
+      "settings": {
+        "eyebrow": "Custom planters",
+        "heading": "Built to your exact dimensions, in cedar.",
+        "intro": "Awkward corner, specific architectural look, balcony that doesn't match standard sizes? We build custom cedar planters to spec for homes and businesses across Greater Vancouver. Free quote and sketch within 1–2 business days.",
+        "usecases_eyebrow": "What we build",
+        "usecases_heading": "Custom builds for every space.",
+        "measure_eyebrow": "How to measure",
+        "measure_heading": "A quick measuring guide.",
+        "measure_note": "Don't worry about perfect numbers. Send us your best measurements plus a photo and we'll confirm everything before we cut.",
+        "form_eyebrow": "Get a free quote",
+        "form_heading": "Send us your dimensions.",
+        "form_intro": "We'll reply with a sketch, materials list, finish recommendations, and a firm price — typically within 1–2 business days.",
+        "success_message": "Thanks — we received your request. We'll contact you shortly to confirm the details."
+      },
+      "blocks": {
+        "uc1": {
+          "type": "use_case",
+          "settings": {
+            "title": "Balcony & patio fit",
+            "description": "Slim, lightweight builds that fit standard condo elevators and balcony widths."
+          }
+        },
+        "uc2": {
+          "type": "use_case",
+          "settings": {
+            "title": "Privacy planters",
+            "description": "Tall planters with integrated cedar trellis screens for hot tubs, decks, or strata."
+          }
+        },
+        "uc3": {
+          "type": "use_case",
+          "settings": {
+            "title": "Commercial",
+            "description": "Restaurants, cafés, hotels, and storefronts. Volume pricing on 5+ matching planters."
+          }
+        },
+        "uc4": {
+          "type": "use_case",
+          "settings": {
+            "title": "Architectural match",
+            "description": "Stain and finish samples so your planters match siding, trim, or existing wood features."
+          }
+        },
+        "ms1": {
+          "type": "measure_step",
+          "settings": {
+            "label": "Length",
+            "description": "Measure the full length of the space, then subtract any clearance you want at either end."
+          }
+        },
+        "ms2": {
+          "type": "measure_step",
+          "settings": {
+            "label": "Width",
+            "description": "Measure how far the planter can come into the space. 12–14\" is typical for balconies; 18–24\" for patios."
+          }
+        },
+        "ms3": {
+          "type": "measure_step",
+          "settings": {
+            "label": "Height",
+            "description": "18\" feels low and modern; 24–30\" feels architectural; 36\"+ creates privacy."
+          }
+        },
+        "ms4": {
+          "type": "measure_step",
+          "settings": {
+            "label": "Send a photo",
+            "description": "A simple phone photo of the space helps us spec drainage, finish, and proportions accurately."
+          }
+        },
+        "fp1": {
+          "type": "form_promise",
+          "settings": { "text": "Free, no-obligation quote" }
+        },
+        "fp2": {
+          "type": "form_promise",
+          "settings": { "text": "Most standard builds ready in 3–5 business days" }
+        },
+        "fp3": {
+          "type": "form_promise",
+          "settings": { "text": "Delivery available across Metro Vancouver" }
+        },
+        "fp4": {
+          "type": "form_promise",
+          "settings": { "text": "Volume pricing on 5+ units" }
+        }
+      },
+      "block_order": ["uc1","uc2","uc3","uc4","ms1","ms2","ms3","ms4","fp1","fp2","fp3","fp4"]
+    }
+  },
+  "order": ["main"]
+}

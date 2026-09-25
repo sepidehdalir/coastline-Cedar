@@ -1,0 +1,76 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service-area",
+      "settings": {
+        "city": "North Vancouver",
+        "city_full": "North Vancouver, BC",
+        "short_locale": "North Van",
+        "h1": "Cedar Planter Boxes — North Vancouver",
+        "intro": "We're North Vancouver locals. Our workshop is on the North Shore, which means short delivery routes, fewer scheduling headaches, and the chance to stop by in person if you want to see a planter before you buy.",
+        "local_blurb": "North Van homes have a particular landscape: tall trees, sloped lots, a lot of weather, and a real love of natural materials. Cedar fits perfectly here — it ages to a soft silver-grey that matches the West Coast palette and stands up to the rain that defines our winters.",
+        "neighborhoods": "Lonsdale, Lower Lonsdale, Central Lonsdale, Edgemont, Capilano, Lynn Valley, Deep Cove, Seymour, Blueridge, and Upper Lonsdale.",
+        "delivery_note": "Free pickup by appointment in North Vancouver. Local Metro Vancouver delivery: CAD $25. Additional Canadian and U.S. shipping may be available."
+      },
+      "blocks": {
+        "uc1": {
+          "type": "use_case",
+          "settings": { "text": "Lonsdale townhouse front entries" }
+        },
+        "uc2": {
+          "type": "use_case",
+          "settings": { "text": "Edgemont and Capilano deck planters" }
+        },
+        "uc3": {
+          "type": "use_case",
+          "settings": { "text": "Lynn Valley raised vegetable gardens" }
+        },
+        "uc4": {
+          "type": "use_case",
+          "settings": { "text": "Deep Cove balcony planters" }
+        },
+        "fq1": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you deliver to apartments on the North Shore?",
+            "answer": "<p>Yes. Many of our balcony planters are sized to fit standard condo elevators. Let us know your building and we'll plan the delivery.</p>"
+          }
+        },
+        "fq2": {
+          "type": "faq",
+          "settings": {
+            "question": "Will cedar hold up in North Van rain?",
+            "answer": "<p>Western Cedar is one of the most rot-resistant softwoods in North America and is native to BC. Left untreated it weathers to a soft grey; sealed, it keeps the warm cedar tone for years.</p>"
+          }
+        },
+        "oa1": {
+          "type": "other_area",
+          "settings": { "city": "Vancouver", "url": "/pages/vancouver" }
+        },
+        "oa2": {
+          "type": "other_area",
+          "settings": { "city": "West Vancouver", "url": "/pages/west-vancouver" }
+        },
+        "oa3": {
+          "type": "other_area",
+          "settings": { "city": "Burnaby", "url": "/pages/burnaby" }
+        },
+        "oa4": {
+          "type": "other_area",
+          "settings": { "city": "Coquitlam", "url": "/pages/coquitlam" }
+        }
+      },
+      "block_order": ["uc1","uc2","uc3","uc4","fq1","fq2","oa1","oa2","oa3","oa4"]
+    }
+  },
+  "order": ["main"]
+}

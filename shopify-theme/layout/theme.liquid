@@ -30,6 +30,10 @@
     <link rel="canonical" href="{{ canonical_url }}">
   {%- endif -%}
 
+  {%- if template.name == 'cart' or template.name == 'search' or template.directory == 'customers' -%}
+    <meta name="robots" content="noindex,follow" id="cc-noindex">
+  {%- endif -%}
+
   <!-- Open Graph -->
   <meta property="og:site_name" content="{{ shop.name }}">
   <meta property="og:url" content="{{ canonical_url }}">

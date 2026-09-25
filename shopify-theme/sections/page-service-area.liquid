@@ -24,8 +24,14 @@
     <h1 class="reveal reveal--delay-1" style="margin-top:0.75rem; max-width:48rem;">{{ h1 }}</h1>
     <p class="reveal reveal--delay-2" style="margin-top:1.25rem; max-width:36rem; color:var(--color-text-muted);">{{ section.settings.intro }}</p>
     <div class="reveal reveal--delay-3" style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.75rem;">
-      <a href="{{ routes.collections_url }}" class="btn btn--primary btn--lg">Shop Planters →</a>
+      <a href="/collections/cedar-planters" class="btn btn--primary btn--lg">Shop Planters →</a>
       <a href="/pages/custom-planters" class="btn btn--secondary btn--lg">Request Custom Quote</a>
+    </div>
+    <div class="service-area-trust reveal reveal--delay-3" role="list" aria-label="Local ordering benefits">
+      <span role="listitem">Handcrafted in North Vancouver</span>
+      <span role="listitem">Fully assembled</span>
+      <span role="listitem">FREE local delivery $200+</span>
+      <span role="listitem">Most standard builds 3–5 business days</span>
     </div>
   </div>
 </div>
@@ -66,7 +72,8 @@
         <div style="padding:1.5rem; border:1.5px solid var(--color-border); border-radius:var(--radius-lg); background:var(--color-bone);">
           <p class="eyebrow">Delivery</p>
           <p style="margin-top:0.75rem; color:var(--color-text-muted); font-size:var(--text-sm); line-height:1.65;">{{ section.settings.delivery_note }}</p>
-          <a href="/pages/contact" class="btn btn--primary btn--full" style="margin-top:1.25rem;">Order Now →</a>
+          <a href="/collections/cedar-planters" class="btn btn--primary btn--full" style="margin-top:1.25rem;">Shop Planters →</a>
+          <a href="/pages/custom-planters" class="btn btn--secondary btn--full" style="margin-top:0.625rem;">Request Custom Size</a>
         </div>
       </aside>
 
@@ -141,7 +148,7 @@
   <div class="container" style="max-width:40rem; margin-inline:auto; text-align:center;">
     <p class="eyebrow reveal">Local to {{ short }}</p>
     <h2 class="reveal reveal--delay-1">Cedar planters delivered across {{ city }}.</h2>
-    <a href="{{ routes.collections_url }}" class="btn btn--primary btn--lg reveal reveal--delay-2" style="margin-top:1.5rem;">Shop Planters →</a>
+    <a href="/collections/cedar-planters" class="btn btn--primary btn--lg reveal reveal--delay-2" style="margin-top:1.5rem;">Shop Planters →</a>
   </div>
 </div>
 
@@ -155,6 +162,20 @@
     { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": {{ shop.url | append: '/pages/service-areas' | json }} },
     { "@type": "ListItem", "position": 3, "name": {{ city | json }}, "item": {{ request.origin | append: request.path | json }} }
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": {{ 'Cedar planter delivery and custom planter service in ' | append: city | json }},
+  "serviceType": "Handcrafted cedar planters and custom cedar planter builds",
+  "provider": { "@id": "{{ shop.url }}/#business" },
+  "areaServed": {
+    "@type": "City",
+    "name": {{ city | json }}
+  },
+  "url": {{ request.origin | append: request.path | json }}
 }
 </script>
 {%- if faq_blocks.size > 0 -%}
@@ -172,6 +193,21 @@
 {%- endif -%}
 
 <style>
+.service-area-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+.service-area-trust span {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: #fff;
+  font-size: var(--text-xs);
+  line-height: 1.3;
+  color: var(--color-text-muted);
+}
 .service-area-page__grid {
   display: grid;
   gap: 2.5rem;
@@ -195,6 +231,15 @@
 @media (min-width: 1024px) {
   [class*="service-area-page"] + div .reveal { grid-template-columns: repeat(3,1fr); }
 }
+@media (max-width: 639px) {
+  .service-area-trust {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .service-area-trust span { text-align: center; }
+  .service-area-page__grid { gap: 1.5rem; }
+  .service-area-page__grid ul[style*="repeat(2,1fr)"] { grid-template-columns: 1fr !important; }
+}
 </style>
 
 {% schema %}
@@ -209,7 +254,7 @@
     { "type": "textarea", "id": "intro", "label": "Page intro", "default": "We're North Vancouver locals. Our workshop is on the North Shore, which means short delivery routes, fewer scheduling headaches, and the chance to stop by in person if you want to see a planter before you buy." },
     { "type": "textarea", "id": "local_blurb", "label": "Local blurb paragraph", "default": "North Van homes have a particular landscape: tall trees, sloped lots, a lot of weather, and a real love of natural materials. Cedar fits perfectly here." },
     { "type": "textarea", "id": "neighborhoods", "label": "Neighbourhoods text", "default": "Lonsdale, Lower Lonsdale, Central Lonsdale, Edgemont, Capilano, Lynn Valley, Deep Cove, Seymour, Blueridge, and Upper Lonsdale." },
-    { "type": "textarea", "id": "delivery_note", "label": "Delivery note", "default": "Free pickup by appointment in North Vancouver. Local Metro Vancouver delivery: CAD $25. Additional Canadian and U.S. shipping may be available." },
+    { "type": "textarea", "id": "delivery_note", "label": "Delivery note", "default": "Free pickup by appointment in North Vancouver. FREE local delivery on orders $200+ in eligible Greater Vancouver areas; CAD $25 under $200. Additional Canadian shipping may be available by quote." },
     { "type": "collection", "id": "featured_collection", "label": "Featured products collection" }
   ],
   "blocks": [

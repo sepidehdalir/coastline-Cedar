@@ -27,6 +27,38 @@
   <div class="section" style="padding-top: 1.5rem;">
     <div class="container" style="max-width: 48rem;">
       <div class="rte article-body">{{ article.content }}</div>
+
+      {%- liquid
+        assign article_product = collections['cedar-planters'].products.first
+        if article.handle contains 'balcony'
+          assign article_product = all_products['long-cedar-balcony-planter']
+        elsif article.handle contains 'privacy'
+          assign article_product = all_products['privacy-cedar-planter']
+        elsif article.handle contains 'raised-garden'
+          assign article_product = all_products['raised-cedar-garden-planter']
+        elsif article.handle contains 'cedar-planters-canada'
+          assign article_product = all_products['raised-cedar-garden-planter']
+        elsif article.handle contains 'planter-guy'
+          assign article_product = all_products['raised-cedar-garden-planter']
+        elsif article.handle contains 'best-cedar-planters'
+          assign article_product = all_products['raised-cedar-garden-planter']
+        endif
+      -%}
+
+      <aside class="article-shop-cta" aria-label="Shop Coastline Cedar planters">
+        <p class="eyebrow">Ready to shop?</p>
+        <h2>Handcrafted cedar planters, built in North Vancouver.</h2>
+        <p>Explore standard sizes or request a made-to-measure build. Fully assembled, with CAD $25 local delivery in eligible Greater Vancouver areas.</p>
+        <div class="article-shop-cta__actions">
+          {%- if article_product != blank -%}
+            <a href="{{ article_product.url }}" class="btn btn--primary">View {{ article_product.title }} →</a>
+          {%- else -%}
+            <a href="/collections/cedar-planters" class="btn btn--primary">Shop Cedar Planters →</a>
+          {%- endif -%}
+          <a href="/collections/cedar-planters" class="btn btn--secondary">See All Planters</a>
+          <a href="/pages/custom-planters" class="article-shop-cta__text-link">Need a custom size? Request a quote →</a>
+        </div>
+      </aside>
     </div>
   </div>
 </article>
@@ -38,6 +70,38 @@
 .article-body img { border-radius: var(--radius-lg); margin-block: 1.5rem; }
 .article-body a { color: var(--color-cedar-700); }
 .article-body a:hover { text-decoration: underline; }
+.article-shop-cta {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bone);
+}
+.article-shop-cta h2 {
+  margin-top: 0.5rem;
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+}
+.article-shop-cta > p:last-of-type {
+  margin-top: 0.75rem;
+  color: var(--color-text-muted);
+}
+.article-shop-cta__actions {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+.article-shop-cta__text-link {
+  width: 100%;
+  font-size: var(--text-sm);
+  color: var(--color-cedar-700);
+  font-weight: var(--font-medium);
+}
+@media (max-width: 639px) {
+  .article-shop-cta { padding: 1.25rem; }
+  .article-shop-cta__actions .btn { width: 100%; }
+}
 </style>
 
 {% schema %}

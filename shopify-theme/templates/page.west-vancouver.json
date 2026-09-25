@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service-area",
+      "settings": {
+        "city": "West Vancouver",
+        "city_full": "West Vancouver, BC",
+        "short_locale": "West Van",
+        "h1": "Cedar Planter Boxes — West Vancouver",
+        "intro": "West Vancouver's large properties, mature trees, and architectural character call for planters that sit quietly in the landscape. We build refined cedar planters for Ambleside decks, Dundarave waterfront gardens, and British Properties homes.",
+        "local_blurb": "West Vancouver clients tend to want planters that complement an existing outdoor design — low-profile, clean lines, natural cedar tone. We build to match. Our workshop is on the North Shore, which means short delivery routes and easy access for oversized orders that wouldn't fit in a standard van.",
+        "neighborhoods": "Ambleside, Dundarave, Caulfeild, Horseshoe Bay, Cypress Park, British Properties, Chartwell, Sandy Cove, Eagle Harbour, and Gleneagles.",
+        "delivery_note": "Pickup by appointment in North Vancouver. Local delivery across eligible Greater Vancouver areas is CAD $25. Shipping outside Greater Vancouver may be available by quote."
+      },
+      "blocks": {
+        "uc1": {
+          "type": "use_case",
+          "settings": {
+            "text": "British Properties garden beds and borders"
+          }
+        },
+        "uc2": {
+          "type": "use_case",
+          "settings": {
+            "text": "Ambleside and Dundarave waterfront planters"
+          }
+        },
+        "uc3": {
+          "type": "use_case",
+          "settings": {
+            "text": "Caulfeild deck and patio planters"
+          }
+        },
+        "uc4": {
+          "type": "use_case",
+          "settings": {
+            "text": "Cypress Park raised vegetable gardens"
+          }
+        },
+        "fq1": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you deliver to steep-driveway properties in the British Properties?",
+            "answer": "<p>Yes. We're familiar with North Shore delivery logistics, including steep driveways, gated properties, and hillside sites. Let us know your address and any access notes when you place your order and we'll plan accordingly.</p>"
+          }
+        },
+        "fq2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can you build a cedar planter to match my existing outdoor furniture?",
+            "answer": "<p>We can build to any dimension and match a stain colour if you provide a colour reference. Our standard finish options are Natural, Clear Sealer, and Stain. Custom dimensions and finishes are available — contact us with the specifications and we'll come back with a quote.</p>"
+          }
+        },
+        "fq3": {
+          "type": "faq",
+          "settings": {
+            "question": "Will cedar planters hold up on a West Van waterfront property?",
+            "answer": "<p>Western Cedar is one of the most rot-resistant softwoods in BC. On salt-air or exposed waterfront sites, we recommend the clear sealer finish to slow weathering. With proper drainage, Western Cedar planters hold up well in coastal conditions.</p>"
+          }
+        },
+        "oa1": {
+          "type": "other_area",
+          "settings": {
+            "city": "North Vancouver",
+            "url": "/pages/north-vancouver"
+          }
+        },
+        "oa2": {
+          "type": "other_area",
+          "settings": {
+            "city": "Vancouver",
+            "url": "/pages/vancouver"
+          }
+        },
+        "oa3": {
+          "type": "other_area",
+          "settings": {
+            "city": "Burnaby",
+            "url": "/pages/burnaby"
+          }
+        },
+        "oa4": {
+          "type": "other_area",
+          "settings": {
+            "city": "Coquitlam",
+            "url": "/pages/coquitlam"
+          }
+        }
+      },
+      "block_order": [
+        "uc1",
+        "uc2",
+        "uc3",
+        "uc4",
+        "fq1",
+        "fq2",
+        "fq3",
+        "oa1",
+        "oa2",
+        "oa3",
+        "oa4"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

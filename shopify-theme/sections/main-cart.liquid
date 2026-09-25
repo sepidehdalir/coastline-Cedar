@@ -3,16 +3,9 @@
     <h1>{{ 'cart.title' | t }}</h1>
 
     {%- if cart.item_count > 0 -%}
-      {%- assign cc_free_delivery_threshold = 20000 -%}
-      {%- assign cc_amount_to_free_delivery = cc_free_delivery_threshold | minus: cart.total_price -%}
       <div class="cc-cart-delivery" aria-live="polite">
-        {%- if cart.total_price >= cc_free_delivery_threshold -%}
-          <p class="cc-cart-delivery__title">✓ You qualify for FREE local delivery</p>
-          <p class="cc-cart-delivery__sub">On eligible Greater Vancouver orders. Free pickup in North Vancouver is also available.</p>
-        {%- else -%}
-          <p class="cc-cart-delivery__title">Add {{ cc_amount_to_free_delivery | money }} more for FREE local delivery</p>
-          <p class="cc-cart-delivery__sub">On eligible Greater Vancouver orders. Orders under $200: CAD $25 local delivery.</p>
-        {%- endif -%}
+        <p class="cc-cart-delivery__title">Local delivery: CAD $25</p>
+        <p class="cc-cart-delivery__sub">Available in eligible Greater Vancouver areas. Free pickup in North Vancouver is also available.</p>
       </div>
       {%- form 'cart', cart, id: 'CartForm' -%}
         <div class="cart-items" style="margin-top: 2rem;">

@@ -11,7 +11,7 @@
         "secondary_label": "Request a Custom Size",
         "pill_1": "Handcrafted Locally",
         "pill_2": "Fully Assembled",
-        "pill_3": "Free Delivery $200+",
+        "pill_3": "Local Delivery $25",
         "pill_4": "Ready in 3–5 Days",
         "show_price_badge": false,
         "badge_price": "$119",
@@ -190,7 +190,7 @@
           "type": "step",
           "settings": {
             "title": "Pickup or delivery",
-            "description": "Free pickup by appointment in North Vancouver. Free local delivery on orders $200+ in eligible Greater Vancouver areas; CAD $25 under $200."
+            "description": "Free pickup by appointment in North Vancouver. Local delivery in eligible Greater Vancouver areas: CAD $25."
           }
         }
       },
@@ -391,7 +391,7 @@
           "type": "faq",
           "settings": {
             "question": "Do you deliver in Greater Vancouver?",
-            "answer": "<p>Yes. We deliver across North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Coquitlam, Port Moody, New Westminster, Surrey, Delta, and Langley. Free local delivery is available on orders $200+ in eligible Greater Vancouver areas; orders under $200 are CAD $25. Pickup by appointment in North Vancouver is free.</p>"
+            "answer": "<p>Yes. We deliver across North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Coquitlam, Port Moody, New Westminster, Surrey, Delta, and Langley. Local delivery is CAD $25 in eligible Greater Vancouver areas. Pickup by appointment in North Vancouver is free.</p>"
           }
         },
         "q5": {
@@ -416,7 +416,7 @@
       "settings": {
         "eyebrow": "Ready to order?",
         "heading": "Handcrafted cedar planters, delivered fully assembled.",
-        "body": "Shop standard sizes or request a custom build to your exact dimensions. Most standard builds are ready in 3–5 business days, with free local delivery on orders $200+ in eligible Greater Vancouver areas.",
+        "body": "Shop standard sizes or request a custom build to your exact dimensions. Most standard builds are ready in 3–5 business days, with CAD $25 local delivery in eligible Greater Vancouver areas.",
         "primary_label": "Shop Handcrafted Planters",
         "secondary_label": "Request a Custom Size"
       }

@@ -9,10 +9,10 @@
  */
 {
   "current": {
-    "site_delivery_policy": "Free pickup by appointment in North Vancouver. FREE local delivery on orders $200+ in eligible Greater Vancouver areas; CAD $25 under $200.",
+    "site_delivery_policy": "Free pickup by appointment in North Vancouver. Local delivery in eligible Greater Vancouver areas: CAD $25.",
     "promo_active": false,
     "promo_end_label": "July 31, 2026",
-    "site_announcement": "Fully Assembled · Free Local Delivery $200+ · Ready in 3–5 Business Days",
+    "site_announcement": "Fully Assembled · Local Delivery CAD $25 · Ready in 3–5 Business Days",
     "welcome_popup_enabled": true,
     "colors": {}
   },

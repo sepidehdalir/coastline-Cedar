@@ -236,7 +236,7 @@
             {%- if ships_na -%}
               {{ settings.site_delivery_policy }}
             {%- else -%}
-              Local delivery across eligible Greater Vancouver areas: FREE on orders CAD $200+; CAD $25 under $200. Pickup by appointment in North Vancouver.
+              Local delivery across eligible Greater Vancouver areas: CAD $25. Pickup by appointment in North Vancouver.
             {%- endif -%}
           </p>
         </div>
@@ -245,7 +245,7 @@
           <ul class="buy-trust" role="list" aria-label="Product highlights">
             <li class="buy-trust__item">Fully Assembled</li>
             <li class="buy-trust__item">Handcrafted in North Vancouver</li>
-            <li class="buy-trust__item">Free Local Delivery $200+</li>
+            <li class="buy-trust__item">Local Delivery CAD $25</li>
             <li class="buy-trust__item">3-Year Warranty</li>
           </ul>
         {%- endunless -%}
@@ -365,7 +365,7 @@
           {%- unless template.suffix == 'conversion' -%}
             <div class="cc-buy-assurances" aria-label="Order assurances">
               <p><strong>Made to order.</strong> Most standard builds are ready in 3–5 business days.</p>
-              <p><strong>Delivery:</strong> FREE locally on orders $200+ in eligible Greater Vancouver areas; CAD $25 under $200. Pickup in North Vancouver is free.</p>
+              <p><strong>Delivery:</strong> CAD $25 in eligible Greater Vancouver areas. Pickup in North Vancouver is free.</p>
               <p><strong>Fully assembled.</strong> Your planter arrives ready to use — no flat-pack assembly required.</p>
               <p><strong>Warranty:</strong> Eligible products include our 3-Year Limited Structural Workmanship Warranty. <a href="/pages/warranty">View coverage →</a></p>
             </div>
@@ -379,9 +379,9 @@
             <li>Handcrafted in Canada from premium-selected Western Cedar</li>
             <li>Custom sizing available for residential &amp; commercial spaces</li>
             {%- if ships_na -%}
-              <li>Greater Vancouver delivery: FREE on orders CAD $200+ · CAD $25 under $200 · Canada shipping by quote</li>
+              <li>Greater Vancouver delivery: CAD $25 · Canada shipping by quote</li>
             {%- else -%}
-              <li>Local delivery across eligible Greater Vancouver areas: FREE on orders CAD $200+; CAD $25 under $200</li>
+              <li>Local delivery across eligible Greater Vancouver areas: CAD $25</li>
             {%- endif -%}
           </ul>
           {%- if ships_na -%}
@@ -444,7 +444,7 @@
           {%- if ships_na -%}
             <p>{{ settings.site_delivery_policy }}</p>
           {%- else -%}
-            <p>Local delivery across eligible Greater Vancouver areas: FREE on orders CAD $200+; CAD $25 under $200. Pickup by appointment in North Vancouver.</p>
+            <p>Local delivery across eligible Greater Vancouver areas: CAD $25. Pickup by appointment in North Vancouver.</p>
           {%- endif -%}
           <p style="margin-top:0.25rem; color:var(--color-text-faint); font-size:var(--text-xs);">Workshop in North Vancouver · {{ settings.site_hours }}</p>
           {%- if settings.site_phone != blank -%}
@@ -507,7 +507,7 @@
       <aside>
         <h3 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:var(--font-semibold);">Questions about this planter</h3>
         <div class="accordion" style="margin-top:1rem;">
-          {%- assign product_faqs = 'Is this size in stock?|We build to order. Most standard builds are ready in 3–5 business days after order details are confirmed.,Can I get this in a different size?|Yes. Send us the dimensions you need and we will quote a custom version.,How does delivery work?|Pickup by appointment in North Vancouver. Local delivery across eligible Greater Vancouver areas: FREE on orders CAD $200+; CAD $25 under $200. Shipping outside Greater Vancouver may be available by quote.,Do you assemble on delivery?|Yes — planters arrive fully assembled and ready to fill with soil.' | split: ',' -%}
+          {%- assign product_faqs = 'Is this size in stock?|We build to order. Most standard builds are ready in 3–5 business days after order details are confirmed.,Can I get this in a different size?|Yes. Send us the dimensions you need and we will quote a custom version.,How does delivery work?|Pickup by appointment in North Vancouver. Local delivery across eligible Greater Vancouver areas: CAD $25. Shipping outside Greater Vancouver may be available by quote.,Do you assemble on delivery?|Yes — planters arrive fully assembled and ready to fill with soil.' | split: ',' -%}
           {%- for faq in product_faqs -%}
             {%- assign parts = faq | split: '|' -%}
             <div class="accordion__item">

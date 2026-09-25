@@ -1,22 +1,13 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
         "eyebrow": "Handcrafted in North Vancouver, British Columbia",
-        "heading": "Handcrafted Cedar Planters, Built One at a Time in North Vancouver.",
-        "heading_accent": "Built One at a Time",
-        "subtext": "Hand-built premium Western Cedar planters in standard and custom sizes. Made to order, fully assembled, and available for pickup or local delivery across Greater Vancouver.",
-        "primary_label": "Shop Handcrafted Planters",
+        "heading": "Handcrafted Cedar Planters, Built in North Vancouver.",
+        "heading_accent": "Built in North Vancouver",
+        "subtext": "Premium Western Cedar planters, fully assembled and made to order. Standard sizes and custom builds for homes and businesses across Greater Vancouver.",
+        "primary_label": "Shop Cedar Planters",
         "secondary_label": "Request a Custom Size",
         "pill_1": "Handcrafted Locally",
         "pill_2": "Fully Assembled",
@@ -25,7 +16,9 @@
         "show_price_badge": false,
         "badge_price": "$119",
         "badge_sale_price": "",
-        "badge_note": "Cedar planters · Pickup or delivery across Metro Vancouver"
+        "badge_note": "Cedar planters · Pickup or delivery across Metro Vancouver",
+        "primary_url": "/collections/cedar-planters",
+        "secondary_url": "/pages/custom-planters"
       }
     },
     "featured_collection": {

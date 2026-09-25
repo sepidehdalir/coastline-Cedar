@@ -40,7 +40,7 @@
     <link rel="canonical" href="{{ canonical_url }}">
   {%- endif -%}
 
-  {%- if template.name == 'cart' or template.name == 'search' or template.directory == 'customers' -%}
+  {%- if template.name == 'cart' or template.name == 'search' or template.directory == 'customers' or page.handle == 'data-sharing-opt-out' -%}
     <meta name="robots" content="noindex,follow" id="cc-noindex">
   {%- endif -%}
 

@@ -101,8 +101,21 @@
         {%- if settings.site_phone != blank -%}
           <a href="{{ settings.site_phone_href }}" class="site-header__phone">{{ settings.site_phone }}</a>
         {%- endif -%}
-        <a href="{{ routes.root_url }}pages/contact" class="btn btn--primary btn--sm">
-          {{ section.settings.cta_label | default: 'Order Now' }}
+        <a href="/collections/cedar-planters" class="btn btn--primary btn--sm">
+          Shop Planters
+        </a>
+        <a href="{{ routes.cart_url }}" class="site-header__cart" aria-label="Cart{% if cart.item_count > 0 %}, {{ cart.item_count }} items{% endif %}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3h2l2.2 10.2a2 2 0 002 1.6h7.8a2 2 0 002-1.6L21 6H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+          {%- if cart.item_count > 0 -%}<span class="site-header__cart-count">{{ cart.item_count }}</span>{%- endif -%}
+        </a>
+      </div>
+
+      <!-- Mobile quick actions -->
+      <div class="site-header__mobile-utils">
+        <a href="/collections/cedar-planters" class="site-header__mobile-shop">Shop</a>
+        <a href="{{ routes.cart_url }}" class="site-header__mobile-cart" aria-label="Cart{% if cart.item_count > 0 %}, {{ cart.item_count }} items{% endif %}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3h2l2.2 10.2a2 2 0 002 1.6h7.8a2 2 0 002-1.6L21 6H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+          {%- if cart.item_count > 0 -%}<span class="site-header__cart-count">{{ cart.item_count }}</span>{%- endif -%}
         </a>
       </div>
 
@@ -186,8 +199,11 @@
 
     {%- endfor -%}
 
-    <a href="{{ routes.root_url }}pages/contact" class="btn btn--primary btn--full" style="margin-top: 0.5rem;">
-      {{ section.settings.cta_label | default: 'Order Now' }}
+    <a href="/collections/cedar-planters" class="btn btn--primary btn--full" style="margin-top: 0.75rem;">
+      Shop Cedar Planters
+    </a>
+    <a href="/pages/custom-planters" class="btn btn--secondary btn--full" style="margin-top: 0.5rem;">
+      Request a Custom Size
     </a>
   </div>
 </nav>
@@ -220,6 +236,11 @@
   color: var(--color-text);
 }
 
+@media (max-width: 639px) {
+  .site-header__inner { gap: 0.45rem; padding-block: 0.55rem; }
+  .site-header__logo img { width: 132px; }
+}
+@media (min-width: 640px) and (max-width: 767px) { .site-header__logo img { width: 155px; } }
 @media (min-width: 768px) { .site-header__logo img { width: 210px; } }
 
 /* Desktop nav */
@@ -303,6 +324,56 @@
 }
 
 .site-header__phone:hover { color: var(--color-text); }
+
+.site-header__cart,
+.site-header__mobile-cart {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text);
+  background: var(--color-cream);
+}
+.site-header__cart-count {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.2rem;
+  min-width: 1.05rem;
+  height: 1.05rem;
+  padding: 0 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--color-forest-600);
+  color: var(--color-cream);
+  font-size: 0.62rem;
+  line-height: 1;
+  font-weight: var(--font-semibold);
+}
+.site-header__mobile-utils {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+.site-header__mobile-shop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0 0.85rem;
+  border-radius: var(--radius-full);
+  background: var(--color-charcoal-900);
+  color: var(--color-cream);
+  font-size: 0.8rem;
+  font-weight: var(--font-semibold);
+}
+@media (min-width: 1024px) { .site-header__mobile-utils { display: none; } }
 
 /* Hamburger */
 .site-header__hamburger {

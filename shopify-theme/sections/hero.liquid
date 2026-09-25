@@ -1,0 +1,226 @@
+<section class="hero grain section--cream">
+  <div class="container">
+    <div class="hero__grid">
+
+      <div class="hero__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow hero__eyebrow reveal">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+
+        {%- liquid
+          assign hero_heading = section.settings.heading | default: 'Cedar planter boxes, built locally for Greater Vancouver.'
+          assign hero_accent  = section.settings.heading_accent | default: 'built locally'
+          assign heading_parts = hero_heading | split: hero_accent
+        -%}
+        <h1 class="hero__heading reveal reveal--delay-1">
+          {{ heading_parts[0] }}<span class="hero__heading-accent">{{ hero_accent }}</span>{{ heading_parts[1] }}
+        </h1>
+
+        {%- if section.settings.subtext != blank -%}
+          <p class="hero__subtext reveal reveal--delay-2">{{ section.settings.subtext }}</p>
+        {%- endif -%}
+
+        <div class="hero__ctas reveal reveal--delay-3">
+          {%- if section.settings.primary_label != blank -%}
+            <a href="{{ section.settings.primary_url | default: routes.collections_url }}" class="btn btn--primary btn--lg">
+              {{ section.settings.primary_label }} →
+            </a>
+          {%- endif -%}
+          {%- if section.settings.secondary_label != blank -%}
+            <a href="{{ section.settings.secondary_url | default: '/pages/custom-planters' }}" class="btn btn--secondary btn--lg">
+              {{ section.settings.secondary_label }}
+            </a>
+          {%- endif -%}
+        </div>
+
+        <ul class="hero__pills reveal reveal--delay-4" role="list" aria-label="Key features">
+          {%- for i in (1..4) -%}
+            {%- assign pill_key = 'pill_' | append: i -%}
+            {%- if section.settings[pill_key] != blank -%}
+              <li class="hero__pill">
+                <span class="hero__pill-dot" aria-hidden="true"></span>
+                {{ section.settings[pill_key] }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="hero__media reveal reveal--delay-2">
+        <div class="hero__image-frame img-zoom-wrap media-wrapper aspect-4-5">
+          {%- if section.settings.image != blank -%}
+            <img
+              src="{{ section.settings.image | image_url: width: 900 }}"
+              srcset="{{ section.settings.image | image_url: width: 450 }} 450w,
+                      {{ section.settings.image | image_url: width: 900 }} 900w"
+              sizes="(min-width: 1024px) 40vw, 90vw"
+              alt="{{ section.settings.image.alt | default: 'Hand-built Western Cedar planter box' }}"
+              width="{{ section.settings.image.width }}"
+              height="{{ section.settings.image.height }}"
+              loading="eager"
+              fetchpriority="high"
+              class="img-cover"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'product-hero-planter.png' | asset_url }}"
+              alt="Hand-built Western Cedar planter box with greenery on a patio"
+              width="900"
+              height="1125"
+              loading="eager"
+              fetchpriority="high"
+              class="img-cover"
+            >
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.show_price_badge -%}
+          <div class="hero__badge reveal reveal--delay-4" aria-label="Starting price">
+            {%- if settings.promo_active and section.settings.badge_sale_price != blank -%}
+              <p class="price__starting-from">Starting from</p>
+              <div class="price-block">
+                {%- if section.settings.badge_price != blank -%}
+                  <span class="price__original--strikethrough">{{ section.settings.badge_price }}</span>
+                {%- endif -%}
+                <span class="price__sale">{{ section.settings.badge_sale_price }}</span>
+                <span class="price__discount-badge">{{ settings.promo_label }}</span>
+              </div>
+            {%- elsif section.settings.badge_price != blank -%}
+              <p class="price__starting-from">Starting from</p>
+              <p class="price__original" style="font-size:1.5rem;">{{ section.settings.badge_price }}</p>
+            {%- endif -%}
+            {%- if section.settings.badge_note != blank -%}
+              <p class="hero__badge-note">{{ section.settings.badge_note }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.hero { overflow: hidden; background-color: var(--color-cream); }
+
+.hero__grid {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: 5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero__grid { grid-template-columns: 7fr 5fr; gap: 3.5rem; padding-block: 7rem; }
+}
+
+.hero__eyebrow { margin-bottom: 1rem; }
+
+.hero__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+  font-weight: var(--font-semibold);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.hero__heading-accent { color: var(--color-cedar-600); }
+
+.hero__subtext {
+  margin-top: 1.5rem;
+  max-width: 36rem;
+  font-size: clamp(var(--text-base), 1.5vw, var(--text-lg));
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+
+.hero__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin-top: 2.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.hero__pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.hero__pill-dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-forest-500);
+  flex-shrink: 0;
+}
+
+.hero__media { position: relative; }
+
+.hero__image-frame {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+  overflow: hidden;
+}
+
+.hero__badge {
+  display: none;
+  position: absolute;
+  bottom: -1.25rem;
+  left: -1.25rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--color-cream);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  min-width: 14rem;
+}
+
+@media (min-width: 768px) { .hero__badge { display: block; } }
+
+.hero__badge-note {
+  margin-top: 0.375rem;
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  line-height: 1.4;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Hero",
+  "limit": 1,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "Hand-built in North Vancouver" },
+    { "type": "text", "id": "heading", "label": "Heading text", "default": "Cedar planter boxes, built locally for Greater Vancouver." },
+    { "type": "text", "id": "heading_accent", "label": "Accent phrase (cedar colour)", "default": "built locally", "info": "Must appear exactly in the heading text." },
+    { "type": "textarea", "id": "subtext", "label": "Subtitle", "default": "Hand-built premium Western Cedar planters in popular standard sizes and made-to-measure custom builds. For patios, balconies, gardens, restaurants, and storefronts across the Lower Mainland." },
+    { "type": "header", "content": "Primary CTA" },
+    { "type": "text", "id": "primary_label", "label": "Primary button label", "default": "Shop Planters" },
+    { "type": "url", "id": "primary_url", "label": "Primary button URL" },
+    { "type": "header", "content": "Secondary CTA" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "Request a Custom Size" },
+    { "type": "url", "id": "secondary_url", "label": "Secondary button URL" },
+    { "type": "header", "content": "Trust pills" },
+    { "type": "text", "id": "pill_1", "label": "Trust pill 1", "default": "Western Cedar" },
+    { "type": "text", "id": "pill_2", "label": "Trust pill 2", "default": "Local delivery" },
+    { "type": "text", "id": "pill_3", "label": "Trust pill 3", "default": "Custom sizes" },
+    { "type": "text", "id": "pill_4", "label": "Trust pill 4", "default": "Workshop pickup" },
+    { "type": "header", "content": "Hero image" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "header", "content": "Price badge" },
+    { "type": "checkbox", "id": "show_price_badge", "label": "Show price badge", "default": true },
+    { "type": "text", "id": "badge_price", "label": "Original price", "default": "$129" },
+    { "type": "text", "id": "badge_sale_price", "label": "Sale price (shown when promo active)", "default": "$77" },
+    { "type": "text", "id": "badge_note", "label": "Badge footnote", "default": "Patio planters · Pickup or delivery across Metro Vancouver" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

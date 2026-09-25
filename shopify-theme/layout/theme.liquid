@@ -14,18 +14,26 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ 'favicon-180x180.png' | asset_url }}">
   {%- endif -%}
 
-  <title>
-    {%- if page_title == shop.name -%}
-      Coastline Cedar | Handmade Cedar Planters in Vancouver
-    {%- elsif page_title contains 'Coastline Cedar' -%}
-      {{ page_title }}
-    {%- else -%}
-      {{ page_title }} | Coastline Cedar
-    {%- endif -%}
-  </title>
+  {%- liquid
+    assign cc_meta_title = page_title
+    assign cc_meta_description = page_description
 
-  {%- if page_description -%}
-    <meta name="description" content="{{ page_description | escape }}">
+    if template.name == 'index'
+      assign cc_meta_title = 'Cedar Planter Boxes Vancouver | Coastline Cedar'
+      assign cc_meta_description = 'Handcrafted Western Cedar planter boxes, raised garden beds and custom planters built in North Vancouver. Fully assembled with CAD $25 local delivery in eligible Greater Vancouver areas.'
+    elsif page_title == shop.name
+      assign cc_meta_title = 'Coastline Cedar | Handmade Cedar Planters in Vancouver'
+    elsif page_title contains 'Coastline Cedar'
+      assign cc_meta_title = page_title
+    else
+      assign cc_meta_title = page_title | append: ' | Coastline Cedar'
+    endif
+  -%}
+
+  <title>{{ cc_meta_title }}</title>
+
+  {%- if cc_meta_description != blank -%}
+    <meta name="description" content="{{ cc_meta_description | escape }}">
   {%- endif -%}
 
   {%- if canonical_url != blank -%}
@@ -39,11 +47,11 @@
   <!-- Open Graph -->
   <meta property="og:site_name" content="{{ shop.name }}">
   <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:title" content="{{ cc_meta_title | escape }}">
   <meta property="og:type" content="{% if template.name == 'product' %}product{% else %}website{% endif %}">
   <meta property="og:locale" content="en_CA">
-  {%- if page_description -%}
-    <meta property="og:description" content="{{ page_description | escape }}">
+  {%- if cc_meta_description != blank -%}
+    <meta property="og:description" content="{{ cc_meta_description | escape }}">
   {%- endif -%}
   {%- if settings.share_image != blank -%}
     <meta property="og:image" content="{{ settings.share_image | image_url: width: 1200 }}">
@@ -53,9 +61,9 @@
   {%- endif -%}
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ page_title | escape }}">
-  {%- if page_description -%}
-    <meta name="twitter:description" content="{{ page_description | escape }}">
+  <meta name="twitter:title" content="{{ cc_meta_title | escape }}">
+  {%- if cc_meta_description != blank -%}
+    <meta name="twitter:description" content="{{ cc_meta_description | escape }}">
   {%- endif -%}
 
   <!-- Fonts loaded via Shopify font_face — no external preconnect needed -->
@@ -152,6 +160,38 @@
     }
   }
   </script>
+
+  {%- if template.name == 'index' -%}
+    {%- assign cc_home_collection = collections['cedar-planters'] -%}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "{{ shop.url }}/#homepage",
+      "url": {{ shop.url | json }},
+      "name": {{ cc_meta_title | json }},
+      "description": {{ cc_meta_description | json }},
+      "isPartOf": { "@id": "{{ shop.url }}/#website" },
+      "about": { "@id": "{{ shop.url }}/#business" },
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Best-Selling Cedar Planters",
+        "itemListElement": [
+          {%- if cc_home_collection != blank -%}
+            {%- for product in cc_home_collection.products limit: 4 -%}
+              {
+                "@type": "ListItem",
+                "position": {{ forloop.index }},
+                "url": {{ product.url | prepend: shop.url | json }},
+                "name": {{ product.title | json }}
+              }{% unless forloop.last %},{% endunless %}
+            {%- endfor -%}
+          {%- endif -%}
+        ]
+      }
+    }
+    </script>
+  {%- endif -%}
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name }}">

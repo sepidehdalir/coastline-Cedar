@@ -1,0 +1,164 @@
+{%- liquid
+  assign paginate_by = section.settings.products_per_page | default: 16
+-%}
+
+<div class="border-b section--cream">
+  <div class="container" style="padding-block: 4rem 5rem;">
+    <p class="eyebrow reveal">Shop</p>
+    <h1 class="reveal reveal--delay-1" style="margin-top:0.75rem;">
+      {{- collection.title | default: 'Cedar planter boxes for every space.' -}}
+    </h1>
+    <p class="reveal reveal--delay-2" style="margin-top:1.25rem; max-width:40rem; color:var(--color-text-muted);">
+      {%- if collection.description != blank -%}
+        {{ collection.description }}
+      {%- else -%}
+        Standard sizes covering balcony, patio, raised garden, and privacy use — plus made-to-measure custom builds. All hand-built in North Vancouver. Pickup by appointment or delivery across Metro Vancouver.
+      {%- endif -%}
+    </p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    {%- paginate collection.products by paginate_by -%}
+
+      {%- if collection.products_count > 0 -%}
+        <div class="collection-grid" style="--cols: {{ section.settings.columns | default: 4 }}">
+          {%- for product in collection.products -%}
+            {%- render 'product-card', product: product, columns: section.settings.columns -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <nav class="pagination" aria-label="Pagination" style="margin-top:3rem;">
+            {%- if paginate.previous -%}
+              <a href="{{ paginate.previous.url }}" class="btn btn--secondary" aria-label="Previous page">← Previous</a>
+            {%- endif -%}
+            <span class="pagination__info" aria-current="page">Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+            {%- if paginate.next -%}
+              <a href="{{ paginate.next.url }}" class="btn btn--secondary" aria-label="Next page">Next →</a>
+            {%- endif -%}
+          </nav>
+        {%- endif -%}
+
+      {%- else -%}
+        <div class="empty-state">
+          <p class="empty-state__title">No products found</p>
+          <p class="empty-state__body">Check back soon or <a href="/pages/contact" style="color:var(--color-cedar-700);">contact us</a> about a custom order.</p>
+          <a href="{{ routes.root_url }}" class="btn btn--primary" style="margin-top:1.5rem;">Return home</a>
+        </div>
+      {%- endif -%}
+
+    {%- endpaginate -%}
+  </div>
+</div>
+
+<!-- More custom cedar builds -->
+<section class="section section--bone">
+  <div class="container">
+    <p class="eyebrow reveal">Beyond planters</p>
+    <h2 class="reveal reveal--delay-1" style="margin-top:0.75rem;">More custom cedar builds</h2>
+    <p class="reveal reveal--delay-2" style="margin-top:1rem; max-width:40rem; color:var(--color-text-muted);">
+      Privacy panels, outdoor saunas, and handmade gates and fences — all hand-built in cedar across Greater Vancouver.
+    </p>
+    <div class="reveal reveal--delay-2" style="display:grid; gap:1.5rem; margin-top:2.5rem; grid-template-columns:1fr;">
+
+      <a href="/pages/cedar-privacy-panels-vancouver" class="service-card" style="display:flex; gap:1.5rem; align-items:center; padding:1.25rem; background:#fff; border:1.5px solid var(--color-border); border-radius:var(--radius-lg); text-decoration:none; color:inherit;">
+        <div style="width:120px; height:90px; flex-shrink:0; border-radius:var(--radius-md); overflow:hidden; background:var(--color-cedar-50);">
+          <img src="{{ 'service-privacy-panel-deck.jpg' | asset_url }}" alt="Cedar Privacy Panels" width="120" height="90" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div>
+          <h3 style="font-family:var(--font-display); font-size:var(--text-lg); font-weight:var(--font-semibold);">Cedar Privacy Panels</h3>
+          <p style="margin-top:0.375rem; font-size:var(--text-sm); color:var(--color-text-muted);">Cedar Privacy Panels — standalone screens for patios, balconies, hot tubs, and side yards. Custom heights and widths.</p>
+        </div>
+      </a>
+
+      <a href="/pages/custom-outdoor-saunas-vancouver" class="service-card" style="display:flex; gap:1.5rem; align-items:center; padding:1.25rem; background:#fff; border:1.5px solid var(--color-border); border-radius:var(--radius-lg); text-decoration:none; color:inherit;">
+        <div style="width:120px; height:90px; flex-shrink:0; border-radius:var(--radius-md); overflow:hidden; background:var(--color-cedar-50);">
+          <img src="{{ 'service-outdoor-sauna.jpg' | asset_url }}" alt="Custom Outdoor Saunas" width="120" height="90" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div>
+          <h3 style="font-family:var(--font-display); font-size:var(--text-lg); font-weight:var(--font-semibold);">Custom Outdoor Saunas</h3>
+          <p style="margin-top:0.375rem; font-size:var(--text-sm); color:var(--color-text-muted);">Built-to-order backyard cedar saunas with a modern West Coast look. Quoted after a site review.</p>
+        </div>
+      </a>
+
+      <a href="/pages/handmade-cedar-gates-fences-vancouver" class="service-card" style="display:flex; gap:1.5rem; align-items:center; padding:1.25rem; background:#fff; border:1.5px solid var(--color-border); border-radius:var(--radius-lg); text-decoration:none; color:inherit;">
+        <div style="width:120px; height:90px; flex-shrink:0; border-radius:var(--radius-md); overflow:hidden; background:var(--color-cedar-50);">
+          <img src="{{ 'service-cedar-gate-fence.jpg' | asset_url }}" alt="Cedar Gates and Fences" width="120" height="90" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div>
+          <h3 style="font-family:var(--font-display); font-size:var(--text-lg); font-weight:var(--font-semibold);">Cedar Gates &amp; Fences</h3>
+          <p style="margin-top:0.375rem; font-size:var(--text-sm); color:var(--color-text-muted);">Handmade cedar garden gates, side-yard gates, and custom fence panels. Built and finished locally.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Custom size CTA -->
+<section class="section">
+  <div class="container">
+    <div style="background:var(--color-bone); border-radius:var(--radius-lg); padding:2.5rem; display:grid; gap:2rem; align-items:center;" class="reveal">
+      <div>
+        <p class="eyebrow">Don't see the right size?</p>
+        <h2 style="margin-top:0.75rem; font-size:clamp(var(--text-2xl),3vw,var(--text-4xl));">Custom cedar planters, built to your dimensions.</h2>
+        <p style="margin-top:1rem; color:var(--color-text-muted); max-width:36rem;">Awkward space? Specific design? Architectural match? Send us your dimensions and a photo of the space — we'll come back with a sketch and quote in 1–2 business days.</p>
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.5rem;">
+          <a href="/pages/custom-planters" class="btn btn--primary">Request a Custom Quote →</a>
+          <a href="/pages/contact" class="btn btn--secondary">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Collection JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": {{ collection.title | json }},
+  "description": {{ collection.description | strip_html | default: 'Cedar planters and custom cedar builds in Greater Vancouver' | json }},
+  "url": {{ collection.url | prepend: shop.url | json }}
+}
+</script>
+
+<style>
+.collection-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .collection-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .collection-grid { grid-template-columns: repeat(var(--cols, 4), 1fr); } }
+.pagination { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+.pagination__info { font-size: var(--text-sm); color: var(--color-text-muted); }
+</style>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,204 @@
+<div class="border-b section--cream">
+  <div class="container" style="padding-block:4rem;">
+    <p class="eyebrow reveal">Order / contact</p>
+    <h1 class="reveal reveal--delay-1" style="margin-top:0.75rem; max-width:36rem;">Order a cedar build or request a quote.</h1>
+    <p class="reveal reveal--delay-2" style="margin-top:1.25rem; max-width:40rem; color:var(--color-text-muted);">
+      Tell us what you're looking for — cedar planters, privacy panels, outdoor saunas, gates and fences, or a custom cedar build. We'll confirm sizing, delivery, and pricing within one business day.
+    </p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Sidebar -->
+      <aside class="contact-sidebar reveal">
+        <p class="eyebrow">Get in touch</p>
+        <ul class="contact-info" role="list">
+          {%- if settings.site_phone != blank -%}
+            <li class="contact-info__item">
+              <span class="contact-info__label">Phone</span>
+              <a href="{{ settings.site_phone_href }}" class="contact-info__value">{{ settings.site_phone }}</a>
+            </li>
+          {%- endif -%}
+          {%- if settings.site_email != blank -%}
+            <li class="contact-info__item">
+              <span class="contact-info__label">Email</span>
+              <a href="mailto:{{ settings.site_email }}" class="contact-info__value">{{ settings.site_email }}</a>
+            </li>
+          {%- endif -%}
+          <li class="contact-info__item">
+            <span class="contact-info__label">Workshop</span>
+            <span class="contact-info__value">{{ settings.site_address_locality }}, {{ settings.site_address_region }}</span>
+            <span class="contact-info__sub">Pickup by appointment</span>
+          </li>
+          {%- if settings.site_hours != blank -%}
+            <li class="contact-info__item">
+              <span class="contact-info__label">Hours</span>
+              <span class="contact-info__value">{{ settings.site_hours }}</span>
+            </li>
+          {%- endif -%}
+        </ul>
+
+        <div class="info-box" style="margin-top:2rem;">
+          <p style="font-weight:var(--font-medium); color:var(--color-text); margin-bottom:0.375rem;">Service area</p>
+          <p>North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Coquitlam, Port Moody, New Westminster, Surrey, Delta, Langley.</p>
+          {%- if settings.site_delivery_policy != blank -%}
+            <p style="margin-top:0.375rem; color:var(--color-text-faint); font-size:var(--text-xs);">{{ settings.site_delivery_policy }}</p>
+          {%- endif -%}
+        </div>
+      </aside>
+
+      <!-- Full Order Form -->
+      <div class="reveal reveal--delay-1">
+        {%- form 'contact', id: 'OrderForm' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="form-success-box" role="alert">Thanks — we received your request. We'll contact you shortly to confirm the details.</div>
+          {%- else -%}
+            {%- if form.errors -%}
+              <div class="form-error-box" role="alert">{{ form.errors | default_errors }}</div>
+            {%- endif -%}
+
+            <div style="background:rgba(255,255,255,0.7); border:1.5px solid var(--color-border); border-radius:var(--radius-lg); padding:1.5rem; box-shadow:var(--shadow-soft);">
+
+              <div class="form-grid form-grid--2">
+                <div class="form-field">
+                  <label class="form-label" for="OrderName">Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="OrderName" name="contact[name]" required autocomplete="name" class="form-input" placeholder="Your name">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="OrderPhone">Phone</label>
+                  <input type="tel" id="OrderPhone" name="contact[phone]" autocomplete="tel" class="form-input" placeholder="(778) 000-0000">
+                </div>
+              </div>
+
+              <div class="form-grid form-grid--2" style="margin-top:1rem;">
+                <div class="form-field">
+                  <label class="form-label" for="OrderEmail">Email <span aria-hidden="true">*</span></label>
+                  <input type="email" id="OrderEmail" name="contact[email]" required autocomplete="email" class="form-input" placeholder="you@example.com">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="OrderCity">City</label>
+                  <select id="OrderCity" name="contact[city]" class="form-select">
+                    <option value="">Select…</option>
+                    <option>North Vancouver</option>
+                    <option>West Vancouver</option>
+                    <option>Vancouver</option>
+                    <option>Burnaby</option>
+                    <option>Richmond</option>
+                    <option>Coquitlam</option>
+                    <option>Port Moody</option>
+                    <option>Port Coquitlam</option>
+                    <option>New Westminster</option>
+                    <option>Surrey</option>
+                    <option>Delta</option>
+                    <option>Langley</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field" style="margin-top:1rem;">
+                <label class="form-label" for="OrderProjectType">Project type <span aria-hidden="true">*</span></label>
+                <select id="OrderProjectType" name="contact[project_type]" required class="form-select">
+                  <option value="">Select a project type…</option>
+                  <option>Cedar Planter</option>
+                  <option>Privacy Panel</option>
+                  <option>Outdoor Sauna</option>
+                  <option>Gate / Fence</option>
+                  <option>Custom Cedar Build</option>
+                </select>
+              </div>
+
+              <div class="form-grid form-grid--2" style="margin-top:1rem;">
+                <div class="form-field">
+                  <label class="form-label" for="OrderDimensions">Desired dimensions</label>
+                  <input type="text" id="OrderDimensions" name="contact[dimensions]" class="form-input" placeholder='e.g. 48" L × 20" W × 30" H'>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="OrderQuantity">Quantity</label>
+                  <input type="number" id="OrderQuantity" name="contact[quantity]" min="1" value="1" class="form-input">
+                </div>
+              </div>
+
+              <div class="form-grid form-grid--2" style="margin-top:1rem;">
+                <div class="form-field">
+                  <label class="form-label" for="OrderFulfilment">Pickup or delivery</label>
+                  <select id="OrderFulfilment" name="contact[fulfilment]" class="form-select" data-delivery-toggle>
+                    <option>Pickup</option>
+                    <option>Delivery</option>
+                    <option>Not sure</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="OrderFinish">Finish option</label>
+                  <select id="OrderFinish" name="contact[finish]" class="form-select">
+                    <option value="">Select…</option>
+                    <option>Natural (unfinished)</option>
+                    <option>Clear outdoor sealer</option>
+                    <option>Custom stain colour</option>
+                    <option>Not sure</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field" id="DeliveryAddressField" style="margin-top:1rem; display:none;">
+                <label class="form-label" for="OrderDeliveryAddress">Delivery address</label>
+                <input type="text" id="OrderDeliveryAddress" name="contact[delivery_address]" class="form-input" placeholder="Street, city, postal code">
+              </div>
+
+              <div class="info-box" style="margin-top:1rem;">
+                Photos help us quote accurately. Please email or text photos after submitting your request.
+              </div>
+
+              <div class="form-field" style="margin-top:1rem;">
+                <label class="form-label" for="OrderMessage">Message <span aria-hidden="true">*</span></label>
+                <textarea id="OrderMessage" name="contact[body]" required rows="5" class="form-textarea" placeholder="Tell us what you need, preferred size, delivery area, and any details."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--full" style="margin-top:1.25rem;">Send request</button>
+            </div>
+
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var toggle = document.getElementById('OrderFulfilment');
+  var field  = document.getElementById('DeliveryAddressField');
+  if (!toggle || !field) return;
+  function update() {
+    field.style.display = toggle.value === 'Delivery' ? 'block' : 'none';
+  }
+  toggle.addEventListener('change', update);
+  update();
+});
+</script>
+
+<style>
+.contact-layout {
+  display: grid;
+  gap: 3rem;
+}
+@media (min-width: 1024px) { .contact-layout { grid-template-columns: 4fr 8fr; } }
+
+.contact-info { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1rem; list-style: none; padding: 0; }
+.contact-info__item { display: flex; flex-direction: column; gap: 0.125rem; }
+.contact-info__label { font-size: var(--text-xs); letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-text-faint); }
+.contact-info__value { font-size: var(--text-base); color: var(--color-text); text-decoration: none; }
+.contact-info__value:hover { color: var(--color-cedar-700); }
+.contact-info__sub { font-size: var(--text-xs); color: var(--color-text-faint); }
+</style>
+
+{% schema %}
+{
+  "name": "Contact page",
+  "settings": []
+}
+{% endschema %}

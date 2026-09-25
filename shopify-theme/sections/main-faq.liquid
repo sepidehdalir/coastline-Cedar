@@ -1,0 +1,103 @@
+<!-- Full FAQ page section with FAQPage JSON-LD -->
+<div class="border-b section--cream">
+  <div class="container" style="max-width:48rem; padding-block:4rem;">
+    <p class="eyebrow reveal">FAQ</p>
+    <h1 class="reveal reveal--delay-1" style="margin-top:0.75rem;">{{ section.settings.heading | default: 'Cedar planter questions, answered.' }}</h1>
+    <p class="reveal reveal--delay-2" style="margin-top:1.25rem; color:var(--color-text-muted);">{{ section.settings.intro | default: 'Sizes, custom builds, materials, drainage, delivery across Greater Vancouver, and how to take care of cedar over time.' }}</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container" style="max-width:52rem; margin-inline:auto;">
+    <div class="accordion reveal" role="list">
+      {%- for block in section.blocks -%}
+        <div class="accordion__item" role="listitem" {{ block.shopify_attributes }}>
+          <button type="button" class="accordion__trigger" aria-expanded="false"
+            aria-controls="faq-{{ section.id }}-{{ forloop.index }}"
+            id="faqq-{{ section.id }}-{{ forloop.index }}">
+            <span>{{ block.settings.question }}</span>
+            <span class="accordion__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <div class="accordion__body" id="faq-{{ section.id }}-{{ forloop.index }}"
+            role="region" aria-labelledby="faqq-{{ section.id }}-{{ forloop.index }}">
+            {{ block.settings.answer }}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<div class="section section--bone" style="padding-block:3rem;">
+  <div class="container" style="max-width:48rem; margin-inline:auto; text-align:center;">
+    <h2 class="reveal">{{ section.settings.cta_heading | default: 'Still have questions?' }}</h2>
+    <p class="reveal reveal--delay-1" style="margin-top:0.75rem; color:var(--color-text-muted);">{{ section.settings.cta_body | default: 'Talk to us — we are happy to help.' }}</p>
+    <a href="/pages/contact" class="btn btn--primary btn--lg reveal reveal--delay-2" style="margin-top:1.5rem;">{{ section.settings.cta_label | default: 'Contact Us' }} →</a>
+  </div>
+</div>
+
+<!-- FAQPage JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for block in section.blocks -%}
+      {
+        "@type": "Question",
+        "name": {{ block.settings.question | json }},
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": {{ block.settings.answer | strip_html | json }}
+        }
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "FAQ page",
+  "limit": 1,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "H1 heading", "default": "Cedar planter questions, answered." },
+    { "type": "textarea", "id": "intro", "label": "Intro text", "default": "Sizes, custom builds, materials, drainage, delivery across Greater Vancouver, and how to take care of cedar over time." },
+    { "type": "text", "id": "cta_heading", "label": "Bottom CTA heading", "default": "Still have questions?" },
+    { "type": "textarea", "id": "cta_body", "label": "Bottom CTA body", "default": "Talk to us — we are happy to help." },
+    { "type": "text", "id": "cta_label", "label": "Bottom CTA button label", "default": "Contact Us" }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ page",
+      "blocks": [
+        { "type": "faq", "settings": { "question": "What sizes do you offer?", "answer": "<p>We have four standard sizes — balcony, patio, raised garden, and privacy — plus commercial project quotes and made-to-measure custom builds.</p>" } },
+        { "type": "faq", "settings": { "question": "Do you build custom sizes?", "answer": "<p>Yes. Custom is one of the things we do best. Send us the length, width, and height you need — plus a photo of the space — and we'll come back with a sketch, quote, and timeline within 1–2 business days.</p>" } },
+        { "type": "faq", "settings": { "question": "What wood do you use?", "answer": "<p>Kiln-dried Western Cedar, locally sourced. Western Cedar is naturally rot-resistant, contains natural oils that repel insects, and ages beautifully in our wet climate.</p>" } },
+        { "type": "faq", "settings": { "question": "Is cedar good for outdoor planters?", "answer": "<p>It's one of the best woods you can use outdoors. Cedar is rot-resistant without chemical treatment, holds up to our Pacific Northwest weather, and ages to a soft silver-grey if left untreated or keeps its warm tone if sealed.</p>" } },
+        { "type": "faq", "settings": { "question": "Do the planters have drainage?", "answer": "<p>Yes. Every planter is built with proper drainage gaps in the base. We can also customize drainage on request.</p>" } },
+        { "type": "faq", "settings": { "question": "Do you deliver in Greater Vancouver?", "answer": "<p>Yes. We deliver across North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Coquitlam, Port Moody, New Westminster, Surrey, Delta, and Langley. Free pickup by appointment in North Vancouver. Local delivery: CAD $25.</p>" } },
+        { "type": "faq", "settings": { "question": "Can I pick up?", "answer": "<p>Yes — pickup is available by appointment at our North Vancouver workshop. Just let us know when you place the order.</p>" } },
+        { "type": "faq", "settings": { "question": "How long does an order take?", "answer": "<p>Most standard builds are ready in 3–5 business days after order details are confirmed. For larger projects, the timeline depends on project size, measurements, site access, and installation scope.</p>" } },
+        { "type": "faq", "settings": { "question": "Do you offer bulk pricing?", "answer": "<p>Yes, for orders of 5+ matching planters. This is common for restaurants, cafés, strata properties, and townhouse complexes. Send us the details and we'll quote.</p>" } },
+        { "type": "faq", "settings": { "question": "Can restaurants or businesses order multiple planters?", "answer": "<p>Yes — this is a big part of our work. We build commercial-grade cedar planters for restaurants, cafés, hotels, retail storefronts, and strata properties across Greater Vancouver, with volume pricing on 5+ units.</p>" } },
+        { "type": "faq", "settings": { "question": "Do you stain or seal the planters?", "answer": "<p>We offer three finishes: natural (unfinished), clear outdoor sealer (preserves the warm cedar tone), and custom stain colour (your choice — confirmed before production).</p>" } },
+        { "type": "faq", "settings": { "question": "Are the planters suitable for balconies?", "answer": "<p>Yes. Our balcony planters are sized to fit standard condo balconies and built with reinforced bases for upper-floor use. We can size custom planters to fit standard elevator clearances.</p>" } },
+        { "type": "faq", "settings": { "question": "How do I maintain cedar planters?", "answer": "<p>Cedar is low-maintenance. Left natural, it weathers to a soft grey — no action needed. If you want to keep the warm cedar tone, re-apply a clear outdoor sealer every 1–2 years. Empty and clean the planter once a year in spring to extend life.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

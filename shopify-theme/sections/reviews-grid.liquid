@@ -1,0 +1,146 @@
+<section class="section reviews-grid">
+  <div class="container">
+    <div class="reviews-grid__header reveal">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="reviews-grid__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+      {%- if settings.site_google_reviews_url != blank -%}
+        <a href="{{ settings.site_google_reviews_url }}" target="_blank" rel="noopener noreferrer" class="btn btn--secondary" aria-label="View Google Reviews (opens in new tab)">
+          {{ section.settings.reviews_cta | default: 'View Google Reviews' }} →
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="reviews-grid__cards">
+      {%- for block in section.blocks -%}
+        <figure class="review-card reveal reveal--delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          <div class="review-card__stars" aria-label="{{ block.settings.rating }} out of 5 stars">
+            {%- for i in (1..5) -%}
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="{% if i <= block.settings.rating %}currentColor{% else %}none{% endif %}" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l2.9 6.9L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.1L12 2z"/></svg>
+            {%- endfor -%}
+          </div>
+          {%- if block.settings.review_text != blank -%}
+            <blockquote class="review-card__text">"{{ block.settings.review_text }}"</blockquote>
+          {%- endif -%}
+          <figcaption class="review-card__author">
+            {{ block.settings.reviewer_name }}
+            {%- if block.settings.date_label != blank -%}
+              <span class="review-card__date">· {{ block.settings.date_label }}</span>
+            {%- endif -%}
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.disclaimer != blank -%}
+      <p class="reviews-grid__disclaimer">{{ section.settings.disclaimer }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+.reviews-grid__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.reviews-grid__heading { margin-top: 0.75rem; }
+
+.reviews-grid__cards {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) { .reviews-grid__cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .reviews-grid__cards { grid-template-columns: repeat(4, 1fr); } }
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  margin: 0;
+}
+
+.review-card__stars {
+  display: flex;
+  gap: 0.125rem;
+  color: var(--color-cedar-500);
+}
+
+.review-card__text {
+  margin-top: 0.75rem;
+  flex: 1;
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  font-style: normal;
+}
+
+.review-card__author {
+  margin-top: 1rem;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+}
+
+.review-card__date {
+  font-weight: var(--font-normal);
+  color: var(--color-text-faint);
+}
+
+.reviews-grid__disclaimer {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+}
+</style>
+
+{% schema %}
+{
+  "name": "Reviews grid",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Trusted by local customers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Trusted by Local Customers" },
+    { "type": "text", "id": "reviews_cta", "label": "Google reviews CTA label", "default": "View Google Reviews" },
+    { "type": "text", "id": "disclaimer", "label": "Disclaimer", "default": "Reviews shown are real customer feedback from our Google Business Profile." }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "range", "id": "rating", "label": "Star rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "review_text", "label": "Review text", "default": "Very happy with our custom cedar planter. It was made quickly, delivered on time, and looks perfect on our deck." },
+        { "type": "text", "id": "reviewer_name", "label": "Reviewer name", "default": "Tina T." },
+        { "type": "text", "id": "date_label", "label": "Date label", "default": "a week ago" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews grid",
+      "blocks": [
+        { "type": "review", "settings": { "rating": 5, "review_text": "Very happy with our custom cedar planter. It was made quickly, delivered on time, and looks perfect on our deck.", "reviewer_name": "Tina T.", "date_label": "a week ago" } },
+        { "type": "review", "settings": { "rating": 5, "review_text": "Had some planters made and delivered and I'm very pleased with the outcome. Good communication too. Thanks!", "reviewer_name": "Kent MacWilliam", "date_label": "a week ago" } },
+        { "type": "review", "settings": { "rating": 5, "review_text": "Coastline made well crafted cedar planter boxes to our exact specs. High quality and the communication was fantastic!", "reviewer_name": "Christopher Markowsky", "date_label": "a week ago" } },
+        { "type": "review", "settings": { "rating": 5, "review_text": "Beautiful planters, well-made, fast service and free delivery. I highly recommend.", "reviewer_name": "Kate and Allison", "date_label": "a week ago" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

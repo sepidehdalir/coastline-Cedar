@@ -1,0 +1,33 @@
+<div class="page-header border-b section--cream">
+  <div class="container" style="padding-block: 4rem;">
+    <h1 class="page-header__title">{{ page.title }}</h1>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="page-content rte">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+
+<style>
+.page-header__title { margin-top: 0; }
+.page-content.rte { max-width: 56rem; }
+.page-content.rte h2 { margin-top: 2rem; margin-bottom: 0.75rem; }
+.page-content.rte h3 { margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.page-content.rte p  { margin-bottom: 1rem; color: var(--color-text-muted); line-height: 1.75; }
+.page-content.rte ul, .page-content.rte ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+.page-content.rte li { margin-bottom: 0.375rem; color: var(--color-text-muted); }
+.page-content.rte a  { color: var(--color-cedar-700); }
+.page-content.rte a:hover { text-decoration: underline; }
+.page-content.rte img { border-radius: var(--radius-lg); margin-block: 1.5rem; }
+</style>
+
+{% schema %}
+{
+  "name": "Page",
+  "settings": []
+}
+{% endschema %}

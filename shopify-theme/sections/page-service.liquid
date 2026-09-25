@@ -1,0 +1,207 @@
+<!-- Reusable service page: privacy panels / sauna / gates & fences -->
+<!-- Breadcrumb -->
+<nav class="breadcrumb container" aria-label="Breadcrumb">
+  <ol class="breadcrumb__list" role="list">
+    <li><a href="{{ routes.root_url }}">Home</a></li>
+    <li aria-hidden="true">/</li>
+    <li aria-current="page">{{ section.settings.h1 | default: page.title }}</li>
+  </ol>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero border-b">
+  <div class="container">
+    <div class="page-hero__grid">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow page-hero__eyebrow reveal">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h1 class="page-hero__heading reveal reveal--delay-1">{{ section.settings.h1 | default: page.title }}</h1>
+        {%- if section.settings.intro != blank -%}
+          <p class="page-hero__body reveal reveal--delay-2">{{ section.settings.intro }}</p>
+        {%- endif -%}
+        <div class="page-hero__ctas reveal reveal--delay-3">
+          <a href="/pages/contact" class="btn btn--primary btn--lg">{{ section.settings.cta_label | default: 'Request a Quote' }} →</a>
+          <a href="/pages/gallery" class="btn btn--secondary btn--lg">View gallery</a>
+        </div>
+        {%- if settings.promo_active -%}
+          <p class="reveal reveal--delay-4" style="margin-top:1.25rem; display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 1rem; border-radius:var(--radius-full); background:rgba(62,90,64,0.10); font-size:var(--text-sm); color:var(--color-forest-600);">
+            <strong>{{ settings.promo_label }}</strong> during our 3-month promotion — until {{ settings.promo_end_label }}.
+          </p>
+        {%- endif -%}
+      </div>
+      <div class="media-wrapper aspect-5-4 img-zoom-wrap reveal reveal--delay-2" style="border-radius:var(--radius-lg); box-shadow:var(--shadow-soft);">
+        {%- if section.settings.hero_image != blank -%}
+          <img
+            src="{{ section.settings.hero_image | image_url: width: 900 }}"
+            srcset="{{ section.settings.hero_image | image_url: width: 450 }} 450w,
+                    {{ section.settings.hero_image | image_url: width: 900 }} 900w"
+            sizes="(min-width: 1024px) 40vw, 90vw"
+            alt="{{ section.settings.hero_image.alt | default: section.settings.h1 | escape }}"
+            width="{{ section.settings.hero_image.width }}"
+            height="{{ section.settings.hero_image.height }}"
+            loading="eager"
+            class="img-cover"
+          >
+        {%- elsif section.settings.fallback_asset != blank -%}
+          <img src="{{ section.settings.fallback_asset | asset_url }}" alt="{{ section.settings.h1 | escape }}" width="900" height="720" loading="eager" class="img-cover">
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Body + pricing sidebar -->
+<section class="section">
+  <div class="container">
+    <div class="materials-section__grid">
+
+      <!-- Body -->
+      <div>
+        {%- if section.settings.body_heading != blank -%}
+          <h2 class="reveal">{{ section.settings.body_heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.body_text != blank -%}
+          <div class="reveal reveal--delay-1" style="margin-top:1rem; color: var(--color-text-muted); line-height:1.75;">
+            {{ section.settings.body_text }}
+          </div>
+        {%- endif -%}
+        <p class="reveal reveal--delay-2" style="margin-top:2rem; font-size:var(--text-sm); color:var(--color-text-faint);">
+          Serving North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Moody, Surrey, Delta, and Langley.
+        </p>
+
+        {%- if section.settings.disclaimer != blank -%}
+          <div class="info-box reveal reveal--delay-2" style="margin-top:1.5rem;">
+            {{ section.settings.disclaimer }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Pricing sidebar -->
+      <aside class="reveal reveal--delay-1">
+        <div style="border:1.5px solid var(--color-border); border-radius:var(--radius-lg); padding:1.5rem; background:#fff; box-shadow:var(--shadow-soft);">
+          <h3 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:var(--font-semibold);">Pricing</h3>
+          <ul class="tier-list" style="margin-top:1rem;">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'tier' -%}
+                <li class="tier-list__item" {{ block.shopify_attributes }}>
+                  <div class="tier-list__name">
+                    {{ block.settings.name }}
+                    {%- if block.settings.unit_suffix != blank -%}
+                      <span class="tier-list__suffix">{{ block.settings.unit_suffix }}</span>
+                    {%- endif -%}
+                    {%- if block.settings.note != blank -%}
+                      <span class="tier-list__note">{{ block.settings.note }}</span>
+                    {%- endif -%}
+                  </div>
+                  <div class="tier-list__price">
+                    {%- if block.settings.original_price != blank -%}
+                      {%- if settings.promo_active and block.settings.sale_price != blank -%}
+                        <div class="price-block">
+                          <span class="price__original--strikethrough">{{ block.settings.original_price }}</span>
+                          <span class="price__sale">{{ block.settings.sale_price }}</span>
+                        </div>
+                      {%- else -%}
+                        <p class="price__original">{{ block.settings.original_price }}</p>
+                      {%- endif -%}
+                    {%- else -%}
+                      <p class="price__quote">Quote required</p>
+                    {%- endif -%}
+                  </div>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+          {%- if settings.promo_active -%}
+            <p class="promo-note" style="margin-top:0.75rem;">{{ settings.promo_note }}</p>
+          {%- endif -%}
+          <a href="/pages/contact" class="btn btn--primary btn--full" style="margin-top:1.25rem;">{{ section.settings.cta_label | default: 'Request a Quote' }} →</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+{%- assign faq_blocks = section.blocks | where: 'type', 'faq' -%}
+{%- if faq_blocks.size > 0 -%}
+  <section class="section section--bone">
+    <div class="container" style="max-width:52rem; margin-inline:auto;">
+      <p class="eyebrow reveal" style="text-align:center;">FAQ</p>
+      <h2 class="reveal reveal--delay-1" style="text-align:center; margin-top:0.75rem;">Common questions.</h2>
+      <div class="accordion reveal reveal--delay-2" style="margin-top:2.5rem;">
+        {%- for block in faq_blocks -%}
+          <div class="accordion__item" {{ block.shopify_attributes }}>
+            <button type="button" class="accordion__trigger" aria-expanded="false">
+              <span>{{ block.settings.question }}</span>
+              <span class="accordion__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion__body">{{ block.settings.answer }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+<!-- CTA -->
+<section class="section">
+  <div class="container" style="max-width:52rem; margin-inline:auto;">
+    <div class="custom-cta__card reveal">
+      <div class="custom-cta__blur-1" aria-hidden="true"></div>
+      <div class="custom-cta__blur-2" aria-hidden="true"></div>
+      <div class="custom-cta__content">
+        <p class="eyebrow" style="color:var(--color-cedar-200);">Ready to start?</p>
+        <h2 class="custom-cta__heading">Tell us about your project.</h2>
+        <p class="custom-cta__body">Send your dimensions and a photo of the space — we'll come back with a quote.</p>
+        <div class="custom-cta__buttons" style="margin-top:1.5rem;">
+          <a href="/pages/contact" class="btn btn--cream btn--lg">{{ section.settings.cta_label | default: 'Request a Quote' }} →</a>
+          <a href="{{ routes.collections_url }}" class="btn custom-cta__btn-outline btn--lg">Browse planters</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Service page",
+  "limit": 1,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "h1", "label": "Page H1 heading" },
+    { "type": "textarea", "id": "intro", "label": "Intro text" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
+    { "type": "text", "id": "fallback_asset", "label": "Fallback image (theme/assets filename)" },
+    { "type": "text", "id": "body_heading", "label": "Body section heading" },
+    { "type": "richtext", "id": "body_text", "label": "Body text" },
+    { "type": "richtext", "id": "disclaimer", "label": "Disclaimer / note" },
+    { "type": "text", "id": "cta_label", "label": "CTA button label", "default": "Request a Quote" }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Pricing tier",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Tier name", "default": "Standard panel" },
+        { "type": "text", "id": "original_price", "label": "Original price (blank = quote only)" },
+        { "type": "text", "id": "sale_price", "label": "Sale price (shown when promo active)" },
+        { "type": "text", "id": "unit_suffix", "label": "Unit suffix (e.g. per linear section)" },
+        { "type": "text", "id": "note", "label": "Note" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Do you install?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>We offer workshop pickup and delivery across Greater Vancouver. Installation is available depending on location and scope.</p>" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Service page" }]
+}
+{% endschema %}

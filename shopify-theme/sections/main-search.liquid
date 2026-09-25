@@ -1,0 +1,45 @@
+<div class="section">
+  <div class="container" style="max-width: 48rem;">
+    <h1>{{ 'search.title' | t }}</h1>
+    <form action="{{ routes.search_url }}" method="get" role="search" style="margin-top: 1.5rem;">
+      <div style="display: flex; gap: 0.75rem;">
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'search.placeholder' | t }}"
+          class="form-input"
+          aria-label="{{ 'search.title' | t }}"
+        >
+        <input type="hidden" name="type" value="product">
+        <button type="submit" class="btn btn--primary">Search</button>
+      </div>
+    </form>
+
+    {%- if search.performed -%}
+      {%- if search.results_count == 0 -%}
+        <p style="margin-top: 2rem; color: var(--color-text-muted);">
+          {{ 'search.no_results_html' | t: terms: search.terms }}
+        </p>
+      {%- else -%}
+        <p style="margin-top: 1.5rem; font-size: var(--text-sm); color: var(--color-text-muted);">
+          {{ 'search.results_with_count' | t: count: search.results_count, terms: search.terms }}
+        </p>
+        <div class="collection-grid" style="margin-top: 2rem;">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {%- render 'product-card', product: item -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search",
+  "settings": []
+}
+{% endschema %}

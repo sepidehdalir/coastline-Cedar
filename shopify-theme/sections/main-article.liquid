@@ -1,0 +1,48 @@
+<article class="article-page">
+  <div class="border-b section--cream">
+    <div class="container" style="padding-block: 4rem; max-width: 48rem;">
+      <a href="{{ blog.url }}" class="text-accent" style="font-size: var(--text-sm);">← {{ 'blogs.article.back_to_blog' | t }}</a>
+      <h1 style="margin-top: 1rem;">{{ article.title }}</h1>
+      <p style="margin-top: 0.75rem; font-size: var(--text-sm); color: var(--color-text-faint);">
+        {{ 'blogs.article.by_author' | t: author: article.author }} · {{ article.published_at | date: '%B %e, %Y' }}
+      </p>
+    </div>
+  </div>
+
+  {%- if article.image -%}
+    <div class="container" style="max-width: 56rem; margin-block: 2rem;">
+      <div class="media-wrapper aspect-16-9" style="border-radius: var(--radius-lg); overflow: hidden;">
+        <img
+          src="{{ article.image | image_url: width: 1200 }}"
+          alt="{{ article.image.alt | default: article.title | escape }}"
+          width="1200"
+          height="{{ 1200 | divided_by: article.image.aspect_ratio | round }}"
+          loading="eager"
+          class="img-cover"
+        >
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="section" style="padding-top: 1.5rem;">
+    <div class="container" style="max-width: 48rem;">
+      <div class="rte article-body">{{ article.content }}</div>
+    </div>
+  </div>
+</article>
+
+<style>
+.article-body { line-height: 1.8; color: var(--color-text-muted); }
+.article-body h2, .article-body h3 { color: var(--color-text); margin-top: 2rem; margin-bottom: 0.75rem; }
+.article-body p { margin-bottom: 1.25rem; }
+.article-body img { border-radius: var(--radius-lg); margin-block: 1.5rem; }
+.article-body a { color: var(--color-cedar-700); }
+.article-body a:hover { text-decoration: underline; }
+</style>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}

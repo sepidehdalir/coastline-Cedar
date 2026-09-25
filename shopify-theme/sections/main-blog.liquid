@@ -1,0 +1,64 @@
+<div class="border-b section--cream">
+  <div class="container" style="padding-block: 4rem;">
+    <h1>{{ blog.title }}</h1>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    {%- if blog.articles_count > 0 -%}
+      <div class="blog-grid">
+        {%- for article in blog.articles -%}
+          <article class="blog-card">
+            {%- if article.image -%}
+              <a href="{{ article.url }}" class="blog-card__image media-wrapper aspect-3-2">
+                <img
+                  src="{{ article.image | image_url: width: 800 }}"
+                  alt="{{ article.image.alt | default: article.title | escape }}"
+                  width="800"
+                  height="{{ 800 | divided_by: article.image.aspect_ratio | round }}"
+                  loading="lazy"
+                  class="img-cover"
+                >
+              </a>
+            {%- endif -%}
+            <div class="blog-card__body">
+              <p class="blog-card__meta">{{ article.published_at | date: '%B %e, %Y' }}</p>
+              <h2 class="blog-card__title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+              {%- if article.excerpt -%}
+                <p class="blog-card__excerpt">{{ article.excerpt | strip_html | truncate: 140 }}</p>
+              {%- endif -%}
+              <a href="{{ article.url }}" class="btn btn--ghost" style="padding-left: 0; margin-top: 1rem;">{{ 'blogs.article.read_more' | t }} →</a>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="empty-state">
+        <p class="empty-state__body">No articles yet.</p>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+.blog-grid { display: grid; gap: 2rem; }
+@media (min-width: 640px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.blog-card { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft); }
+.blog-card__image { display: block; border-radius: 0; }
+.blog-card__body { padding: 1.25rem; }
+.blog-card__meta { font-size: var(--text-xs); color: var(--color-text-faint); margin-bottom: 0.5rem; }
+.blog-card__title { font-size: var(--text-xl); }
+.blog-card__title a { color: var(--color-text); text-decoration: none; }
+.blog-card__title a:hover { color: var(--color-cedar-700); }
+.blog-card__excerpt { margin-top: 0.5rem; font-size: var(--text-sm); color: var(--color-text-muted); }
+</style>
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": []
+}
+{% endschema %}

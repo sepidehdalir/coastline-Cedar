@@ -1,0 +1,248 @@
+{%- comment -%}
+  Coastline Cedar — workshop pricing + free local delivery popup.
+  Build-to-order campaign promo, not an email-capture. Controlled by
+  settings.welcome_popup_enabled. Delayed / mild-scroll trigger, suppressed for
+  returning visitors, easy to close, mobile-first (bottom sheet — never a
+  full-screen takeover).
+{%- endcomment -%}
+
+{%- liquid
+  assign show_popup = false
+  if settings.welcome_popup_enabled
+    assign show_popup = true
+  endif
+  if template.name == 'cart' or template.directory == 'customers'
+    assign show_popup = false
+  endif
+  assign cc_shop_path = routes.root_url | append: 'collections/cedar-planters'
+-%}
+
+{%- if show_popup -%}
+
+<div
+  id="cc-popup-overlay"
+  class="cc-popup-overlay"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cc-popup-title"
+>
+  <div id="cc-popup-dialog" class="cc-popup">
+
+    <button class="cc-popup__close" id="cc-popup-close" type="button" aria-label="Close offer">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+        <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <p class="eyebrow cc-popup__eyebrow">Limited Workshop Batch</p>
+    <h2 id="cc-popup-title" class="cc-popup__headline">Workshop Pricing + Free Local Delivery</h2>
+    <p class="cc-popup__subhead">FREE local delivery on orders $200+ in eligible Greater Vancouver areas</p>
+    <p class="cc-popup__desc">
+      Fully assembled handcrafted cedar planters, built to order in Vancouver. No flat-pack box.
+      No assembly required. Just real craftsmanship, ready to plant.
+    </p>
+    <p class="cc-popup__trust">Made in Canada · 3-Year Craftsmanship Warranty</p>
+
+    <a href="{{ cc_shop_path }}" class="btn btn--primary cc-popup__cta" id="cc-popup-shop">
+      Shop Workshop Prices
+    </a>
+    <button type="button" class="cc-popup__browse-link" id="cc-popup-browse-btn">
+      Continue browsing
+    </button>
+
+  </div>
+</div>
+
+<style>
+/* ── Promotional Popup ──────────────────────────────────── */
+.cc-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 16, 8, 0.5);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cc-popup-overlay { transition: opacity 0.22s ease; }
+}
+.cc-popup-overlay.is-visible { opacity: 1; pointer-events: auto; }
+
+.cc-popup {
+  background: var(--color-cream, #FBF7F0);
+  border-radius: 12px;
+  padding: 2rem 1.75rem 1.5rem;
+  width: 100%;
+  max-width: 440px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 12px 48px rgba(26, 16, 8, 0.2);
+  text-align: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cc-popup { transform: translateY(14px); transition: transform 0.22s ease; }
+  .cc-popup-overlay.is-visible .cc-popup { transform: translateY(0); }
+}
+
+/* Mobile-first: bottom sheet, never a full-screen takeover (dim stays visible on top). */
+@media (max-width: 600px) {
+  .cc-popup-overlay { align-items: flex-end; padding: 0; }
+  .cc-popup {
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
+    padding: 1.75rem 1.25rem 1.25rem;
+    max-height: 85dvh;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .cc-popup { transform: translateY(100%); }
+    .cc-popup-overlay.is-visible .cc-popup { transform: translateY(0); }
+  }
+}
+
+.cc-popup__close {
+  position: absolute;
+  top: 0.875rem;
+  right: 0.875rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--color-text-muted, #9E8E80);
+  line-height: 0;
+  border-radius: 4px;
+}
+.cc-popup__close:hover { color: var(--color-text, #1A1008); }
+.cc-popup__close:focus-visible { outline: 2px solid var(--color-cedar-500, #6E4525); outline-offset: 2px; }
+
+.cc-popup__eyebrow { margin-bottom: 0.6rem; }
+
+.cc-popup__headline {
+  font-size: clamp(1.5rem, 5vw, 1.9rem);
+  margin: 0 1.5rem 0.35rem;
+  color: var(--color-text, #1A1008);
+  line-height: 1.15;
+}
+.cc-popup__subhead {
+  font-size: var(--text-base, 1rem);
+  font-weight: var(--font-semibold, 600);
+  color: var(--color-forest-600, #2D4530);
+  margin-bottom: 0.875rem;
+}
+.cc-popup__desc {
+  font-size: var(--text-sm, 0.9375rem);
+  color: var(--color-text-muted, #6B5C4E);
+  line-height: 1.55;
+  margin-bottom: 0.875rem;
+}
+.cc-popup__trust {
+  font-size: var(--text-xs, 0.8rem);
+  font-weight: var(--font-medium, 500);
+  letter-spacing: 0.02em;
+  color: var(--color-text, #1A1008);
+  margin-bottom: 1.125rem;
+}
+.cc-popup__cta { display: block; width: 100%; }
+.cc-popup__browse-link {
+  display: block;
+  width: 100%;
+  margin-top: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-text-muted, #6B5C4E);
+  text-decoration: underline;
+  text-align: center;
+  padding: 0.375rem 0;
+}
+.cc-popup__browse-link:hover { color: var(--color-text, #1A1008); }
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  var DISMISS_KEY = 'cc_workshop_popup_v2_dismissed';
+  var DISMISS_MS  = 14 * 24 * 60 * 60 * 1000; // don't re-annoy returning visitors for 14 days
+
+  function isSuppressed() {
+    try {
+      var ts = parseInt(localStorage.getItem(DISMISS_KEY) || '0', 10);
+      return ts && (Date.now() - ts < DISMISS_MS);
+    } catch (_) { return false; }
+  }
+  function setDismissed() {
+    try { localStorage.setItem(DISMISS_KEY, String(Date.now())); } catch (_) {}
+  }
+
+  function init() {
+    var overlay  = document.getElementById('cc-popup-overlay');
+    if (!overlay) return;
+    var closeBtn = document.getElementById('cc-popup-close');
+    var browse   = document.getElementById('cc-popup-browse-btn');
+    var shopBtn  = document.getElementById('cc-popup-shop');
+
+    var triggered = false;
+    var timerId;
+
+    function show() {
+      if (triggered) return;
+      triggered = true;
+      clearTimeout(timerId);
+      window.removeEventListener('scroll', onScroll);
+      overlay.removeAttribute('aria-hidden');
+      overlay.classList.add('is-visible');
+      document.body.style.overflow = 'hidden';
+      if (closeBtn) closeBtn.focus();
+    }
+    function hide() {
+      setDismissed();
+      overlay.classList.remove('is-visible');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', hide);
+    if (browse)   browse.addEventListener('click', hide);
+    if (shopBtn)  shopBtn.addEventListener('click', setDismissed);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) hide(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-visible')) hide();
+    });
+
+    // Basic focus trap
+    overlay.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab' || !overlay.classList.contains('is-visible')) return;
+      var els = Array.from(overlay.querySelectorAll('a[href],button:not([disabled])')).filter(function (el) { return el.offsetParent !== null; });
+      if (!els.length) return;
+      var first = els[0], last = els[els.length - 1];
+      if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+      else            { if (document.activeElement === last)  { e.preventDefault(); first.focus(); } }
+    });
+
+    if (isSuppressed()) return;
+
+    // Trigger: ~6s delay, or mild scroll (whichever comes first). Never immediate.
+    timerId = setTimeout(show, 6000);
+    function onScroll() {
+      var docH = document.documentElement.scrollHeight - window.innerHeight;
+      if (docH > 0 && window.scrollY / docH >= 0.12) show();
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+{%- endif -%}

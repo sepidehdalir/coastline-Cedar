@@ -1,0 +1,136 @@
+<!-- Service Areas Hub Page -->
+<div class="border-b section--cream">
+  <div class="container" style="padding-block:4rem 5rem;">
+    <p class="eyebrow reveal">{{ section.settings.eyebrow | default: 'Service areas' }}</p>
+    <h1 class="reveal reveal--delay-1" style="margin-top:0.75rem; max-width:36rem;">
+      {{ section.settings.heading | default: 'Cedar planters delivered across Greater Vancouver.' }}
+    </h1>
+    <p class="reveal reveal--delay-2" style="margin-top:1.25rem; max-width:40rem; color:var(--color-text-muted);">
+      {{ section.settings.intro | default: 'We build everything in our North Vancouver workshop and deliver directly to your door across the Lower Mainland. Pickup by appointment in North Vancouver. Delivery available across Metro Vancouver.' }}
+    </p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="service-areas-grid">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.url | default: '#' }}" class="service-area-card reveal reveal--delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          <p class="eyebrow" style="font-size:0.65rem;">Service area</p>
+          <h2 class="service-area-card__city">{{ block.settings.city }}</h2>
+          <p class="service-area-card__intro">{{ block.settings.intro }}</p>
+          <p class="service-area-card__link">Cedar planters in {{ block.settings.short_locale }} →</p>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<div class="section section--bone" style="padding-block:3rem;">
+  <div class="container" style="max-width:48rem; margin-inline:auto; text-align:center;">
+    <h2 class="reveal">{{ section.settings.cta_heading | default: 'Ready to order?' }}</h2>
+    <p class="reveal reveal--delay-1" style="margin-top:1rem; color:var(--color-text-muted);">{{ section.settings.cta_body | default: 'Choose a standard size or request a custom build. Pickup by appointment or local delivery.' }}</p>
+    <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem;">
+      <a href="{{ section.settings.cta_primary_url | default: routes.collections_url }}" class="btn btn--primary btn--lg reveal reveal--delay-2">{{ section.settings.cta_primary_label | default: 'Shop Planters' }} →</a>
+      <a href="{{ section.settings.cta_secondary_url | default: '/pages/contact' }}" class="btn btn--secondary btn--lg reveal reveal--delay-3">{{ section.settings.cta_secondary_label | default: 'Request a Custom Quote' }}</a>
+    </div>
+  </div>
+</div>
+
+<style>
+.service-areas-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .service-areas-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .service-areas-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.service-area-card {
+  display: block;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.22s cubic-bezier(0.34,1.28,0.64,1), box-shadow 0.22s ease, border-color 0.18s ease;
+}
+.service-area-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--color-cedar-300);
+}
+.service-area-card__city {
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+}
+.service-area-card__intro {
+  margin-top: 0.5rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.service-area-card__link {
+  margin-top: 1rem;
+  font-size: var(--text-sm);
+  color: var(--color-cedar-700);
+  transition: transform 0.18s ease;
+}
+.service-area-card:hover .service-area-card__link { transform: translateX(3px); }
+</style>
+
+{% schema %}
+{
+  "name": "Service areas hub",
+  "limit": 1,
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Service areas" },
+    { "type": "text", "id": "heading", "label": "H1 heading", "default": "Cedar planters delivered across Greater Vancouver." },
+    { "type": "textarea", "id": "intro", "label": "Intro text", "default": "We build everything in our North Vancouver workshop and deliver directly to your door across the Lower Mainland. Pickup by appointment in North Vancouver. Delivery available across Metro Vancouver." },
+    { "type": "header", "content": "Bottom CTA" },
+    { "type": "text", "id": "cta_heading", "label": "CTA heading", "default": "Ready to order?" },
+    { "type": "textarea", "id": "cta_body", "label": "CTA body", "default": "Choose a standard size or request a custom build. Pickup by appointment or local delivery." },
+    { "type": "url", "id": "cta_primary_url", "label": "Primary CTA URL" },
+    { "type": "text", "id": "cta_primary_label", "label": "Primary CTA label", "default": "Shop Planters" },
+    { "type": "url", "id": "cta_secondary_url", "label": "Secondary CTA URL" },
+    { "type": "text", "id": "cta_secondary_label", "label": "Secondary CTA label", "default": "Request a Custom Quote" }
+  ],
+  "blocks": [
+    {
+      "type": "area",
+      "name": "Service area",
+      "settings": [
+        { "type": "text", "id": "city", "label": "City name", "default": "North Vancouver" },
+        { "type": "text", "id": "short_locale", "label": "Short locale", "default": "North Van" },
+        { "type": "textarea", "id": "intro", "label": "Short intro", "default": "We're North Vancouver locals. Our workshop is on the North Shore." },
+        { "type": "url", "id": "url", "label": "Link URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Service areas hub",
+      "blocks": [
+        { "type": "area", "settings": { "city": "North Vancouver", "short_locale": "North Van", "intro": "We're North Vancouver locals. Our workshop is on the North Shore, which means short delivery routes and the chance to stop by in person.", "url": "/pages/north-vancouver" } },
+        { "type": "area", "settings": { "city": "Vancouver", "short_locale": "Vancouver", "intro": "Tight patios, narrow balconies, downtown roof decks, and Kitsilano backyards — we build cedar planters that suit how Vancouver actually lives outside.", "url": "/pages/vancouver" } },
+        { "type": "area", "settings": { "city": "West Vancouver", "short_locale": "West Van", "intro": "West Vancouver homes lean into the West Coast aesthetic. Hand-built cedar, clean lines, and finishes that complement your property.", "url": "/pages/west-vancouver" } },
+        { "type": "area", "settings": { "city": "Burnaby", "short_locale": "Burnaby", "intro": "From Brentwood condo balconies to South Slope raised garden beds — we build the right planter for every Burnaby space.", "url": "/pages/burnaby" } },
+        { "type": "area", "settings": { "city": "Richmond", "short_locale": "Richmond", "intro": "Richmond gardens deal with wind. Our planters are built with extra base stability for exposed patios and rooftop spaces.", "url": "/pages/richmond" } },
+        { "type": "area", "settings": { "city": "Coquitlam", "short_locale": "Coquitlam", "intro": "The Tri-Cities have great outdoor space. We deliver across Coquitlam, Port Coquitlam, and Port Moody from our North Shore workshop.", "url": "/pages/coquitlam" } },
+        { "type": "area", "settings": { "city": "Surrey", "short_locale": "Surrey", "intro": "Townhouse decks, family backyards, and new-build patios across Surrey — we build cedar planters that look finished, not generic.", "url": "/pages/surrey" } },
+        { "type": "area", "settings": { "city": "Langley", "short_locale": "Langley", "intro": "Langley has the kind of yards that planters were made for. We deliver across Langley and build to any size you need.", "url": "/pages/langley" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

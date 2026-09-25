@@ -1,0 +1,116 @@
+<section class="section section--{{ section.settings.background }} materials-section">
+  <div class="container">
+    <div class="materials-section__grid">
+
+      <div class="materials-section__content reveal">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="materials-section__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        <div class="section-divider"></div>
+        {%- if section.settings.body != blank -%}
+          <div class="materials-section__body">{{ section.settings.body }}</div>
+        {%- endif -%}
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_url | default: routes.collections_url }}" class="btn btn--primary" style="margin-top: 2rem;">
+            {{ section.settings.cta_label }} →
+          </a>
+        {%- endif -%}
+      </div>
+
+      <div class="materials-section__features">
+        {%- for block in section.blocks -%}
+          <div class="feature-item reveal reveal--delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              <div class="feature-item__icon" aria-hidden="true">
+                {{ block.settings.icon }}
+              </div>
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <h3 class="feature-item__title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.body != blank -%}
+              <p class="feature-item__body">{{ block.settings.body }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.materials-section__grid {
+  display: grid;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) { .materials-section__grid { grid-template-columns: 5fr 7fr; gap: 4rem; } }
+
+.materials-section__heading { margin-top: 0.75rem; }
+
+.materials-section__body {
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+.materials-section__body p + p { margin-top: 1rem; }
+
+.materials-section__features {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) { .materials-section__features { grid-template-columns: repeat(2, 1fr); } }
+</style>
+
+{% schema %}
+{
+  "name": "Materials section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "cream", "label": "Cream" },
+        { "value": "bone", "label": "Bone" }
+      ],
+      "default": "bone"
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why Western Cedar?" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A material made for the West Coast." },
+    { "type": "richtext", "id": "body", "label": "Body text", "default": "<p>Western Cedar is one of the most rot-resistant softwoods in North America. It contains natural oils that repel insects and slow decay — no pressure treatment required. It ages to a soft silver-grey if left natural, or holds its warm tone with a clear sealer.</p>" },
+    { "type": "text", "id": "cta_label", "label": "CTA label" },
+    { "type": "url", "id": "cta_url", "label": "CTA URL" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "html", "id": "icon", "label": "SVG icon (optional)" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Naturally rot-resistant" },
+        { "type": "textarea", "id": "body", "label": "Description", "default": "Contains natural oils that resist decay without chemical treatment." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Materials section",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Naturally rot-resistant", "body": "Contains natural oils that resist decay without chemical treatment — built for Pacific Northwest winters." } },
+        { "type": "feature", "settings": { "title": "Locally sourced in BC", "body": "Western Cedar is grown right here in British Columbia. It doesn't travel far to reach our workshop." } },
+        { "type": "feature", "settings": { "title": "Ages beautifully", "body": "Left natural, cedar weathers to a soft silver-grey. Sealed, it holds its warm tone for years." } },
+        { "type": "feature", "settings": { "title": "Stainless steel hardware", "body": "Every planter is fastened with stainless steel so the hardware outlasts the wood." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

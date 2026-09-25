@@ -1,0 +1,437 @@
+<!-- About page — full redesign per owner brief (2026-06) -->
+<!-- Scoped CSS lives at the bottom of this file. All classes prefixed "ap-". -->
+
+{%- liquid
+  assign founder_img = section.settings.founder_image
+  assign workshop_img = section.settings.workshop_image
+
+  assign founder_alt = founder_img.alt | default: 'Sepi, founder of Coastline Cedar, in the North Vancouver workshop'
+  assign workshop_alt = workshop_img.alt | default: 'Cedar work in progress — Coastline Cedar workshop in North Vancouver'
+-%}
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 1 — ABOUT HERO
+     Two-column on desktop (text | portrait).
+     Stacked on mobile (text above portrait).
+     ═══════════════════════════════════════════════════════════ -->
+<div class="ap-hero border-b section--cream">
+  <div class="container ap-hero__inner">
+
+    <!-- Left: text -->
+    <div class="ap-hero__text reveal">
+      <p class="eyebrow">WOMAN-LED. FAMILY-BUILT. NORTH VANCOUVER.</p>
+      <h1 class="ap-hero__h1 reveal reveal--delay-1">Handmade cedar pieces, built with care.</h1>
+      <p class="ap-hero__intro reveal reveal--delay-2">Coastline Cedar is a woman-led, family-built cedar studio founded by Sepi in North Vancouver. We create handmade cedar planters, privacy screens, gates, fences, and custom outdoor pieces for homes and businesses across Greater Vancouver.</p>
+    </div>
+
+    <!-- Right: founder portrait — constrained width, no face cropping -->
+    <div class="ap-hero__portrait-wrap reveal reveal--delay-1">
+      {%- if founder_img != blank -%}
+        <img
+          src="{{ founder_img | image_url: width: 520 }}"
+          srcset="{{ founder_img | image_url: width: 320 }} 320w,
+                  {{ founder_img | image_url: width: 520 }} 520w"
+          sizes="(min-width: 1024px) 440px, 90vw"
+          alt="{{ founder_alt | escape }}"
+          width="{{ founder_img.width }}"
+          height="{{ founder_img.height }}"
+          loading="eager"
+          fetchpriority="high"
+          class="ap-hero__portrait-img"
+        >
+      {%- else -%}
+        <img
+          src="{{ 'about-founder-portrait.jpg' | asset_url }}"
+          alt="{{ founder_alt | escape }}"
+          width="800"
+          height="1000"
+          loading="eager"
+          fetchpriority="high"
+          class="ap-hero__portrait-img"
+        >
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 2 — MEET SEPI
+     Constrained prose width. First-person voice.
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section ap-meet">
+  <div class="container">
+    <div class="ap-prose reveal">
+      <p class="eyebrow">THE FOUNDER</p>
+      <h2 class="ap-meet__heading reveal reveal--delay-1">Meet Sepi</h2>
+      <div class="ap-meet__body reveal reveal--delay-2">
+        <p>I'm Sepi, the founder of Coastline Cedar.</p>
+        <p>My background is in technology, web design, and digital business, but I wanted to build something tangible, useful, and lasting. What began as a small hands-on project grew into a family-built cedar business focused on practical outdoor pieces that look good and are made to last.</p>
+        <p>Every Coastline Cedar project is planned with care, built locally, and made for the way each customer actually uses their outdoor space.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 3 — EARLY HOME WORKSHOP
+     Two-column: copy left, home workshop image right.
+     This image shows the original home workshop where the business
+     began — not a polished commercial facility.
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section--bone ap-family">
+  <div class="container ap-family__inner">
+
+    <div class="ap-family__text reveal">
+      <p class="eyebrow">OUR EARLY HOME WORKSHOP</p>
+      <h2 class="ap-family__heading reveal reveal--delay-1">Where Coastline Cedar began.</h2>
+      <div class="ap-family__body reveal reveal--delay-2">
+        <p>Coastline Cedar began inside our North Vancouver home, where part of our living space gradually became a working cedar workshop.</p>
+        <p>Early planter prototypes were measured, cut, assembled, finished, and tested here with help from Sepi's family. It was not a polished commercial workshop. It was a practical, hands-on starting point where the first Coastline Cedar products were developed and improved one build at a time.</p>
+        <p>That early home workshop reflects how the business still operates today: locally, carefully, and with direct attention to every project.</p>
+      </div>
+    </div>
+
+    <div class="ap-family__img-wrap reveal reveal--delay-1">
+      <figure class="ap-family__figure">
+        {%- if workshop_img != blank -%}
+          <img
+            src="{{ workshop_img | image_url: width: 800 }}"
+            srcset="{{ workshop_img | image_url: width: 480 }} 480w,
+                    {{ workshop_img | image_url: width: 800 }} 800w"
+            sizes="(min-width: 1024px) 40vw, 90vw"
+            alt="{{ workshop_alt | escape }}"
+            width="{{ workshop_img.width }}"
+            height="{{ workshop_img.height }}"
+            loading="lazy"
+            class="ap-family__img"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'about-workshop-build.jpg' | asset_url }}"
+            alt="Our original North Vancouver home workshop, where the first handmade cedar planters were built"
+            width="1280"
+            height="1125"
+            loading="lazy"
+            class="ap-family__img"
+          >
+        {%- endif -%}
+        <figcaption class="ap-family__caption">Our original home workshop in North Vancouver, where the first Coastline Cedar planters were built.</figcaption>
+      </figure>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 4 — VALUES
+     Three cards. Eyebrow + heading + grid.
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section ap-values">
+  <div class="container">
+    <p class="eyebrow reveal">WHAT WE BUILD ON</p>
+    <h2 class="ap-values__heading reveal reveal--delay-1">Simple values behind every project.</h2>
+    <div class="ap-values__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'value' -%}
+          <div class="ap-value-card reveal reveal--delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+            <h3 class="ap-value-card__title">{{ block.settings.title }}</h3>
+            <p class="ap-value-card__body">{{ block.settings.description }}</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     CLOSING CTA
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container" style="max-width:48rem;">
+    <div class="ap-cta reveal">
+      <p class="eyebrow" style="color:var(--color-cedar-200);">Start Your Cedar Project</p>
+      <h2 style="margin-top:0.75rem; color:var(--color-cream); max-width:28rem; margin-inline:auto;">Let's build something together.</h2>
+      <a href="/pages/contact" class="btn btn--cream btn--lg" style="margin-top:2rem;">Request a Quote →</a>
+    </div>
+  </div>
+</section>
+
+
+<style>
+/* ─────────────────────────────────────────────────────────────
+   About page — scoped to ap-* classes only.
+   These styles do not affect product, collection, gallery, or
+   service pages.
+   ─────────────────────────────────────────────────────────────
+
+   SECTION 1: HERO
+   ───────────────────────────────────────────────────────────── */
+
+.ap-hero__inner {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+  padding-block: 4rem 4.5rem;
+}
+
+@media (min-width: 1024px) {
+  .ap-hero__inner {
+    grid-template-columns: 55fr 45fr;
+    gap: 4rem;
+    padding-block: 5rem;
+  }
+}
+
+/* H1 — left column */
+.ap-hero__h1 {
+  margin-top: 0.75rem;
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  line-height: 1.1;
+}
+
+/* Intro paragraph — constrained, readable */
+.ap-hero__intro {
+  margin-top: 1.25rem;
+  max-width: 44rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+/* Portrait column */
+.ap-hero__portrait-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.ap-hero__portrait-img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  display: block;
+}
+
+@media (max-width: 1023px) {
+  .ap-hero__portrait-img {
+    max-width: 400px;
+  }
+}
+
+/* Mobile: ensure portrait is fully visible, no face cropping */
+@media (max-width: 639px) {
+  .ap-hero__portrait-img {
+    max-width: 320px;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   SECTION 2: MEET SEPI
+   ───────────────────────────────────────────────────────────── */
+
+/* Prose container — limits paragraph width to ~680px */
+.ap-prose {
+  max-width: 680px;
+}
+
+.ap-meet__heading {
+  margin-top: 0.75rem;
+}
+
+.ap-meet__body {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   SECTION 3: FAMILY STORY
+   ───────────────────────────────────────────────────────────── */
+
+.ap-family__inner {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .ap-family__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.ap-family__heading {
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-4xl));
+}
+
+.ap-family__body {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 44rem;
+}
+
+/* Figure wrapper — keeps caption scoped to the image */
+.ap-family__figure {
+  margin: 0;
+}
+
+/* Workshop image — natural ratio, not full-width, not a portrait */
+.ap-family__img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  display: block;
+}
+
+/* Discreet caption beneath the image */
+.ap-family__caption {
+  margin-top: 0.625rem;
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  line-height: 1.55;
+  padding-inline: 0.125rem;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   SECTION 4: VALUES
+   ───────────────────────────────────────────────────────────── */
+
+.ap-values__heading {
+  margin-top: 0.75rem;
+  max-width: 36rem;
+}
+
+.ap-values__grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .ap-values__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .ap-values__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.ap-value-card {
+  padding: 1.75rem;
+  background: #fff;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.ap-value-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+}
+
+.ap-value-card__body {
+  margin-top: 0.625rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   CLOSING CTA
+   ───────────────────────────────────────────────────────────── */
+
+.ap-cta {
+  border-radius: var(--radius-2xl);
+  background: var(--color-charcoal-900);
+  padding: 3.5rem 2rem;
+  text-align: center;
+  color: var(--color-cream);
+}
+</style>
+
+
+{% schema %}
+{
+  "name": "About page",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "founder_image",
+      "label": "Founder portrait (hero — desktop max-width 480px)"
+    },
+    {
+      "type": "image_picker",
+      "id": "workshop_image",
+      "label": "Workshop image (family story section)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Local craftsmanship"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Designed and built in North Vancouver, not mass-produced or imported."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About page",
+      "blocks": [
+        {
+          "type": "value",
+          "settings": {
+            "title": "Local craftsmanship",
+            "description": "Designed and built in North Vancouver, not mass-produced or imported."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Practical design",
+            "description": "Every piece is made to work well in real patios, balconies, gardens, and commercial spaces."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Quality cedar",
+            "description": "Built with carefully selected cedar and construction methods suited to outdoor use."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

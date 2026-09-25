@@ -1,0 +1,101 @@
+<!-- Gallery page -->
+<div class="border-b section--cream">
+  <div class="container" style="padding-block:4rem;">
+    <p class="eyebrow reveal">{{ section.settings.eyebrow | default: 'Gallery' }}</p>
+    <h1 class="reveal reveal--delay-1" style="margin-top:0.75rem; max-width:36rem;">{{ section.settings.heading | default: 'Cedar Planter Gallery' }}</h1>
+    <p class="reveal reveal--delay-2" style="margin-top:1.25rem; max-width:40rem; color:var(--color-text-muted);">{{ section.settings.intro | default: 'A look inside our Coastline Cedar workshop, build process, and finished cedar planter projects. These photos show the hands-on work behind our custom cedar builds in North Vancouver.' }}</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="gallery-masonry" role="list" aria-label="Gallery images">
+      {%- for block in section.blocks -%}
+        <figure class="gallery-masonry__item reveal" role="listitem" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 900 }}"
+              srcset="{{ block.settings.image | image_url: width: 450 }} 450w,
+                      {{ block.settings.image | image_url: width: 900 }} 900w"
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 90vw"
+              alt="{{ block.settings.image.alt | default: block.settings.alt_text | escape }}"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+              loading="{% if forloop.index <= 3 %}eager{% else %}lazy{% endif %}"
+            >
+          {%- elsif block.settings.fallback_asset != blank -%}
+            <img
+              src="{{ block.settings.fallback_asset | asset_url }}"
+              alt="{{ block.settings.alt_text | default: 'Coastline Cedar workshop and finished cedar projects' | escape }}"
+              width="900"
+              height="900"
+              loading="{% if forloop.index <= 3 %}eager{% else %}lazy{% endif %}"
+            >
+          {%- endif -%}
+          {%- if block.settings.category != blank -%}
+            <span class="gallery-masonry__badge">{{ block.settings.category }}</span>
+          {%- endif -%}
+          {%- if block.settings.caption != blank -%}
+            <figcaption class="gallery-masonry__caption">
+              <span class="gallery-masonry__caption-text">{{ block.settings.caption }}</span>
+            </figcaption>
+          {%- endif -%}
+        </figure>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section--bone">
+  <div class="container" style="max-width:40rem; margin-inline:auto; text-align:center;">
+    <h2 class="reveal">{{ section.settings.cta_heading | default: 'Want something similar for your outdoor space?' }}</h2>
+    <p class="reveal reveal--delay-1" style="margin-top:1rem; color:var(--color-text-muted);">{{ section.settings.cta_body | default: 'Send us your dimensions, preferred style, and a few inspiration photos. We will help you plan a cedar build that fits your space.' }}</p>
+    <a href="/pages/contact" class="btn btn--primary btn--lg reveal reveal--delay-2" style="margin-top:1.75rem;">Request a Quote →</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gallery page",
+  "limit": 1,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "H1 heading" },
+    { "type": "textarea", "id": "intro", "label": "Intro" },
+    { "type": "text", "id": "cta_heading", "label": "Bottom CTA heading" },
+    { "type": "textarea", "id": "cta_body", "label": "Bottom CTA body" }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Gallery photo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "fallback_asset", "label": "Fallback image (theme/assets filename)" },
+        { "type": "text", "id": "alt_text", "label": "Alt text" },
+        { "type": "text", "id": "category", "label": "Category badge (optional)" },
+        { "type": "text", "id": "caption", "label": "Caption (shown on hover)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gallery page",
+      "blocks": [
+        { "type": "photo", "settings": { "fallback_asset": "gallery-finished-planter-delivery.jpg", "alt_text": "Finished stained cedar planter box with liner, hand-built by Coastline Cedar", "category": "Finished Planters", "caption": "Finished Cedar Planter" } },
+        { "type": "photo", "settings": { "fallback_asset": "gallery-build-process-workshop.jpg", "alt_text": "Cedar planter boxes being built in the Coastline Cedar workshop in North Vancouver", "category": "Build Process", "caption": "Cedar Planter Build Process" } },
+        { "type": "photo", "settings": { "fallback_asset": "gallery-privacy-screen-deck.jpg", "alt_text": "Hand-built cedar slat privacy screen installed on a backyard deck in Vancouver", "category": "Delivery / Installed", "caption": "Cedar Privacy Screen on a Deck" } },
+        { "type": "photo", "settings": { "fallback_asset": "gallery-custom-planters-patio.jpg", "alt_text": "Two finished cedar planter boxes with shrubs on a stone patio", "category": "Finished Planters", "caption": "Cedar Planters on a Patio" } },
+        { "type": "photo", "settings": { "fallback_asset": "gallery-privacy-planter-build.jpg", "alt_text": "Cedar privacy planter with slat screen being assembled in the workshop", "category": "Build Process", "caption": "Privacy Planter Under Construction" } },
+        { "type": "photo", "settings": { "fallback_asset": "gallery-planters-installed-deck.jpg", "alt_text": "Finished cedar planters installed on a deck railing in West Vancouver", "category": "Delivery / Installed", "caption": "Planters Installed on a Deck" } },
+        { "type": "photo", "settings": { "fallback_asset": "gallery-privacy-planter-planted.jpg", "alt_text": "Cedar privacy planter with attached slat screen and planted greenery", "category": "Finished Planters", "caption": "Privacy Planter with Plants" } },
+        { "type": "photo", "settings": { "fallback_asset": "gallery-cedar-boards-tools.jpg", "alt_text": "Cedar boards and tools used for custom planter construction in the workshop", "category": "Workshop", "caption": "Inside the Workshop" } },
+        { "type": "photo", "settings": { "fallback_asset": "gallery-privacy-planter-vancouver.jpg", "alt_text": "Cedar privacy planter with a tall slat screen on a patio", "category": "Finished Planters", "caption": "Cedar Privacy Planter" } },
+        { "type": "photo", "settings": { "fallback_asset": "gallery-raised-herb-planter.jpg", "alt_text": "Raised cedar herb planter with a hinged glass cold-frame lid and potted herbs", "category": "Finished Planters", "caption": "Raised Cedar Herb Planter" } },
+        { "type": "photo", "settings": { "fallback_asset": "gallery-hand-built-detail.jpg", "alt_text": "Close detail of a hand-built cedar planter in the Coastline Cedar workshop", "category": "Cedar Details", "caption": "Hand-Built Planter Detail" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

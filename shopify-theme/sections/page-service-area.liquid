@@ -1,0 +1,258 @@
+<!-- Individual city service area page — rich layout matching reference-site/components/ServiceAreaPage.tsx -->
+{%- liquid
+  assign city      = section.settings.city
+  assign city_full = section.settings.city_full
+  assign h1        = section.settings.h1 | default: 'Cedar Planter Boxes — ' | append: city
+  assign short     = section.settings.short_locale | default: city
+-%}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb container" aria-label="Breadcrumb">
+  <ol class="breadcrumb__list" role="list">
+    <li><a href="{{ routes.root_url }}">Home</a></li>
+    <li aria-hidden="true">/</li>
+    <li><a href="/pages/service-areas">Service Areas</a></li>
+    <li aria-hidden="true">/</li>
+    <li aria-current="page">{{ city }}</li>
+  </ol>
+</nav>
+
+<!-- Page header -->
+<div class="border-b section--cream">
+  <div class="container" style="padding-block:3rem 5rem;">
+    <p class="eyebrow reveal">Service area · {{ city_full }}</p>
+    <h1 class="reveal reveal--delay-1" style="margin-top:0.75rem; max-width:48rem;">{{ h1 }}</h1>
+    <p class="reveal reveal--delay-2" style="margin-top:1.25rem; max-width:36rem; color:var(--color-text-muted);">{{ section.settings.intro }}</p>
+    <div class="reveal reveal--delay-3" style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.75rem;">
+      <a href="{{ routes.collections_url }}" class="btn btn--primary btn--lg">Shop Planters →</a>
+      <a href="/pages/custom-planters" class="btn btn--secondary btn--lg">Request Custom Quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- Body + delivery sidebar -->
+<div class="section">
+  <div class="container">
+    <div class="service-area-page__grid">
+
+      <div>
+        <h2 class="reveal">Cedar planters in {{ short }}</h2>
+        <p class="reveal reveal--delay-1" style="margin-top:1rem; color:var(--color-text-muted); line-height:1.75;">{{ section.settings.local_blurb }}</p>
+
+        {%- assign has_use_cases = false -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'use_case' -%}{%- assign has_use_cases = true -%}{%- endif -%}
+        {%- endfor -%}
+        {%- if has_use_cases -%}
+          <h3 class="reveal reveal--delay-2" style="margin-top:2.5rem;">Popular uses in {{ short }}</h3>
+          <ul class="reveal reveal--delay-2" style="margin-top:0.75rem; list-style:none; padding:0; display:grid; gap:0.5rem; grid-template-columns:repeat(2,1fr);">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'use_case' -%}
+                <li style="display:flex; align-items:flex-start; gap:0.5rem; font-size:var(--text-sm); color:var(--color-text-muted);" {{ block.shopify_attributes }}>
+                  <span style="flex-shrink:0; margin-top:0.45rem; width:0.375rem; height:0.375rem; border-radius:var(--radius-full); background:var(--color-cedar-600);" aria-hidden="true"></span>
+                  {{ block.settings.text }}
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        <h3 class="reveal" style="margin-top:2.5rem;">Neighbourhoods we serve</h3>
+        <p class="reveal reveal--delay-1" style="margin-top:0.75rem; font-size:var(--text-sm); color:var(--color-text-muted);">{{ section.settings.neighborhoods }}</p>
+      </div>
+
+      <!-- Delivery sidebar -->
+      <aside class="reveal reveal--delay-1">
+        <div style="padding:1.5rem; border:1.5px solid var(--color-border); border-radius:var(--radius-lg); background:var(--color-bone);">
+          <p class="eyebrow">Delivery</p>
+          <p style="margin-top:0.75rem; color:var(--color-text-muted); font-size:var(--text-sm); line-height:1.65;">{{ section.settings.delivery_note }}</p>
+          <a href="/pages/contact" class="btn btn--primary btn--full" style="margin-top:1.25rem;">Order Now →</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Featured products -->
+{%- assign featured = section.settings.featured_collection -%}
+{%- assign featured_coll = collections[featured] -%}
+{%- if featured_coll == nil or featured_coll.products_count == 0 -%}
+  {%- assign featured_coll = collections['cedar-planters'] -%}
+{%- endif -%}
+<div class="section" style="padding-top:0;">
+  <div class="container">
+    <h2 class="reveal">Popular planters in {{ short }}</h2>
+    <div class="reveal reveal--delay-1" style="display:grid; gap:1.25rem; margin-top:2rem; grid-template-columns:repeat(1,1fr);">
+      {%- if featured_coll != blank -%}
+        {%- for product in featured_coll.products limit: 3 -%}
+          {%- render 'product-card', product: product -%}
+        {%- endfor -%}
+      {%- else -%}
+        <p style="color:var(--color-text-muted); font-size:var(--text-sm);">No products found.</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<!-- City FAQ -->
+{%- assign faq_blocks = section.blocks | where: 'type', 'faq' -%}
+{%- if faq_blocks.size > 0 -%}
+  <div class="section section--bone">
+    <div class="container" style="max-width:48rem; margin-inline:auto;">
+      <p class="eyebrow reveal" style="text-align:center;">FAQ · {{ short }}</p>
+      <h2 class="reveal reveal--delay-1" style="text-align:center; margin-top:0.75rem;">Questions from {{ short }} customers.</h2>
+      <div class="accordion reveal reveal--delay-2" style="margin-top:2.5rem;">
+        {%- for block in faq_blocks -%}
+          <div class="accordion__item" {{ block.shopify_attributes }}>
+            <button type="button" class="accordion__trigger" aria-expanded="false">
+              <span>{{ block.settings.question }}</span>
+              <span class="accordion__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion__body">{{ block.settings.answer }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+<!-- Other areas -->
+<div class="section">
+  <div class="container">
+    <p class="eyebrow reveal">Other service areas</p>
+    <h2 class="reveal reveal--delay-1" style="margin-top:0.75rem;">We also deliver to…</h2>
+    <div class="reveal reveal--delay-2" style="display:grid; gap:0.75rem; margin-top:2rem; grid-template-columns:repeat(2,1fr);">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'other_area' -%}
+          <a href="{{ block.settings.url | default: '#' }}" class="other-area-card" {{ block.shopify_attributes }}>
+            Cedar planters in {{ block.settings.city }} →
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="section section--bone" style="padding-block:3rem;">
+  <div class="container" style="max-width:40rem; margin-inline:auto; text-align:center;">
+    <p class="eyebrow reveal">Local to {{ short }}</p>
+    <h2 class="reveal reveal--delay-1">Cedar planters delivered across {{ city }}.</h2>
+    <a href="{{ routes.collections_url }}" class="btn btn--primary btn--lg reveal reveal--delay-2" style="margin-top:1.5rem;">Shop Planters →</a>
+  </div>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | json }} },
+    { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": {{ shop.url | append: '/pages/service-areas' | json }} },
+    { "@type": "ListItem", "position": 3, "name": {{ city | json }}, "item": {{ request.origin | append: request.path | json }} }
+  ]
+}
+</script>
+{%- if faq_blocks.size > 0 -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for block in faq_blocks -%}
+      { "@type": "Question", "name": {{ block.settings.question | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} } }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}
+
+<style>
+.service-area-page__grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+@media (min-width: 1024px) { .service-area-page__grid { grid-template-columns: 7fr 5fr; } }
+
+.other-area-card {
+  display: block;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+.other-area-card:hover { border-color: var(--color-cedar-300); color: var(--color-cedar-700); }
+
+@media (min-width: 1024px) {
+  [class*="service-area-page"] + div .reveal { grid-template-columns: repeat(3,1fr); }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Service area page",
+  "limit": 1,
+  "settings": [
+    { "type": "text", "id": "city", "label": "City name", "default": "North Vancouver" },
+    { "type": "text", "id": "city_full", "label": "City, Province", "default": "North Vancouver, BC" },
+    { "type": "text", "id": "short_locale", "label": "Short locale", "default": "North Van" },
+    { "type": "text", "id": "h1", "label": "H1 heading", "default": "Cedar Planter Boxes — North Vancouver" },
+    { "type": "textarea", "id": "intro", "label": "Page intro", "default": "We're North Vancouver locals. Our workshop is on the North Shore, which means short delivery routes, fewer scheduling headaches, and the chance to stop by in person if you want to see a planter before you buy." },
+    { "type": "textarea", "id": "local_blurb", "label": "Local blurb paragraph", "default": "North Van homes have a particular landscape: tall trees, sloped lots, a lot of weather, and a real love of natural materials. Cedar fits perfectly here." },
+    { "type": "textarea", "id": "neighborhoods", "label": "Neighbourhoods text", "default": "Lonsdale, Lower Lonsdale, Central Lonsdale, Edgemont, Capilano, Lynn Valley, Deep Cove, Seymour, Blueridge, and Upper Lonsdale." },
+    { "type": "textarea", "id": "delivery_note", "label": "Delivery note", "default": "Free pickup by appointment in North Vancouver. Local Metro Vancouver delivery: CAD $25. Additional Canadian and U.S. shipping may be available." },
+    { "type": "collection", "id": "featured_collection", "label": "Featured products collection" }
+  ],
+  "blocks": [
+    {
+      "type": "use_case",
+      "name": "Use case",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Use case text", "default": "Lonsdale townhouse front entries" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Do you deliver to apartments on the North Shore?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Yes. Many of our balcony planters are sized to fit standard condo elevators. Let us know your building and we'll plan the delivery.</p>" }
+      ]
+    },
+    {
+      "type": "other_area",
+      "name": "Other area link",
+      "settings": [
+        { "type": "text", "id": "city", "label": "City name", "default": "Vancouver" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Service area page",
+      "blocks": [
+        { "type": "use_case", "settings": { "text": "Lonsdale townhouse front entries" } },
+        { "type": "use_case", "settings": { "text": "Edgemont and Capilano deck planters" } },
+        { "type": "use_case", "settings": { "text": "Lynn Valley raised vegetable gardens" } },
+        { "type": "use_case", "settings": { "text": "Deep Cove balcony planters" } },
+        { "type": "faq", "settings": { "question": "Do you deliver to apartments on the North Shore?", "answer": "<p>Yes. Many of our balcony planters are sized to fit standard condo elevators. Let us know your building and we'll plan the delivery.</p>" } },
+        { "type": "faq", "settings": { "question": "Will cedar hold up in North Van rain?", "answer": "<p>Western Cedar is one of the most rot-resistant softwoods in North America and is native to BC. Left untreated it weathers to a soft grey; sealed, it keeps the warm cedar tone for years.</p>" } },
+        { "type": "other_area", "settings": { "city": "Vancouver", "url": "/pages/vancouver" } },
+        { "type": "other_area", "settings": { "city": "West Vancouver", "url": "/pages/west-vancouver" } },
+        { "type": "other_area", "settings": { "city": "Burnaby", "url": "/pages/burnaby" } },
+        { "type": "other_area", "settings": { "city": "Coquitlam", "url": "/pages/coquitlam" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

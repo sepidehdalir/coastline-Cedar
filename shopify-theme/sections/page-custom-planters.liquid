@@ -1,0 +1,254 @@
+<!-- Custom Planters Page -->
+<div class="page-hero border-b">
+  <div class="container">
+    <div class="page-hero__grid">
+      <div>
+        <p class="eyebrow page-hero__eyebrow">{{ section.settings.eyebrow | default: 'Custom planters' }}</p>
+        <h1 class="page-hero__heading">{{ section.settings.heading | default: 'Built to your exact dimensions, in cedar.' }}</h1>
+        <p class="page-hero__body">{{ section.settings.intro | default: 'Awkward corner, specific architectural look, balcony that does not match standard sizes? We build custom cedar planters to spec for homes and businesses across Greater Vancouver. Free quote and sketch within 1–2 business days.' }}</p>
+        <div class="page-hero__ctas">
+          <a href="#quote" class="btn btn--primary btn--lg">Request a Custom Quote →</a>
+          <a href="{{ routes.collections_url }}" class="btn btn--secondary btn--lg">Browse standard sizes</a>
+        </div>
+      </div>
+      <div class="media-wrapper aspect-4-3 img-zoom-wrap" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lift);">
+        {%- if section.settings.hero_image != blank -%}
+          <img
+            src="{{ section.settings.hero_image | image_url: width: 900 }}"
+            alt="{{ section.settings.hero_image.alt | default: 'Custom cedar planter project in Greater Vancouver' }}"
+            width="{{ section.settings.hero_image.width }}"
+            height="{{ section.settings.hero_image.height }}"
+            loading="eager"
+            class="img-cover"
+          >
+        {%- else -%}
+          <img src="{{ 'product-custom.png' | asset_url }}" alt="Custom cedar planter sketches and woodworking tools on a workshop bench" width="900" height="675" loading="eager" class="img-cover">
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Use cases -->
+<section class="section">
+  <div class="container">
+    <p class="eyebrow reveal">{{ section.settings.usecases_eyebrow | default: 'What we build' }}</p>
+    <h2 class="reveal reveal--delay-1" style="margin-top:0.75rem; max-width: 32rem;">{{ section.settings.usecases_heading | default: 'Custom builds for every space.' }}</h2>
+    <div class="feature-grid" style="margin-top: 2.5rem;">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'use_case' -%}
+          <div class="feature-item reveal reveal--delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+            <h3 class="feature-item__title">{{ block.settings.title }}</h3>
+            <p class="feature-item__body">{{ block.settings.description }}</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<!-- Measuring guide -->
+<section class="section section--bone">
+  <div class="container">
+    <div class="materials-section__grid">
+      <div class="reveal">
+        <p class="eyebrow">{{ section.settings.measure_eyebrow | default: 'How to measure' }}</p>
+        <h2 style="margin-top:0.75rem;">{{ section.settings.measure_heading | default: 'A quick measuring guide.' }}</h2>
+        <p style="margin-top:1rem; color: var(--color-text-muted);">{{ section.settings.measure_note | default: "Don't worry about perfect numbers. Send us your best measurements plus a photo and we'll confirm everything before we cut." }}</p>
+      </div>
+      <ol class="measure-grid" style="list-style:none; padding:0;">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'measure_step' -%}
+            <li class="measure-step reveal reveal--delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+              <span class="measure-step__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+              <h3 class="measure-step__label">{{ block.settings.label }}</h3>
+              <p class="measure-step__desc">{{ block.settings.description }}</p>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- Quote form anchor -->
+<section id="quote" class="section">
+  <div class="container">
+    <div class="materials-section__grid">
+      <div class="reveal">
+        <p class="eyebrow">{{ section.settings.form_eyebrow | default: 'Get a free quote' }}</p>
+        <h2 style="margin-top:0.75rem;">{{ section.settings.form_heading | default: 'Send us your dimensions.' }}</h2>
+        <p style="margin-top:1rem; color: var(--color-text-muted);">{{ section.settings.form_intro | default: "We'll reply with a sketch, materials list, finish recommendations, and a firm price — typically within 1–2 business days." }}</p>
+        <ul style="margin-top:1.5rem; list-style:none; padding:0; display:flex; flex-direction:column; gap:0.75rem;">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'form_promise' -%}
+              <li class="feature-pill" {{ block.shopify_attributes }}>
+                <span class="feature-pill__dot" aria-hidden="true"></span>
+                {{ block.settings.text }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <!-- Contact form (Shopify native) -->
+      <div class="reveal reveal--delay-1">
+        {%- form 'contact', id: 'CustomQuoteForm' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="form-success-box" role="alert">
+              {{ section.settings.success_message | default: "Thanks — we received your request. We'll contact you shortly to confirm the details." }}
+            </div>
+          {%- else -%}
+            <div style="background: rgba(255,255,255,0.7); border: 1.5px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.5rem;">
+              {%- if form.errors -%}
+                <div class="form-error-box" role="alert" style="margin-bottom:1rem;">{{ form.errors | default_errors }}</div>
+              {%- endif -%}
+
+              <div class="form-grid form-grid--2">
+                <div class="form-field">
+                  <label class="form-label" for="CQName">Full name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="CQName" name="contact[name]" required autocomplete="name" class="form-input" placeholder="Your name">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="CQEmail">Email <span aria-hidden="true">*</span></label>
+                  <input type="email" id="CQEmail" name="contact[email]" required autocomplete="email" class="form-input" placeholder="you@example.com">
+                </div>
+              </div>
+
+              <div class="form-grid form-grid--2" style="margin-top:1rem;">
+                <div class="form-field">
+                  <label class="form-label" for="CQPhone">Phone</label>
+                  <input type="tel" id="CQPhone" name="contact[phone]" autocomplete="tel" class="form-input" placeholder="(778) 000-0000">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="CQArea">Service area</label>
+                  <select id="CQArea" name="contact[service_area]" class="form-select">
+                    <option value="">Select…</option>
+                    <option>North Vancouver</option>
+                    <option>Vancouver</option>
+                    <option>West Vancouver</option>
+                    <option>Burnaby</option>
+                    <option>Richmond</option>
+                    <option>Coquitlam</option>
+                    <option>Surrey</option>
+                    <option>Langley</option>
+                    <option>Other Greater Vancouver area</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="margin-top:1rem;">
+                <span class="form-label">Dimensions in inches</span>
+                <div class="form-grid form-grid--3" style="margin-top:0.5rem;">
+                  <input type="text" name="contact[length]" class="form-input" placeholder='Length "' aria-label="Length in inches">
+                  <input type="text" name="contact[width]"  class="form-input" placeholder='Width "' aria-label="Width in inches">
+                  <input type="text" name="contact[height]" class="form-input" placeholder='Height "' aria-label="Height in inches">
+                </div>
+                <p class="form-hint">Not sure exactly? Give us a range and we will work it out together.</p>
+              </div>
+
+              <div class="form-grid form-grid--2" style="margin-top:1rem;">
+                <div class="form-field">
+                  <label class="form-label" for="CQFinish">Finish preference</label>
+                  <select id="CQFinish" name="contact[finish]" class="form-select">
+                    <option value="">Select…</option>
+                    <option>Natural (unfinished)</option>
+                    <option>Clear outdoor sealer</option>
+                    <option>Custom stain colour</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="CQUse">Use case</label>
+                  <select id="CQUse" name="contact[use_case]" class="form-select">
+                    <option value="">Select…</option>
+                    <option>Patio or deck</option>
+                    <option>Balcony</option>
+                    <option>Front entrance</option>
+                    <option>Vegetable garden</option>
+                    <option>Privacy or trellis</option>
+                    <option>Restaurant or café</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field" style="margin-top:1rem;">
+                <label class="form-label" for="CQDetails">Project details <span aria-hidden="true">*</span></label>
+                <textarea id="CQDetails" name="contact[body]" required rows="5" class="form-textarea" placeholder="Tell us about the space, preferred design, quantity, delivery area, and any other details."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--full" style="margin-top:1.25rem;">Request Custom Quote</button>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom planters page",
+  "limit": 1,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "H1 heading" },
+    { "type": "textarea", "id": "intro", "label": "Intro paragraph" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
+    { "type": "text", "id": "usecases_eyebrow", "label": "Use cases eyebrow" },
+    { "type": "text", "id": "usecases_heading", "label": "Use cases heading" },
+    { "type": "text", "id": "measure_eyebrow", "label": "Measure guide eyebrow" },
+    { "type": "text", "id": "measure_heading", "label": "Measure guide heading" },
+    { "type": "textarea", "id": "measure_note", "label": "Measure guide note" },
+    { "type": "text", "id": "form_eyebrow", "label": "Form eyebrow" },
+    { "type": "text", "id": "form_heading", "label": "Form heading" },
+    { "type": "textarea", "id": "form_intro", "label": "Form intro" },
+    { "type": "text", "id": "success_message", "label": "Form success message" }
+  ],
+  "blocks": [
+    {
+      "type": "use_case",
+      "name": "Use case",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Balcony & patio fit" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Slim, lightweight builds that fit standard condo elevators and balcony widths." }
+      ]
+    },
+    {
+      "type": "measure_step",
+      "name": "Measure step",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Length" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Measure the full length of the space, then subtract any clearance you want at either end." }
+      ]
+    },
+    {
+      "type": "form_promise",
+      "name": "Form promise",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Promise", "default": "Free, no-obligation quote" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom planters page",
+      "blocks": [
+        { "type": "use_case", "settings": { "title": "Balcony & patio fit", "description": "Slim, lightweight builds that fit standard condo elevators and balcony widths." } },
+        { "type": "use_case", "settings": { "title": "Privacy planters", "description": "Tall planters with integrated cedar trellis screens for hot tubs, decks, or strata." } },
+        { "type": "use_case", "settings": { "title": "Commercial", "description": "Restaurants, cafés, hotels, and storefronts. Volume pricing on 5+ matching planters." } },
+        { "type": "use_case", "settings": { "title": "Architectural match", "description": "Stain and finish samples so your planters match siding, trim, or existing wood features." } },
+        { "type": "measure_step", "settings": { "label": "Length", "description": "Measure the full length of the space, then subtract any clearance you want at either end." } },
+        { "type": "measure_step", "settings": { "label": "Width", "description": "Measure how far the planter can come into the space. 12–14\" is typical for balconies; 18–24\" for patios." } },
+        { "type": "measure_step", "settings": { "label": "Height", "description": "18\" feels low and modern; 24–30\" feels architectural; 36\"+ creates privacy." } },
+        { "type": "measure_step", "settings": { "label": "Send a photo", "description": "A simple phone photo of the space helps us spec drainage, finish, and proportions accurately." } },
+        { "type": "form_promise", "settings": { "text": "Free, no-obligation quote" } },
+        { "type": "form_promise", "settings": { "text": "Most standard builds ready in 3–5 business days" } },
+        { "type": "form_promise", "settings": { "text": "Delivery available across Metro Vancouver" } },
+        { "type": "form_promise", "settings": { "text": "Volume pricing on 5+ units" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

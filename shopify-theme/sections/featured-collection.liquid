@@ -1,0 +1,145 @@
+{%- liquid
+  assign collection = collections[section.settings.collection]
+  if collection == nil or collection.products_count == 0
+    assign collection = collections['cedar-planters']
+  endif
+  assign heading = section.settings.heading | default: 'Popular cedar planters'
+  assign eyebrow = section.settings.eyebrow | default: 'Shop the planters'
+  assign limit = section.settings.products_to_show | default: 4
+-%}
+
+<section class="section featured-collection">
+  <div class="container">
+    <div class="featured-collection__header">
+      <div>
+        <p class="eyebrow">{{ eyebrow }}</p>
+        <h2 class="featured-collection__heading">{{ heading }}</h2>
+      </div>
+      {%- if collection != blank and section.settings.show_view_all -%}
+        <a href="{{ collection.url }}" class="featured-collection__view-all">
+          See all products →
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if collection != blank and collection.products_count > 0 -%}
+      <div class="featured-collection__grid" style="--cols: {{ section.settings.columns | default: 4 }}">
+        {%- for product in collection.products limit: limit -%}
+          {%- render 'product-card', product: product -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.show_view_all -%}
+        <div class="featured-collection__mobile-cta">
+          <a href="{{ collection.url }}" class="btn btn--secondary">See all products →</a>
+        </div>
+      {%- endif -%}
+
+    {%- else -%}
+      <div class="empty-state">
+        <p class="empty-state__body">No products found in this collection.</p>
+        <a href="{{ routes.collections_url }}" class="btn btn--primary">Browse all products</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+.featured-collection__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.featured-collection__heading {
+  margin-top: 0.75rem;
+}
+
+.featured-collection__view-all {
+  display: none;
+  font-size: var(--text-sm);
+  color: var(--color-cedar-700);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.featured-collection__view-all:hover { text-decoration: underline; }
+
+@media (min-width: 768px) { .featured-collection__view-all { display: block; } }
+
+.featured-collection__grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) { .featured-collection__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) {
+  .featured-collection__grid { grid-template-columns: repeat(var(--cols, 4), 1fr); }
+  .featured-collection__view-all { display: block; }
+}
+
+.featured-collection__mobile-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) { .featured-collection__mobile-cta { display: none; } }
+</style>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Shop the planters"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Popular cedar planters"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View all' link",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection"
+    }
+  ]
+}
+{% endschema %}

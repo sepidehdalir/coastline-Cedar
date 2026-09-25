@@ -308,8 +308,7 @@
       "block_order": [
         "r1",
         "r2",
-        "r3",
-        "r4"
+        "r3"
       ],
       "blocks": {
         "r1": {
@@ -336,15 +335,6 @@
             "rating": 5,
             "review_text": "Coastline made well crafted cedar planter boxes to our exact specs. High quality and the communication was fantastic!",
             "reviewer_name": "Christopher Markowsky",
-            "date_label": "a week ago"
-          }
-        },
-        "r4": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Beautiful planters, well-made, fast service and free delivery. I highly recommend.",
-            "reviewer_name": "Kate and Allison",
             "date_label": "a week ago"
           }
         }

@@ -90,6 +90,12 @@
       <p class="site-footer__seo-text">
         {{ section.settings.seo_text | default: 'Locally built cedar planters, privacy panels, saunas, gates, and fences in North Vancouver, West Vancouver, Vancouver, Burnaby, Richmond, Coquitlam, Port Moody, Port Coquitlam, New Westminster, Surrey, Delta, and Langley.' }}
       </p>
+      <div class="site-footer__policy-links" aria-label="Store policies">
+        <a href="/pages/shipping-delivery">Shipping & Delivery</a>
+        <a href="/pages/warranty">Warranty</a>
+        <a href="/pages/returns">Returns & Refunds</a>
+        <a href="/pages/contact">Contact</a>
+      </div>
       <p class="site-footer__copy">
         &copy; {{ 'now' | date: '%Y' }} Coastline Cedar Inc. All rights reserved.
       </p>
@@ -205,6 +211,21 @@
   margin-bottom: 0.5rem;
 }
 
+.site-footer__policy-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+}
+.site-footer__policy-links a {
+  font-size: 0.75rem;
+  color: rgba(26, 22, 18, 0.72);
+  text-decoration: none;
+}
+.site-footer__policy-links a:hover {
+  color: var(--color-cedar-700);
+  text-decoration: underline;
+}
 .site-footer__copy {
   font-size: 0.75rem;
   color: rgba(26, 22, 18, 0.60);

@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-service-area",
+      "settings": {
+        "city": "Coquitlam",
+        "city_full": "Coquitlam, BC",
+        "short_locale": "Coquitlam",
+        "h1": "Cedar Planter Boxes — Coquitlam",
+        "intro": "The Tri-Cities — Coquitlam, Port Coquitlam, and Port Moody — have the kind of outdoor space that cedar was made for. Wooded backyards, generous decks, mountain views. We deliver directly from our North Shore workshop across the entire area.",
+        "local_blurb": "Tri-Cities homes tend to have more yard and deck space than Vancouver or Burnaby — which means there's room to do something substantial with cedar. Our raised garden beds and large patio planters are popular across Burke Mountain and Westwood Plateau, where clients want to grow vegetables and herbs in a proper outdoor setup.",
+        "neighborhoods": "Westwood Plateau, Burke Mountain, Austin Heights, Maillardville, Ranch Park, Port Coquitlam, Port Moody, Anmore, Belcarra, and Ioco.",
+        "delivery_note": "Pickup by appointment in North Vancouver. Local delivery across eligible Greater Vancouver areas is CAD $25. Shipping outside Greater Vancouver may be available by quote."
+      },
+      "blocks": {
+        "uc1": {
+          "type": "use_case",
+          "settings": {
+            "text": "Burke Mountain and Westwood Plateau backyard gardens"
+          }
+        },
+        "uc2": {
+          "type": "use_case",
+          "settings": {
+            "text": "Port Moody waterfront and patio planters"
+          }
+        },
+        "uc3": {
+          "type": "use_case",
+          "settings": {
+            "text": "Port Coquitlam raised vegetable garden beds"
+          }
+        },
+        "uc4": {
+          "type": "use_case",
+          "settings": {
+            "text": "Coquitlam townhouse deck planters"
+          }
+        },
+        "fq1": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you deliver to Burke Mountain and the Westwood Plateau?",
+            "answer": "<p>Yes. We deliver across the Tri-Cities including Burke Mountain, Westwood Plateau, Port Coquitlam, and Port Moody. Steep or narrow roads are not an issue for our delivery vehicles. Let us know your address and any access notes and we'll plan accordingly.</p>"
+          }
+        },
+        "fq2": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the best planter for a large Coquitlam backyard?",
+            "answer": "<p>For a full backyard setup, the Elevated Cedar Garden Bed is our most popular choice — it provides deep planting capacity and a waist-height design that makes gardening easier. The Classic Cedar Patio Planter in 48″ × 16″ is also popular for decks and patios. If you have a large space and want multiple planters, contact us about quantity pricing.</p>"
+          }
+        },
+        "fq3": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does delivery take to Port Coquitlam or Port Moody?",
+            "answer": "<p>Most standard planters are ready in 3–5 business days after order details are confirmed. We schedule delivery across the Tri-Cities area as part of our regular Metro Vancouver route.</p>"
+          }
+        },
+        "oa1": {
+          "type": "other_area",
+          "settings": {
+            "city": "Burnaby",
+            "url": "/pages/burnaby"
+          }
+        },
+        "oa2": {
+          "type": "other_area",
+          "settings": {
+            "city": "Surrey",
+            "url": "/pages/surrey"
+          }
+        },
+        "oa3": {
+          "type": "other_area",
+          "settings": {
+            "city": "North Vancouver",
+            "url": "/pages/north-vancouver"
+          }
+        },
+        "oa4": {
+          "type": "other_area",
+          "settings": {
+            "city": "Vancouver",
+            "url": "/pages/vancouver"
+          }
+        }
+      },
+      "block_order": [
+        "uc1",
+        "uc2",
+        "uc3",
+        "uc4",
+        "fq1",
+        "fq2",
+        "fq3",
+        "oa1",
+        "oa2",
+        "oa3",
+        "oa4"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
